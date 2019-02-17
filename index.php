@@ -40,6 +40,10 @@ try {
                 throw new Exception('Aucun identifiant de commentaire envoyé');
             }
         }
+        elseif ($_GET['action'] == 'legalMentions')
+        {
+            legalMentions();
+        }
     }
     else {
         listChapters(); // Par défaut page d'accueil frontend

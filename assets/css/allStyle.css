@@ -14,24 +14,20 @@
 header{
     width: 100%;
     background-image: url("../../images/Calque\ 4.png");
-    height: 160px;
+    background-size: cover;
     box-shadow: 0px 10px 8px #888888;
 }
 
 #accessAdmin{
-    border: 1px solid #ba8f51;
     background-color: #ba8f51;
-    margin-right: 10px;
-    width: 5%;
     border-radius: 15px;
-    position: absolute;
-    right: 0;
-}
-
-#accessAdmin a{
-    width: 100%;
     color: white !important;
-    display: inline-block;
+    right: 0px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    position: absolute;
     text-align: center;
     text-decoration: none;
 }
@@ -47,7 +43,7 @@ h1#bigTitle{
     font-family: 'Marck Script', cursive;
     font-family: 'Tangerine', cursive;*/
     font-family: 'Caveat', cursive;
-    font-size: 100px;
+    font-size: 5rem;
     color: white !important;
     text-decoration: none;
     text-shadow: 2px 2px 4px black;
@@ -131,18 +127,20 @@ a:hover{
     width: 100%;
 }
 
-.sectionViewChapterLector .next{
-    position: absolute;
-    right: 20px;
+.backListChaptersLector{
+    color: black;
+    padding: 5px;
     border-radius: 15px;
     padding: 5px;
+    background-color: #cff6bf;
 }
 
-.sectionViewChapterLector .prev{
-    position: absolute;
-    left: 20px;
+.next, .prev{
+    color: black;
     border-radius: 15px;
     padding: 5px;
+    background-color: #c991b4;
+    text-align: center;
 }
 
 .chapterView{
@@ -154,17 +152,6 @@ a:hover{
 .chapterView h3{
     font-family: 'Caveat', cursive;
     font-size: 2rem;
-}
-
-.backListChaptersLector{
-    color: black;
-    padding: 5px;
-}
-
-.backListChapters{
-    border-radius: 15px;
-    padding: 5px;
-    background-color: #cff6bf;
 }
 
 /*---Comments---*/
@@ -209,4 +196,12 @@ a:hover{
     color: red;
     font-style: italic;
     text-align: right;
+}
+
+/*---MEDIA QUERIES---*/
+
+@media (max-width: 768px) {
+    #bigTitle a {
+        font-size: 3rem;
+    }
 }

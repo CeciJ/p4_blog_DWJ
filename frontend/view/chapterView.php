@@ -3,20 +3,27 @@
 <?php ob_start(); ?>
     <div class="sectionViewChapterLector">
 
-        <br/><p><a href="index.php" class="backListChapters backListChaptersLector">Retour à la liste des chapitres</a></p>
-        <button class="prev">Chapitre précédent</button><button class="next">Chapitre suivant</button>
-        <div class="chapterView">
-            <h3>
-                <?= htmlspecialchars($chapter->title()) ?>
-                le <?= $chapter->creationDate() ?>
-            </h3>
-            
-            <p>
-                <?= nl2br($chapter->content()) ?>
-            </p>
+        <br/>
+        <div class="row">
+            <div class="col-md-3"><a href="index.php" class="backListChaptersLector">Retour à la liste des chapitres</a></div>
         </div>
+        <br/>
+        <div class="row">
+            <div class="col-md-2"><a href="#" class="prev">Chapitre précédent</a></div>
+            <div class="chapterView col-md-8">
+                <h3>
+                    <?= htmlspecialchars($chapter->title()) ?>
+                    le <?= $chapter->creationDate() ?>
+                </h3>
+                
+                <p>
+                    <?= nl2br($chapter->content()) ?>
+                </p>
+            </div>
+            <div class="col-md-2"><a href="#" class="next">Chapitre suivant</a></div>
+        </div>
+        
         <br>
-        <hr>
 
         <div id="commentsForm">
             <h2>Commentaires</h2>
@@ -39,7 +46,7 @@
                 </div>
             </form>
         </div>
-        
+
         <div id="commentsList">
 
             <?php

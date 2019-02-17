@@ -14,16 +14,16 @@
         
     <body>
         <header>
-            <div id="accessAdmin"><a href="index.php?action=login">Admin</a></div>
+            <a id="accessAdmin" href="index.php?action=login">Admin</a>
             <h1 id="bigTitle"><a href="<?php echo HOST; ?>index.php">Billet simple pour l'Alaska</a></h1>
         </header>
 
-        <section>
+        <section class="container-fluid">
             <?= $content ?>
         </section>
 
         <footer>
-            <p>Mentions légales - Tous droits réservés 2019</p>
+            <p><a href="index.php?action=legalMentions">Mentions légales</a> - Tous droits réservés 2019</p>
         </footer>
         <!-- Optional JavaScript -->
         <script src="<?php echo ASSETS; ?>js/front.js"></script>
