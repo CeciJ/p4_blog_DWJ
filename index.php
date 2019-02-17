@@ -3,9 +3,6 @@ include_once('config.php');
 
 require(FRONTCONTROLLER.'frontendController.php');
 
-// Utilisation et démarrage des sessions
-session_start();
-
 try {
     
     // FRONT

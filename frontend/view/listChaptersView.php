@@ -4,13 +4,13 @@
 
 <br><p id="introWelcome">Plongez-vous de ce pas dans les aventures de ce livre !</p>
 
-<div id="vueChapitres">
+<div id="viewChapters">
     
     <?php
     foreach($chapters as $chapter) //while ($data = $chapters->fetch())
     {
     ?>
-        <div id="extraitChap">
+        <div class="extraitChap">
             <h3>
                 <a href="index.php?action=chapter&amp;id=<?= $chapter->id() ?>"><?= htmlspecialchars($chapter->title()) ?></a>
             </h3>
@@ -22,12 +22,12 @@
                 }
                 ?>
             </h4>
-            <img src="<?= HOST; ?>images/<?= $chapter->id() ?>.jpg">
+            <div class="imgChapter"><img src="<?= HOST; ?>images/<?= $chapter->id() ?>.jpg"></div>
             <p class="extractChapter">
                 <?php
                 $tab = explode(' ', $chapter->content(), (LIMIT+1));
                 if(count($tab) > LIMIT){array_pop($tab); }
-                echo nl2br(implode(' ', $tab)); ?><a href="index.php?action=chapter&amp;id=<?= $chapter->id() ?>" class="clickExcerptAdmin">...cliquez ici pour lire la suite</a>
+                echo nl2br(implode(' ', $tab)); ?><a href="index.php?action=chapter&amp;id=<?= $chapter->id() ?>" class="clickExcerpt">...cliquez ici pour lire la suite</a>
                 <br />
             </p>
         </div>
