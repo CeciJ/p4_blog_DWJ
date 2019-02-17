@@ -142,4 +142,42 @@ function deleteChapter($chapterId)
     }
 }
 
+// Modérer les commentaires
+
+function getCommentsToModerate()
+{
+    $commentManager = new CommentManager();
+    $commentsToModerate = $commentManager->countCommentsToModerate();
+    if($commentsToModerate > 0){
+        $commentsToModerate = $commentManager->getCommentsToModerate();
+    }
+    require(ADMINVIEW.'/commentsToModerateView.php');
+}
+
+function goToEditComment($commentId)
+{
+    $commentManager = new CommentManager();
+    $editComment = $commentManager->getComment($_GET['id']);
+    //var_dump($editComment);
+    require(ADMINVIEW.'/editCommentView.php');
+}
+
+function editComment($commentId, $newTitle, $newContent)
+{
+    $commentManager = new CommentManager();
+    $editedComment = $commentManager->editComment($_GET['id'], $_POST['newTitle'], $_POST['newContent']);
+    $commentsToModerate = $commentManager->getCommentsToModerate();
+
+    require(ADMINVIEW.'/commentsToModerateView.php');
+}
+
+function deleteComment($commentId)
+{
+    $commentManager = new CommentManager();
+    $deletedComment = $commentManager->deleteComment($commentId);
+    $commentsToModerate = $commentManager->getCommentsToModerate();
+
+    require(ADMINVIEW.'/commentsToModerateView.php');
+}
+
 

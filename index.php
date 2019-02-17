@@ -97,6 +97,22 @@ try {
             elseif ($_GET['action'] == 'delete') {
                 deleteChapter($_GET['id']);
             }
+            // Modérer commentaires
+            elseif ($_GET['action'] == 'getCommentsToModerate') {
+                getCommentsToModerate();
+            }
+            /*elseif ($_GET['action'] == 'goToEditComment'){}*/
+            elseif ($_GET['action'] == 'editComment') {
+                if(isset($_GET['id']) && isset($_POST['newTitle']) && isset($_POST['newContent'])){
+                    editComment($_GET['id'], $_POST['newTitle'], $_POST['newContent']);
+                }
+                else{
+                    goToEditComment($_GET['id']);
+                }    
+            }
+            elseif ($_GET['action'] == 'deleteComment') {
+                deleteComment($_GET['id']);
+            }
         }
     }
     else {

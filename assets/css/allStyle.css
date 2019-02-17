@@ -402,7 +402,31 @@ h1.listChapTitle{
     color: white;
 }
 
+/*---Moderate comments---*/
 
+.sectionModerComments{
+    padding-left: 50px;
+    padding-right: 50px;
+    font-size: 20px;
+}
+
+.commentAdmin{
+    border: 1px solid gray;
+    margin-bottom: 20px;
+    padding: 5px;
+}
+
+/*---Edit comments---*/
+
+.sectionEditComment{
+    padding-left: 50px;
+    font-size: 20px;
+}
+
+.formEditComment{
+    border: 1px solid black;
+    padding: 20px;
+}
 
 /*---MEDIA QUERIES---*/
 

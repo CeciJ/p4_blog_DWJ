@@ -93,5 +93,90 @@ class CommentManager extends Manager
         return $nbComments;
     }
 
+    public function getCommentsToModerate()
+    {
+        $db = $this->dbConnect();
+
+        $req = $db->prepare('
+            SELECT id, title, content, author, DATE_FORMAT(creationDate, \'%d/%m/%Y à %Hh%imin%ss\') AS creationDateFr 
+            FROM comments 
+            WHERE reported = TRUE
+            ORDER BY creationDate DESC');
+        $result=$req->execute();
+        $result=$req->rowCount();
+        //var_dump($result);
+
+        if($result > 0){
+            while($data = $req->fetch(PDO::FETCH_ASSOC)){
+
+                $comment = new Comment();
+                $comment->setId($data['id']);
+                $comment->setTitle($data['title']);
+                $comment->setContent($data['content']);
+                $comment->setAuthor($data['author']);
+                $comment->setCreationDate($data['creationDateFr']);
+    
+                $comments[] = $comment; // Tableau d'objets
+            }
+            //var_dump($comments);
+    
+            return $comments;
+        }
+        else
+        {
+            return false;
+        }
+        
+    }
+    
+    public function getComment($commentId)
+    {
+        $db = $this->dbConnect();
+
+        $req = $db->prepare('
+            SELECT id, chapter, title, content, author, DATE_FORMAT(creationDate, \'%d/%m/%Y à %Hh%imin%ss\') AS creationDateFr 
+            FROM comments 
+            WHERE id = ? 
+            ORDER BY creationDate DESC');
+        $req->execute(array($commentId));
+
+        while($data = $req->fetch(PDO::FETCH_ASSOC)){
+
+            $comment = new Comment();
+            $comment->setId($data['id']);
+            $comment->setChapter($data['chapter']);
+            $comment->setTitle($data['title']);
+            $comment->setContent($data['content']);
+            $comment->setCreationDate($data['creationDateFr']);
+
+        }
+        return $comment;
+    }
+
+    public function editComment($commentId, $newTitle, $newContent)
+    {
+        $db = $this->dbConnect();
+
+        $editComment = $db->prepare('
+            UPDATE comments 
+            SET title = :newTitle, content = :newContent, editDate = NOW(), reported = FALSE 
+            WHERE id = :id'
+        );
+
+        $editComment->execute(array(
+            'newTitle' => $newTitle,  
+            'newContent' => $newContent, 
+            'id' => $commentId
+        ));
+
+        return $editComment;
+    }
+
+    public function deleteComment($commentId)
+    {
+        $db = $this->dbConnect();
+
+        $db->exec('DELETE FROM comments WHERE id = '.$commentId);
+    }
     
 }
