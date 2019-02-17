@@ -71,4 +71,27 @@ class CommentManager extends Manager
         }
         return $reportedComment;
     }
+
+    public function countModeratedComments()
+    {
+        $db = $this->dbConnect();
+
+        $req2 = $db->query('SELECT COUNT(id) FROM comments WHERE editDate IS NOT NULL');
+        $nbEditedComments = $req2->fetchColumn();
+
+        return $nbEditedComments;
+    }
+
+    public function countCommentsToModerate()
+    {
+        $db = $this->dbConnect();
+
+        $req = $db->query('SELECT COUNT(id) FROM comments WHERE reported = TRUE');
+        $nbComments = $req->fetchColumn();
+        
+        //var_dump($nbComments);
+        return $nbComments;
+    }
+
+    
 }

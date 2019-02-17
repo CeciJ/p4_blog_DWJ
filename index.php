@@ -2,6 +2,10 @@
 include_once('config.php');
 
 require(FRONTCONTROLLER.'frontendController.php');
+require(ADMINCONTROLLER.'backendController.php');
+
+// Utilisation et démarrage des sessions
+session_start();
 
 try {
     
@@ -43,6 +47,22 @@ try {
         elseif ($_GET['action'] == 'legalMentions')
         {
             legalMentions();
+        }
+
+        //ADMIN
+        elseif ($_GET['action'] == 'login') {
+            loginAdmin();
+        }
+        elseif ($_GET['action'] == 'connectOK') {
+            connectOK($_POST['pseudo'], $_POST['password']);
+        }
+        elseif (!empty($_SESSION['pseudo'])) {
+            // Page d'accueil Admin
+            homeAdmin();
+        }
+        // Déconnexion
+        elseif ($_GET['action'] == 'deconnect') {
+            deconnexion();
         }
     }
     else {

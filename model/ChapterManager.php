@@ -88,5 +88,7 @@ class ChapterManager extends Manager
         //var_dump($chapter); // Objet
         return $chapter;
     }
+
+    
 }
 

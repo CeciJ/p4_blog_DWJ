@@ -11,7 +11,9 @@ define('ROOT', $root . 'p4_Final/');
 define('HOST', 'http://' . $host . '/p4_Final/');
 
 define('FRONTCONTROLLER', ROOT . 'frontend/controller/');
+define('ADMINCONTROLLER', ROOT . 'admin/controller/');
 define('MODEL', ROOT . 'model/');
 define('FRONTVIEW', ROOT . 'frontend/view/');
+define('ADMINVIEW', ROOT . 'admin/view/');
 
 define('ASSETS', HOST . 'assets/');

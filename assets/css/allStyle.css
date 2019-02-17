@@ -1,5 +1,5 @@
 /*FRONTEND LIGNE 5 */
-
+/*BACKEND LIGNE 201 */
 
 /*-----FRONTEND STYLES-----*/
 
@@ -196,6 +196,129 @@ a:hover{
     color: red;
     font-style: italic;
     text-align: right;
+}
+
+/*---BACKEND---*/
+
+/*---CONNEXION PAGE---*/
+
+h1#bigTitle.titleConnexion{
+    text-align: left;
+}
+
+#bigTitle.titleConnexion a {
+    /*font-family: 'Parisienne', cursive;
+    font-family: 'Nothing You Could Do', cursive;
+    font-family: 'Bad Script', cursive;
+    font-family: 'Marck Script', cursive;
+    font-family: 'Tangerine', cursive;*/
+    font-size: 3rem;
+    /*font-family: 'Charm', cursive;*/
+}
+
+#titleBook{
+    font-family: 'Caveat';
+    font-size: 2rem;
+}
+
+#contentConnexion{
+    margin: auto;
+    width: 70%;
+    font-size: 20px;
+    border: 1px solid black;
+    padding: 15px;
+}
+
+/*---HOMEPAGE ADMIN---*/
+
+/*---Bouton de déconnexion---*/
+
+#deconnectAdmin{
+    border: 1px solid #ba8f51;
+    background-color: #ba8f51;
+    padding: 5px;
+    border-radius: 15px;
+    position: absolute;
+    right: 10px;
+}
+
+#deconnectAdmin a{
+    width: 100%;
+    color: white !important;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+/*---Titre Header---*/
+
+h1#bigTitle.titleAdmin{
+    text-align: left;
+}
+
+#bigTitle.titleAdmin a {
+    /*font-family: 'Parisienne', cursive;
+    font-family: 'Nothing You Could Do', cursive;
+    font-family: 'Bad Script', cursive;
+    font-family: 'Marck Script', cursive;
+    font-family: 'Tangerine', cursive;*/
+    font-size: 60px;
+    /*font-family: 'Charm', cursive;*/
+}
+
+#titleBook{
+    font-family: 'Caveat', cursive;
+    font-size: 40px;
+    font-style: italic;
+    color: white !important;
+    text-decoration: none;
+    text-shadow: 2px 2px 4px black;
+    width: 100%;
+}
+
+/*---Welcome message Admin---*/
+
+#welcomeMsgAdmin{
+    color: white;
+    font-size: 20px;
+}
+
+/*---Admin Template Structure---*/
+
+.containerAdmin{
+    width: 100%;
+    display: flex;
+}
+
+.adminSection{
+    width: 75%;
+}
+
+nav.menuAdmin{
+    width: 25%;
+    padding: 15px;
+    font-size: 18px;
+}
+
+.menuAdmin ul{
+    list-style: none;
+}
+
+.menuAdmin ul li{
+    padding: 15px;
+    margin-bottom: 10px;
+    background-color: #6478b5;
+    border-radius: 15px;
+}
+
+.menuAdmin ul li a{
+    color: white;
+}
+
+.sectionAdmin{
+    padding-left: 50px;
+    font-size: 20px;
 }
 
 /*---MEDIA QUERIES---*/
