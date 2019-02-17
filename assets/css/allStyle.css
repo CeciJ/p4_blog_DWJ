@@ -1,0 +1,202 @@
+/*FRONTEND LIGNE 5 */
+
+
+/*-----FRONTEND STYLES-----*/
+
+*{
+    padding: 0;
+    margin: 0;
+    font-family: 'dosis';
+}
+
+/*---Header---*/
+
+header{
+    width: 100%;
+    background-image: url("../../images/Calque\ 4.png");
+    height: 160px;
+    box-shadow: 0px 10px 8px #888888;
+}
+
+#accessAdmin{
+    border: 1px solid #ba8f51;
+    background-color: #ba8f51;
+    margin-right: 10px;
+    width: 5%;
+    border-radius: 15px;
+    position: absolute;
+    right: 0;
+}
+
+#accessAdmin a{
+    width: 100%;
+    color: white !important;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+}
+
+h1#bigTitle{
+    text-align: center;
+}
+
+#bigTitle a {
+    /*font-family: 'Parisienne', cursive;
+    font-family: 'Nothing You Could Do', cursive;
+    font-family: 'Bad Script', cursive;
+    font-family: 'Marck Script', cursive;
+    font-family: 'Tangerine', cursive;*/
+    font-family: 'Caveat', cursive;
+    font-size: 100px;
+    color: white !important;
+    text-decoration: none;
+    text-shadow: 2px 2px 4px black;
+    width: 100%;
+    /*font-family: 'Charm', cursive;*/
+}
+
+/*---Footer---*/
+
+footer{
+    margin-top: 25px;
+    text-align: center;
+    background-color: black;
+    color: white;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    width: 100%;
+}
+
+/*---Homepage---*/
+
+#introWelcome{
+    padding-left: 2%;
+    font-family: 'dosis';
+    font-size: 20px;
+}
+
+#vueChapitres{
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
+}
+
+#extraitChap{
+    width: 50%;
+}
+
+h3 a{
+    font-family: 'Caveat', cursive;
+    color: #a76529;
+    font-size: 2rem;
+}
+
+h4{
+    font-family: 'Caveat', cursive;
+    font-size: 1.3rem;
+}
+
+.imgChapter{
+    margin-top: 10px;
+}
+
+.imgChapter img{
+    width: 70%;
+    display: block;
+    margin: auto;
+}
+
+.extractChapter{
+    text-align: justify;
+    padding: 5px;
+}
+
+.clickExcerpt{
+    color: #a76529;
+    font-style: italic;
+}
+
+a:hover{
+    color: #8c4609;
+    text-decoration: none;
+}
+
+/*---Chapter View---*/
+
+.sectionViewChapterLector{
+    width: 100%;
+}
+
+.sectionViewChapterLector .next{
+    position: absolute;
+    right: 20px;
+    border-radius: 15px;
+    padding: 5px;
+}
+
+.sectionViewChapterLector .prev{
+    position: absolute;
+    left: 20px;
+    border-radius: 15px;
+    padding: 5px;
+}
+
+.chapterView{
+    width: 70%;
+    margin:auto;
+    text-align: justify;
+}
+
+.chapterView h3{
+    font-family: 'Caveat', cursive;
+    font-size: 2rem;
+}
+
+.backListChaptersLector{
+    color: black;
+    padding: 5px;
+}
+
+/*---Comments---*/
+
+#commentsForm{
+    width: 60%;
+    margin:auto;
+}
+
+.form{
+    padding: 20px;
+    border: 1px solid grey;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+#commentsList{
+    width: 60%;
+    margin:auto;
+    line-height: 16px;
+}
+
+.comment{
+    border: 1px solid gray;
+    margin-bottom: 20px;
+    padding: 5px;
+}
+
+.reportedComment{
+    color: red;
+    font-style: italic;
+    text-align: right;
+}
+
+.reportedCommentOK{
+    color: orange;
+    font-style: italic;
+    text-align: right;
+}
+
+.reportWaitComment{
+    color: red;
+    font-style: italic;
+    text-align: right;
+}
