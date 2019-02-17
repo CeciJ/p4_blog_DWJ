@@ -113,6 +113,20 @@ try {
             elseif ($_GET['action'] == 'deleteComment') {
                 deleteComment($_GET['id']);
             }
+            // Gestion des utilisateurs
+            elseif ($_GET['action'] == 'newUser') {
+                if(isset($_POST['pseudo']) && isset($_POST['mail']) && isset($_POST['pass']))
+                {
+                    newUser($_POST['pseudo'], $_POST['mail'], $_POST['pass']);
+                }
+                else
+                {
+                    goToAddUser();
+                }
+            }
+            elseif ($_GET['action'] == 'listUsers') {
+                listUsers();
+            }
         }
     }
     else {

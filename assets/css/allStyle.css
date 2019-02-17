@@ -428,6 +428,27 @@ h1.listChapTitle{
     padding: 20px;
 }
 
+/*---Add user---*/
+
+.sectionAddUser{
+    padding-left: 50px;
+    font-size: 20px;
+}
+
+/*---View users---*/
+
+.sectionViewUsers{
+    padding-left: 50px;
+}
+
+.user{
+    margin-bottom: 10px;
+}
+
+.user h3{
+    font-size: 20px;
+}
+
 /*---MEDIA QUERIES---*/
 
 @media (max-width: 768px) {

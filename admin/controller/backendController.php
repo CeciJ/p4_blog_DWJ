@@ -180,4 +180,27 @@ function deleteComment($commentId)
     require(ADMINVIEW.'/commentsToModerateView.php');
 }
 
+// Ajouter un Administrateur
+
+function goToAddUser()
+{
+    require(ADMINVIEW.'/addUserView.php');
+}
+
+function newUser($pseudo, $mail, $pass)
+{
+    $userManager = new UserManager();
+    $user = $userManager->addUser($pseudo, $mail, $pass);
+    //var_dump($user);
+    require(ADMINVIEW.'/addUserView.php');
+}
+
+function listUsers()
+{
+    $userManager = new UserManager();
+    $users = $userManager->getUsers();
+    //var_dump($users);
+    require(ADMINVIEW.'/getUsersView.php');
+}
+
 
