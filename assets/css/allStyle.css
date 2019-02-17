@@ -321,6 +321,14 @@ nav.menuAdmin{
     font-size: 20px;
 }
 
+/*---Add a chapter---*/
+
+.sectionAddChapter{
+    padding-left: 50px;
+    padding-right: 50px;
+    font-size: 20px;
+}
+
 /*---MEDIA QUERIES---*/
 
 @media (max-width: 768px) {

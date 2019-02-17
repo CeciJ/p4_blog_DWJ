@@ -64,4 +64,25 @@ function deconnexion()
     require(FRONTVIEW.'/listChaptersView.php');
 }
 
+// Ajouter un chapitre
+
+function goToAddChapter()
+{
+    require(ADMINVIEW.'/addChapterView.php');
+}
+
+function addNewChapter($title, $content)
+{
+    $chapterManager = new ChapterManager();
+    $addedChapter = $chapterManager->addChapter($title, $content);
+    $chapters = $chapterManager->getChapters(); // Appel d'une fonction de cet objet
+    $nbChapters = $chapterManager->countChapters(); 
+    $commentManager = new CommentManager();
+    $commentsToModerate = $commentManager->countCommentsToModerate();
+    $nbComments = $commentManager->countComments();
+    $nbEditedComments = $commentManager->countModeratedComments();
+
+    require(ADMINVIEW.'/homeAdminView.php');
+}
+
 

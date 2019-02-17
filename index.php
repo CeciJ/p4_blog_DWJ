@@ -58,11 +58,22 @@ try {
         }
         elseif (!empty($_SESSION['pseudo'])) {
             // Page d'accueil Admin
-            homeAdmin();
-        }
-        // Déconnexion
-        elseif ($_GET['action'] == 'deconnect') {
-            deconnexion();
+            if ($_GET['action'] == 'homeAdmin') {
+                homeAdmin();
+            }
+            // Déconnexion
+            elseif ($_GET['action'] == 'deconnect') {
+                deconnexion();
+            }
+            // Ajouter un chapitre
+            elseif ($_GET['action'] == 'addChapter') {
+                if (isset($_POST['title'])) {
+                    addNewChapter($_POST['title'], $_POST['content']);
+                }
+                else {
+                    goToAddChapter();
+                }
+            }
         }
     }
     else {
