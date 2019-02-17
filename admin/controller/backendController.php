@@ -85,4 +85,61 @@ function addNewChapter($title, $content)
     require(ADMINVIEW.'/homeAdminView.php');
 }
 
+// Voir chapitres pour modifier ou supprimer
+
+function listAllChapters()
+{
+    $chapterManager = new ChapterManager();
+    $chapters = $chapterManager->getChapters();
+
+    require(ADMINVIEW.'/listAllChaptersView.php');
+}
+
+function chapterAdmin()
+{
+    $chapterManager = new ChapterManager();
+    $commentManager = new CommentManager();
+
+    $chapter = $chapterManager->getChapter($_GET['id']);
+    if ($chapter->nbComments() > 0){
+        $comments = $commentManager->getComments($_GET['id']);
+    }
+    
+    require(ADMINVIEW.'/chapterAdminView.php');
+}
+
+function getChapterToEdit($chapterId)
+{
+    $chapterManager = new ChapterManager();
+    $chapter = $chapterManager->getChapter($_GET['id']);
+    require(ADMINVIEW.'/editChapterAdminView.php');
+}
+
+function editChapter($chapterId, $newTitle, $newContent)
+{
+    $chapterManager = new ChapterManager();
+    $editedChapter = $chapterManager->editChapter($_GET['id'], $newTitle, $newContent);
+
+    if ($editedChapter === false) {
+        throw new Exception('Impossible de modifier le chapitre !');
+    }
+    else {
+        header('Location: index.php?action=chapterAdmin&id=' . $chapterId);
+    }
+}
+
+function deleteChapter($chapterId)
+{
+    $chapterManager = new ChapterManager();
+    $deletedChapter = $chapterManager->delete($_GET['id']);
+    $deletedCommentsChapter = $chapterManager->deleteFromChapters($_GET['id']);
+
+    if ($deletedChapter === false OR $deletedCommentsChapter === false) {
+        throw new Exception('Impossible d\'effacer le chapitre et ses commentaires !');
+    }
+    else {
+        header('Location: index.php?action=homeAdmin');
+    }
+}
+
 

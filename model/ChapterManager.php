@@ -100,5 +100,34 @@ class ChapterManager extends Manager
             'content' => $content
         ));
     }
+
+    public function editChapter($chapterId, $newTitle, $newContent)
+    {
+        $db = $this->dbConnect();
+        $editChapter = $db->prepare('
+            UPDATE chapters 
+            SET title = :newTitle, content = :newContent, editDate = NOW() 
+            WHERE id = :id');
+
+        $editChapter->execute(array(
+            'newTitle' => $newTitle,  
+            'newContent' => $newContent, 
+            'id' => $chapterId
+            ));
+
+        return $editChapter;
+    }
+
+    public function delete($chapterId)
+    {
+        $db = $this->dbConnect();
+        $db->exec('DELETE FROM chapters WHERE id = '.$chapterId);
+    }
+
+    public function deleteFromChapters($chapterId)
+    {
+        $db = $this->dbConnect();
+        $db->exec('DELETE FROM comments WHERE chapter = '. $chapterId);
+    }
 }
 

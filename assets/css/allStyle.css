@@ -329,6 +329,81 @@ nav.menuAdmin{
     font-size: 20px;
 }
 
+/*---List chapters---*/
+
+h1.listChapTitle{
+    padding-left: 50px;
+}
+
+.sectionListChapters{
+    padding-left: 50px;
+    padding-right: 50px;
+    font-size: 20px;
+    text-align: justify;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.extraitChapAdmin{
+    width: 45%;
+    border: 1px solid black;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    margin-bottom: 20px;
+}
+
+/*---View Chapter---*/
+
+.sectionViewChapter{
+    padding-left: 50px;
+    padding-right: 50px;
+    font-size: 20px;
+    text-align: justify;
+}
+
+.sectionViewChapter a{
+    color: black;
+    text-decoration: none;
+}
+
+.backListChapters{
+    border-radius: 15px;
+    padding: 5px;
+    background-color: #cff6bf;
+}
+
+.editChapter, .deleteChapter{
+    border-radius: 15px;
+    padding: 5px;
+    background-color: #cc9eb8;
+}
+
+.chapter h3, .sectionViewChapter h3{
+    color: #ba8f51;
+}
+
+/*---Edit Chapter---*/
+
+.sectionEditChapter{
+    padding-left: 50px;
+    padding-right: 50px;
+    font-size: 20px;
+}
+
+#editTitle{
+    display: flex;
+    justify-content: space-between;
+}
+
+.editChapter{
+    height: 40px;
+    padding: 5px;
+    color: white;
+}
+
+
+
 /*---MEDIA QUERIES---*/
 
 @media (max-width: 768px) {

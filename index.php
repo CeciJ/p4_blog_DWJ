@@ -74,6 +74,29 @@ try {
                     goToAddChapter();
                 }
             }
+            // Voir chapitres pour modifier ou supprimer
+            elseif ($_GET['action'] == 'listAllChapters') {
+                listAllChapters();
+            }
+            elseif ($_GET['action'] == 'chapterAdmin') {
+                if (isset($_GET['id']) && $_GET['id'] > 0) {
+                    chapterAdmin();
+                }
+                else {
+                    throw new Exception('Aucun identifiant de chapitre envoyé');
+                }
+            }
+            elseif ($_GET['action'] == 'editChapter') {
+                if (isset($_GET['id']) && isset($_POST['newTitle'])) {
+                    editChapter($_GET['id'], $_POST['newTitle'], $_POST['newContent']);
+                }
+                else {
+                    getChapterToEdit($_GET['id']);
+                }
+            }
+            elseif ($_GET['action'] == 'delete') {
+                deleteChapter($_GET['id']);
+            }
         }
     }
     else {
