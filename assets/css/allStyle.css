@@ -1,12 +1,24 @@
 /*FRONTEND LIGNE 5 */
 /*BACKEND LIGNE 201 */
 
+
 /*-----FRONTEND STYLES-----*/
 
 *{
     padding: 0;
     margin: 0;
     font-family: 'dosis';
+}
+
+.page{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main{
+    flex: 1;
+    padding-top: 20px;
 }
 
 /*---Header---*/
@@ -60,7 +72,6 @@ footer{
     color: white;
     padding-bottom: 5px;
     padding-top: 5px;
-    width: 100%;
 }
 
 /*---Homepage---*/
@@ -227,6 +238,8 @@ h1#bigTitle.titleConnexion{
     font-size: 20px;
     border: 1px solid black;
     padding: 15px;
+    margin-bottom: 100px;
+    margin-top: 100px;
 }
 
 /*---HOMEPAGE ADMIN---*/

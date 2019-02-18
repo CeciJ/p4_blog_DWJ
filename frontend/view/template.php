@@ -13,18 +13,20 @@
     </head>
         
     <body>
-        <header>
-            <a id="accessAdmin" href="index.php?action=login">Admin</a>
-            <h1 id="bigTitle"><a href="<?php echo HOST; ?>index.php">Billet simple pour l'Alaska</a></h1>
-        </header>
+        <div class="page">
+            <header>
+                <a id="accessAdmin" href="index.php?action=login">Admin</a>
+                <h1 id="bigTitle"><a href="<?php echo HOST; ?>index.php">Billet simple pour l'Alaska</a></h1>
+            </header>
 
-        <section class="container-fluid">
-            <?= $content ?>
-        </section>
+            <main>
+                <?= $content ?>
+            </main>
 
-        <footer>
-            <p><a href="index.php?action=legalMentions">Mentions légales</a> - Tous droits réservés 2019</p>
-        </footer>
+            <footer>
+                <p><a href="index.php?action=legalMentions">Mentions légales</a> - Tous droits réservés 2019</p>
+            </footer>
+        </div>
         <!-- Optional JavaScript -->
         <script src="<?php echo ASSETS; ?>js/front.js"></script>
         <!-- jQuery first, then Popper.js, then Bootstrap JS 

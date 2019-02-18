@@ -14,20 +14,23 @@
     </head>
         
     <body>
-        <header>
-            <h1 id="bigTitle" class="titleConnexion"><a href="<?php echo HOST; ?>index.php?action=homeAdmin">Ma plateforme d'administration<br><span id="titleBook">Billet simple pour l'Alaska</span></a></h1>
-        </header>
-        
-        <br><br>
-        <section id="contentConnexion">
-            <?= $content ?>
-        </section>
 
-        <footer>
-            <p><a href="index.php?action=legalMentions">Mentions légales</a> - Tous droits réservés 2019</p>
-        </footer>
-        <!-- Optional JavaScript -->
-        
+        <div class="page">
+            <header>
+                <h1 id="bigTitle" class="titleConnexion"><a href="<?php echo HOST; ?>index.php?action=login">Ma plateforme d'administration<br><span id="titleBook">Billet simple pour l'Alaska</span></a></h1>
+            </header>
+            
+            <br><br>
+            <main id="contentConnexion">
+                <?= $content ?>
+            </main>
+
+            <footer>
+                <p><a href="index.php?action=legalMentions">Mentions légales</a> - Tous droits réservés 2019</p></div>
+            </footer>
+            <!-- Optional JavaScript -->
+        </div>
+
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>

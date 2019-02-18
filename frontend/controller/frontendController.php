@@ -34,7 +34,7 @@ function addComment($chapterId, $title, $author, $content)
         throw new Exception('Impossible d\'ajouter le commentaire !');
     }
     else {
-        require('Location: index.php?action=chapter&id=' . $chapterId);
+        header('Location: index.php?action=chapter&id=' . $chapterId);
     }
 }
 
