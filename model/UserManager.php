@@ -5,10 +5,10 @@ require_once(MODEL."/User.php");
 
 class UserManager extends Manager
 {
-    public function addUser($pseudo, $mail, $pass)
+    public function addUser($pseudo, $mail, $pass_hache)
     {
         $db = $this->dbConnect();
-    
+
         $req = $db->prepare('
             INSERT INTO users(pseudo, mail, pass) 
             VALUES(:pseudo, :mail, :pass)');
@@ -16,7 +16,7 @@ class UserManager extends Manager
         $result = $req->execute(array(
             'pseudo' => $pseudo, 
             'mail' => $mail, 
-            'pass' => $pass
+            'pass' => $pass_hache
         ));
 
         //var_dump($result);

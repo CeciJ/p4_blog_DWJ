@@ -16,7 +16,9 @@ function connectOK($pseudo, $pass)
     $userManager = new UserManager();
     $loggedUser = $userManager->getUser($pseudo);
 
-    if($_POST['pseudo'] === $loggedUser->pseudo() && $_POST['password'] === $loggedUser->pass())
+    $isPasswordCorrect = password_verify($_POST['password'], $loggedUser->pass());
+
+    if($_POST['pseudo'] === $loggedUser->pseudo() && $isPasswordCorrect)
     {
         $userManager = new UserManager();
         $loggedUser = $userManager->getUser($pseudo);
@@ -211,7 +213,8 @@ function goToAddUser()
 function newUser($pseudo, $mail, $pass)
 {
     $userManager = new UserManager();
-    $user = $userManager->addUser($pseudo, $mail, $pass);
+    $pass_hache = password_hash($pass, PASSWORD_DEFAULT);
+    $user = $userManager->addUser($pseudo, $mail, $pass_hache);
 
     if ($user === false) {
         throw new Exception('Impossible d\'ajouter le nouvel utilisateur !');
