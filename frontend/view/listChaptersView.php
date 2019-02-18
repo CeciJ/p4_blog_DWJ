@@ -12,22 +12,23 @@
     ?>
         <div class="extraitChap">
             <h3>
-                <a href="index.php?action=chapter&amp;id=<?= $chapter->id() ?>"><?= htmlspecialchars($chapter->title()) ?></a>
+                <a href="<?php echo HOST; ?>chapter-<?= $chapter->id(); ?>"><?= htmlspecialchars($chapter->title()); ?></a>
+                <!--<a href="index.php?action=chapter&amp;id=<?= $chapter->id(); ?>"><?= htmlspecialchars($chapter->title()); ?></a>-->
             </h3>
-            <h4>Publié le <?= $chapter->creationDate() ?><?php
+            <h4>Publié le <?= $chapter->creationDate(); ?><?php
                 if($chapter->editDate() !== NULL){
                     ?>
-                    - Modifié le <?= $chapter->editDate() ?>
+                    - Modifié le <?= $chapter->editDate(); ?>
                 <?php
                 }
                 ?>
             </h4>
-            <div class="imgChapter"><img src="<?= HOST; ?>images/<?= $chapter->id() ?>.jpg"></div>
+            <div class="imgChapter"><img src="<?= HOST; ?>images/<?= $chapter->id(); ?>.jpg"></div>
             <p class="extractChapter">
                 <?php
                 $tab = explode(' ', $chapter->content(), (LIMIT+1));
                 if(count($tab) > LIMIT){array_pop($tab); }
-                echo nl2br(implode(' ', $tab)); ?><a href="index.php?action=chapter&amp;id=<?= $chapter->id() ?>" class="clickExcerpt">...cliquez ici pour lire la suite</a>
+                echo nl2br(implode(' ', $tab)); ?><a href="<?php echo HOST; ?>chapter-<?= $chapter->id(); ?>" class="clickExcerpt">...cliquez ici pour lire la suite</a>
                 <br />
             </p>
         </div>

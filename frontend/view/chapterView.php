@@ -5,7 +5,7 @@
 
         <br/>
         <div class="row">
-            <div class="col-md-3"><a href="index.php" class="backListChaptersLector">Retour à la liste des chapitres</a></div>
+            <div class="col-md-3"><a href="<?php echo HOST; ?>home" class="backListChaptersLector">Retour à la liste des chapitres</a></div>
         </div>
         <br/>
         <div class="row">
@@ -30,7 +30,7 @@
 
             <p>Laissez votre commentaire ici !</p>
 
-            <form action="index.php?action=addComment&amp;id=<?= $chapter->id() ?>" method="post" class="form">
+            <form action="<?php echo HOST; ?>addComment-<?= $chapter->id(); ?>" method="post" class="form">
                 <div>
                     <label for="title">Titre : </label>
                     <input type="text" id="title" name="title" />
@@ -65,7 +65,7 @@
                         <p><strong><?= htmlspecialchars($comment->title())?></strong> par <strong><?= htmlspecialchars($comment->author()) ?></strong> le <?= $comment->creationDate() ?>
                         <br/><?= nl2br(htmlspecialchars($comment->content())) ?></p>
                         <p class="reportedComment">
-                            <a href="index.php?action=reportComment&amp;id=<?=$comment->id();?>&amp;idChapter=<?=$chapter->id();?>">Signaler ce commentaire</a>
+                            <a href="<?php echo HOST; ?>reportComment-<?=$comment->id();?>-<?=$chapter->id();?>">Signaler ce commentaire</a>
                             <?php
                             if($comment->reported() == 1)
                             {

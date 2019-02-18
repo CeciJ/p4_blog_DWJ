@@ -14,7 +14,7 @@
             ?>
             <h1>Ajouter un nouvel utilisateur</h1>
             <br/>
-            <form action="index.php?action=newUser" method="post">
+            <form action="<?php echo HOST; ?>newUser" method="post">
                 <div>
                     <label for="pseudo">Pseudo : </label><br />
                     <input type="text" id="pseudo" name="pseudo"/>

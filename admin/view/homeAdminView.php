@@ -5,8 +5,8 @@
     ?>
 
     <div class="sectionAdmin">
-        <!--<br><a href="index.php?action=goToAddChapter">Ajouter un chapitre</a>-->
-        <h1>Bienvenue sur votre page d'administration !</h1>
+
+    <h1>Bienvenue sur votre page d'administration !</h1>
         <br/>
         <?php
         if($commentsToModerate){

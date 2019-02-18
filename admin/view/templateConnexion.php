@@ -17,7 +17,7 @@
 
         <div class="page">
             <header>
-                <h1 id="bigTitle" class="titleConnexion"><a href="<?php echo HOST; ?>index.php?action=login">Ma plateforme d'administration<br><span id="titleBook">Billet simple pour l'Alaska</span></a></h1>
+                <h1 id="bigTitle" class="titleConnexion"><a href="<?php echo HOST; ?>login">Ma plateforme d'administration<br><span id="titleBook">Billet simple pour l'Alaska</span></a></h1>
             </header>
             
             <br><br>
@@ -26,7 +26,7 @@
             </main>
 
             <footer>
-                <p><a href="index.php?action=legalMentions">Mentions légales</a> - Tous droits réservés 2019</p></div>
+                <p><a href="<?php echo HOST; ?>legalMentions">Mentions légales</a> - Tous droits réservés 2019</p></div>
             </footer>
             <!-- Optional JavaScript -->
         </div>

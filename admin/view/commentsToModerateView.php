@@ -20,7 +20,7 @@
                     <div class="comment">
                         <p><strong><?= htmlspecialchars($comment->title())?></strong> par <strong><?= htmlspecialchars($comment->author()) ?></strong> le <?= $comment->creationDate() ?>
                         <br/><?= nl2br(htmlspecialchars($comment->content())) ?></p>
-                        <p><a href="<?php echo HOST; ?>index.php?action=editComment&amp;id=<?= $comment->id()?>">Modifier</a> - <a href="<?php echo HOST; ?>index.php?action=deleteComment&amp;id=<?= $comment->id()?>">Supprimer</a></p>
+                        <p><a href="<?php echo HOST; ?>editComment-<?= $comment->id()?>">Modifier</a> - <a href="<?php echo HOST; ?>deleteComment-<?= $comment->id()?>">Supprimer</a></p>
                     </div>
                 <?php
                 }

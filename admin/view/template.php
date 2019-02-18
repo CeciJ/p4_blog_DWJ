@@ -421,8 +421,8 @@
     <body>
         <div class="page">
             <header>
-                <div id="deconnectAdmin"><a href="<?php echo HOST; ?>index.php?action=deconnect">Déconnexion</a></div>
-                <h1 id="bigTitle" class="titleAdmin"><a href="<?php echo HOST; ?>index.php?action=homeAdmin">Ma plateforme d'administration<span id="titleBook"> - Billet simple pour l'Alaska</span></a></h1>
+                <div id="deconnectAdmin"><a href="<?php echo HOST; ?>deconnect">Déconnexion</a></div>
+                <h1 id="bigTitle" class="titleAdmin"><a href="<?php echo HOST; ?>homeAdmin">Ma plateforme d'administration<span id="titleBook"> - Billet simple pour l'Alaska</span></a></h1>
                 <p id="welcomeMsgAdmin">Bienvenue sur votre plateforme <strong><?php echo $_SESSION['pseudo']; ?></strong><br />
             </header>
             
@@ -431,12 +431,12 @@
             <main class="containerAdmin">
                 <nav class="menuAdmin">
                     <ul>
-                        <li><a href="<?php echo HOST; ?>index.php?action=homeAdmin">Page d'accueil</a></li>
-                        <li><a href="<?php echo HOST; ?>index.php?action=addChapter">Publier un nouveau chapitre</a></li>
-                        <li><a href="<?php echo HOST; ?>index.php?action=listAllChapters">Voir, modifier ou supprimer les chapitres publiés</a></li>
-                        <li><a href="<?php echo HOST; ?>index.php?action=getCommentsToModerate">Modérer les commentaires signalés</a></li>
-                        <li><a href="<?php echo HOST; ?>index.php?action=newUser">Ajouter un nouvel administrateur</a></li>
-                        <li><a href="<?php echo HOST; ?>index.php?action=listUsers">Voir tous les administrateurs</a></li>
+                        <li><a href="<?php echo HOST; ?>homeAdmin">Page d'accueil</a></li>
+                        <li><a href="<?php echo HOST; ?>addChapter">Publier un nouveau chapitre</a></li>
+                        <li><a href="<?php echo HOST; ?>listAllChapters">Voir, modifier ou supprimer les chapitres publiés</a></li>
+                        <li><a href="<?php echo HOST; ?>getCommentsToModerate">Modérer les commentaires signalés</a></li>
+                        <li><a href="<?php echo HOST; ?>newUser">Ajouter un nouvel administrateur</a></li>
+                        <li><a href="<?php echo HOST; ?>listUsers">Voir tous les administrateurs</a></li>
                     </ul>
                 </nav>
 
@@ -446,7 +446,7 @@
             </main>
 
             <footer>
-                <p><a href="index.php?action=legalMentions">Mentions légales</a> - Tous droits réservés 2019</p>
+                <p><a href="<?php echo HOST; ?>legalMentions">Mentions légales</a> - Tous droits réservés 2019</p>
             </footer>
         </div>
         <!-- Optional JavaScript -->

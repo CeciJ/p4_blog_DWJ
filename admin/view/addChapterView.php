@@ -4,7 +4,7 @@
     <div class="sectionAddChapter">   
         <h1>Ajouter un chapitre</h1>
         <br/>
-        <form action="index.php?action=addChapter" method="post" enctype="multipart/form-data">
+        <form action="<?php echo HOST; ?>addChapter" method="post" enctype="multipart/form-data">
             <div>
                 <label for="title">Titre du chapitre : </label><br />
                 <input type="text" id="title" name="title"/>

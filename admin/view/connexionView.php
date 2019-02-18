@@ -11,7 +11,7 @@ if (!isset($_POST['password']) OR $_POST['password'] != PASSWORD)
     <div class="connexionDiv">
         <p>Bienvenue sur votre interface d'administration ! <br/><br/>Veuillez entrer votre pseudo et mot de passe pour vous connecter :</p>
         <br/>
-        <form action="index.php?action=connectOK" method="post">
+        <form action="<?php echo HOST; ?>connectOK" method="post">
             <p>
                 <label>Votre pseudo : </label> <input type="pseudo" name="pseudo" />
                 <label>Votre mot de passe : </label> <input type="password" name="password" />

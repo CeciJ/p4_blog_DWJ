@@ -10,13 +10,13 @@
         <link href="https://fonts.googleapis.com/css?family=Bad+Script|Caveat|Charm|Marck+Script|Nothing+You+Could+Do|Parisienne|Tangerine" rel="stylesheet"> 
         <link href="https://fonts.googleapis.com/css?family=Dosis|Montserrat|Nunito|Quicksand|Raleway|Work+Sans" rel="stylesheet">
         <link href="<?php echo ASSETS; ?>css/allStyle.css" rel="stylesheet" />
-    </head>
         
+    </head>
     <body>
         <div class="page">
             <header>
-                <a id="accessAdmin" href="index.php?action=login">Admin</a>
-                <h1 id="bigTitle"><a href="<?php echo HOST; ?>index.php">Billet simple pour l'Alaska</a></h1>
+                <a id="accessAdmin" href="<?php echo HOST; ?>login">Admin</a>
+                <h1 id="bigTitle"><a href="<?php echo HOST; ?>home">Billet simple pour l'Alaska</a></h1>
             </header>
 
             <main>
@@ -24,7 +24,7 @@
             </main>
 
             <footer>
-                <p><a href="index.php?action=legalMentions">Mentions légales</a> - Tous droits réservés 2019</p>
+                <p><a href="<?php echo HOST; ?>legalMentions">Mentions légales</a> - Tous droits réservés 2019</p>
             </footer>
         </div>
         <!-- Optional JavaScript -->

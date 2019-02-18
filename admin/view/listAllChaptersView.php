@@ -15,7 +15,7 @@
         ?>
             <div class="extraitChapAdmin">
                 <h3>
-                    <a href="index.php?action=chapterAdmin&amp;id=<?= $chapter->id() ?>"><?= htmlspecialchars($chapter->title()) ?></a>
+                    <a href="<?php echo HOST; ?>chapterAdmin-<?= $chapter->id(); ?>"><?= htmlspecialchars($chapter->title()) ?></a>
                 </h3>
                 <h4>Publié le <?= $chapter->creationDate() ?><?php
                     if($chapter->editDate() !== NULL){
@@ -30,7 +30,7 @@
                     <?php
                     $tab = explode(' ', $chapter->content(), (LIMIT+1));
                     if(count($tab) > LIMIT){array_pop($tab); }
-                    echo nl2br(implode(' ', $tab)); ?><a href="index.php?action=chapterAdmin&amp;id=<?= $chapter->id()  ?>" class="clickExcerpt">...</a>
+                    echo nl2br(implode(' ', $tab)); ?><a href="<?php echo HOST; ?>chapterAdmin-<?= $chapter->id()  ?>" class="clickExcerpt">...</a>
                     <br />
                 </p>
             </div>

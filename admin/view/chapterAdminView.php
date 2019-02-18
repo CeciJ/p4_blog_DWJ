@@ -4,14 +4,14 @@
     
     <div class="sectionViewChapter">
 
-        <a href="index.php?action=listAllChapters" class="backListChapters">Retour à la liste des chapitres</a>
+        <a href="<?php echo HOST; ?>listAllChapters" class="backListChapters">Retour à la liste des chapitres</a>
         <?php
         //print_r($_SESSION);
         ?>
         <br/>
         <br/>
-        <a href="index.php?action=editChapter&amp;id=<?= $chapter->id() ?>" class="editChapter">Modifier le chapitre</a>  
-        <a href="index.php?action=delete&amp;id=<?= $chapter->id() ?>" class="deleteChapter">Supprimer le chapitre</a><br><br>
+        <a href="<?php echo HOST; ?>editChapter-<?= $chapter->id() ?>" class="editChapter">Modifier le chapitre</a>  
+        <a href="<?php echo HOST; ?>delete-<?= $chapter->id() ?>" class="deleteChapter">Supprimer le chapitre</a><br><br>
 
         <div class="chapter">
             <h3><strong>

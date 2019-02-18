@@ -1,0 +1,9 @@
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.+)-([0-9]+)-([0-9]+)$  index.php?action=$1&id=$2&idChapter=$3 [QSA,L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.+)-([0-9]+)$  index.php?action=$1&id=$2 [QSA,L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.+)$   index.php?action=$1 [QSA,L]
