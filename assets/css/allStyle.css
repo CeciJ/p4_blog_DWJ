@@ -2,7 +2,7 @@
 /*BACKEND LIGNE 201 */
 
 
-/*-----FRONTEND STYLES-----*/
+/*-----GENERAL STYLES-----*/
 
 *{
     padding: 0;
@@ -20,6 +20,8 @@ main{
     flex: 1;
     padding-top: 20px;
 }
+
+/*---FRONTEND---*/
 
 /*---Header---*/
 

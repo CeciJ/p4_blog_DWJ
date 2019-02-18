@@ -4,6 +4,8 @@ require_once(MODEL.'/ChapterManager.php');
 require_once(MODEL.'/CommentManager.php');
 require_once(MODEL.'/UserManager.php');
 
+// Connection
+
 function loginAdmin()
 {
     require(ADMINVIEW.'/connexionView.php');
@@ -18,7 +20,9 @@ function connectOK($pseudo, $pass)
     {
         $userManager = new UserManager();
         $loggedUser = $userManager->getUser($pseudo);
-        
+        $_SESSION['id'] = $loggedUser->id();
+        $_SESSION['pseudo'] = $loggedUser->pseudo();
+
         $chapterManager = new ChapterManager(); 
         $chapters = $chapterManager->getChapters(); 
         $nbChapters = $chapterManager->countChapters(); 
@@ -28,9 +32,6 @@ function connectOK($pseudo, $pass)
         $nbComments = $commentManager->countComments();
         $nbEditedComments = $commentManager->countModeratedComments();
 
-        $_SESSION['id'] = $loggedUser->id();
-        $_SESSION['pseudo'] = $loggedUser->pseudo();
-
         require(ADMINVIEW.'/homeAdminView.php');
     }
     else
@@ -39,21 +40,23 @@ function connectOK($pseudo, $pass)
     }
 }
 
-function homeAdmin() {
-
+function homeAdmin() 
+{
     $chapterManager = new ChapterManager(); 
     $chapters = $chapterManager->getChapters(); 
     $nbChapters = $chapterManager->countChapters(); 
+
     $commentManager = new CommentManager();
     $commentsToModerate = $commentManager->countCommentsToModerate();
     $nbComments = $commentManager->countComments();
     $nbEditedComments = $commentManager->countModeratedComments();
+
     require(ADMINVIEW.'/homeAdminView.php');
 }
 
-// Déconnexion
+// Disconnection
 
-function deconnexion()
+function disconnection()
 {
     $_SESSION = array();
     session_destroy();
@@ -64,7 +67,7 @@ function deconnexion()
     require(FRONTVIEW.'/listChaptersView.php');
 }
 
-// Ajouter un chapitre
+// Add a chapter
 
 function goToAddChapter()
 {
@@ -75,8 +78,9 @@ function addNewChapter($title, $content)
 {
     $chapterManager = new ChapterManager();
     $addedChapter = $chapterManager->addChapter($title, $content);
-    $chapters = $chapterManager->getChapters(); // Appel d'une fonction de cet objet
+    $chapters = $chapterManager->getChapters(); 
     $nbChapters = $chapterManager->countChapters(); 
+
     $commentManager = new CommentManager();
     $commentsToModerate = $commentManager->countCommentsToModerate();
     $nbComments = $commentManager->countComments();
@@ -85,7 +89,7 @@ function addNewChapter($title, $content)
     require(ADMINVIEW.'/homeAdminView.php');
 }
 
-// Voir chapitres pour modifier ou supprimer
+// See chapters to edit or delete
 
 function listAllChapters()
 {
@@ -98,9 +102,9 @@ function listAllChapters()
 function chapterAdmin()
 {
     $chapterManager = new ChapterManager();
-    $commentManager = new CommentManager();
-
     $chapter = $chapterManager->getChapter($_GET['id']);
+
+    $commentManager = new CommentManager();
     if ($chapter->nbComments() > 0){
         $comments = $commentManager->getComments($_GET['id']);
     }
@@ -112,7 +116,8 @@ function getChapterToEdit($chapterId)
 {
     $chapterManager = new ChapterManager();
     $chapter = $chapterManager->getChapter($_GET['id']);
-    require(ADMINVIEW.'/editChapterAdminView.php');
+
+    require(ADMINVIEW.'/editChapterView.php');
 }
 
 function editChapter($chapterId, $newTitle, $newContent)
@@ -142,7 +147,7 @@ function deleteChapter($chapterId)
     }
 }
 
-// Modérer les commentaires
+// Control of comments
 
 function getCommentsToModerate()
 {
@@ -151,6 +156,7 @@ function getCommentsToModerate()
     if($commentsToModerate > 0){
         $commentsToModerate = $commentManager->getCommentsToModerate();
     }
+
     require(ADMINVIEW.'/commentsToModerateView.php');
 }
 
@@ -158,7 +164,7 @@ function goToEditComment($commentId)
 {
     $commentManager = new CommentManager();
     $editComment = $commentManager->getComment($_GET['id']);
-    //var_dump($editComment);
+
     require(ADMINVIEW.'/editCommentView.php');
 }
 
@@ -180,7 +186,7 @@ function deleteComment($commentId)
     require(ADMINVIEW.'/commentsToModerateView.php');
 }
 
-// Ajouter un Administrateur
+// Management of admins
 
 function goToAddUser()
 {
@@ -191,7 +197,7 @@ function newUser($pseudo, $mail, $pass)
 {
     $userManager = new UserManager();
     $user = $userManager->addUser($pseudo, $mail, $pass);
-    //var_dump($user);
+
     require(ADMINVIEW.'/addUserView.php');
 }
 
@@ -199,8 +205,6 @@ function listUsers()
 {
     $userManager = new UserManager();
     $users = $userManager->getUsers();
-    //var_dump($users);
-    require(ADMINVIEW.'/getUsersView.php');
+
+    require(ADMINVIEW.'/listUsersView.php');
 }
-
-

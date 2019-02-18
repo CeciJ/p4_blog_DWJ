@@ -9,8 +9,10 @@ session_start();
 
 try {
     
-    // FRONT
     if (isset($_GET['action'])) {
+
+        // FRONT
+
         if ($_GET['action'] == 'listChapters') {
             listChapters();
         }
@@ -35,10 +37,9 @@ try {
                 throw new Exception('Aucun identifiant de chapitre envoyé');
             }
         }
-        elseif ($_GET['action'] == 'reportComment') {
-            
-            if (isset($_GET['id']) && $_GET['id'] > 0) {
-                reportComment($_GET['id']);
+        elseif ($_GET['action'] == 'reportComment') {  
+            if (isset($_GET['id']) && ($_GET['id'] > 0) && isset($_GET['idChapter'])) {
+                reportComment(($_GET['id']), ($_GET['idChapter']));
             }
             else {
                 throw new Exception('Aucun identifiant de commentaire envoyé');
@@ -50,11 +51,20 @@ try {
         }
 
         //ADMIN
+
         elseif ($_GET['action'] == 'login') {
             loginAdmin();
         }
         elseif ($_GET['action'] == 'connectOK') {
-            connectOK($_POST['pseudo'], $_POST['password']);
+            if (isset($_POST['pseudo']) && isset($_POST['password'])) {
+                if(!empty($_POST['pseudo']) && !empty($_POST['password'])){
+                    connectOK($_POST['pseudo'], $_POST['password']);
+                }
+                else
+                {
+                    throw new Exception('Tous les champs ne sont pas remplis !');
+                }
+            }
         }
         elseif (!empty($_SESSION['pseudo'])) {
             // Page d'accueil Admin
@@ -63,12 +73,18 @@ try {
             }
             // Déconnexion
             elseif ($_GET['action'] == 'deconnect') {
-                deconnexion();
+                disconnection();
             }
             // Ajouter un chapitre
             elseif ($_GET['action'] == 'addChapter') {
-                if (isset($_POST['title'])) {
-                    addNewChapter($_POST['title'], $_POST['content']);
+                if (isset($_POST['title']) && isset($_POST['content'])) {
+                    if(!empty($_POST['title']) && !empty($_POST['content'])){
+                        addNewChapter($_POST['title'], $_POST['content']);
+                    }
+                    else
+                    {
+                        throw new Exception('Tous les champs ne sont pas remplis !');
+                    }
                 }
                 else {
                     goToAddChapter();
@@ -87,15 +103,26 @@ try {
                 }
             }
             elseif ($_GET['action'] == 'editChapter') {
-                if (isset($_GET['id']) && isset($_POST['newTitle'])) {
-                    editChapter($_GET['id'], $_POST['newTitle'], $_POST['newContent']);
+                if (isset($_GET['id']) && isset($_POST['newTitle']) && isset($_POST['newContent'])) {
+                    if(!empty($_POST['newTitle']) && !empty($_POST['newContent'])){
+                        editChapter($_GET['id'], $_POST['newTitle'], $_POST['newContent']);
+                    }
+                    else
+                    {
+                        throw new Exception('Tous les champs ne sont pas remplis !');
+                    }
+                }
+                elseif (isset($_GET['id'])) {
+                    getChapterToEdit($_GET['id']);
                 }
                 else {
-                    getChapterToEdit($_GET['id']);
+                    throw new Exception('Aucun identifiant de chapitre envoyé');
                 }
             }
             elseif ($_GET['action'] == 'delete') {
-                deleteChapter($_GET['id']);
+                if (isset($_GET['id'])) {
+                    deleteChapter($_GET['id']);
+                }
             }
             // Modérer commentaires
             elseif ($_GET['action'] == 'getCommentsToModerate') {
@@ -103,21 +130,41 @@ try {
             }
             /*elseif ($_GET['action'] == 'goToEditComment'){}*/
             elseif ($_GET['action'] == 'editComment') {
-                if(isset($_GET['id']) && isset($_POST['newTitle']) && isset($_POST['newContent'])){
-                    editComment($_GET['id'], $_POST['newTitle'], $_POST['newContent']);
+                if (isset($_GET['id']) && isset($_POST['newTitle']) && isset($_POST['newContent'])) {
+                    if(!empty($_POST['newTitle']) && !empty($_POST['newContent'])){
+                        editComment($_GET['id'], $_POST['newTitle'], $_POST['newContent']);
+                    }
+                    else
+                    {
+                        throw new Exception('Tous les champs ne sont pas remplis !');
+                    }
                 }
-                else{
+                elseif (isset($_GET['id'])) {
                     goToEditComment($_GET['id']);
-                }    
+                }
+                else {
+                    throw new Exception('Aucun identifiant de commentaire envoyé');
+                }
             }
             elseif ($_GET['action'] == 'deleteComment') {
-                deleteComment($_GET['id']);
+                if (isset($_GET['id'])){
+                    deleteComment($_GET['id']);
+                }
+                else {
+                    throw new Exception('Aucun identifiant de commentaire envoyé');
+                }
             }
             // Gestion des utilisateurs
             elseif ($_GET['action'] == 'newUser') {
                 if(isset($_POST['pseudo']) && isset($_POST['mail']) && isset($_POST['pass']))
                 {
-                    newUser($_POST['pseudo'], $_POST['mail'], $_POST['pass']);
+                    if(!empty($_POST['pseudo']) && !empty($_POST['mail']) && !empty($_POST['pass'])){
+                        newUser($_POST['pseudo'], $_POST['mail'], $_POST['pass']);
+                    }
+                    else
+                    {
+                        throw new Exception('Tous les champs ne sont pas remplis !');
+                    }
                 }
                 else
                 {

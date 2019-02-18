@@ -1,27 +1,26 @@
 <?php
 
-// Chargement des classes
 require_once(MODEL.'/ChapterManager.php');
 require_once(MODEL.'/CommentManager.php');
 
 function listChapters()
 {
-    $chapterManager = new ChapterManager(); // Création d'un objet
-    $chapters = $chapterManager->getChapters(); // Appel d'une fonction de cet objet
-    //var_dump($chapters);
+    $chapterManager = new ChapterManager(); 
+    $chapters = $chapterManager->getChapters(); 
+
     require(FRONTVIEW.'/listChaptersView.php');
 }
 
 function chapter()
 {
     $chapterManager = new ChapterManager();
-    $commentManager = new CommentManager();
-
     $chapter = $chapterManager->getChapter($_GET['id']);
+
+    $commentManager = new CommentManager();
     if ($chapter->nbComments() > 0){
         $comments = $commentManager->getComments($_GET['id']);
     }
-    //var_dump($comments);
+
     require(FRONTVIEW.'/chapterView.php');
 }
 
@@ -38,14 +37,18 @@ function addComment($chapterId, $title, $author, $content)
     }
 }
 
-function reportComment($commentId)
+function reportComment($commentId, $chapterId)
 {
     $commentManager = new CommentManager();
     $reportedComment = $commentManager->reportComment($_GET['id']);
-    $chapterManager = new ChapterManager(); // Création d'un objet
-    $chapters = $chapterManager->getChapters(); // Appel d'une fonction de cet objet
+    if ($reportedComment === false) {
+        throw new Exception('Impossible de signaler le commentaire !');
+    }
 
-    require(FRONTVIEW.'/listChaptersView.php');
+    $chapterManager = new ChapterManager(); 
+    $chapters = $chapterManager->getChapters();
+
+    header('Location: index.php?action=chapter&id=' . $chapterId);
 }
 
 function legalMentions()
