@@ -86,7 +86,12 @@ function addNewChapter($title, $content)
     $nbComments = $commentManager->countComments();
     $nbEditedComments = $commentManager->countModeratedComments();
 
-    require(ADMINVIEW.'/homeAdminView.php');
+    if ($addedChapter === false) {
+        throw new Exception('Impossible d\'ajouter le chapitre !');
+    }
+    else {
+        require(ADMINVIEW.'/homeAdminView.php');
+    }
 }
 
 // See chapters to edit or delete
@@ -174,7 +179,12 @@ function editComment($commentId, $newTitle, $newContent)
     $editedComment = $commentManager->editComment($_GET['id'], $_POST['newTitle'], $_POST['newContent']);
     $commentsToModerate = $commentManager->getCommentsToModerate();
 
-    require(ADMINVIEW.'/commentsToModerateView.php');
+    if ($editedComment === false) {
+        throw new Exception('Impossible de modifier le commentaire !');
+    }
+    else {
+        require(ADMINVIEW.'/commentsToModerateView.php');
+    }
 }
 
 function deleteComment($commentId)
@@ -183,7 +193,12 @@ function deleteComment($commentId)
     $deletedComment = $commentManager->deleteComment($commentId);
     $commentsToModerate = $commentManager->getCommentsToModerate();
 
-    require(ADMINVIEW.'/commentsToModerateView.php');
+    if ($deletedComment === false) {
+        throw new Exception('Impossible de supprimer le commentaire !');
+    }
+    else {
+        require(ADMINVIEW.'/commentsToModerateView.php');
+    }
 }
 
 // Management of admins
@@ -198,7 +213,12 @@ function newUser($pseudo, $mail, $pass)
     $userManager = new UserManager();
     $user = $userManager->addUser($pseudo, $mail, $pass);
 
-    require(ADMINVIEW.'/addUserView.php');
+    if ($user === false) {
+        throw new Exception('Impossible d\'ajouter le nouvel utilisateur !');
+    }
+    else {
+        require(ADMINVIEW.'/addUserView.php');
+    }
 }
 
 function listUsers()
