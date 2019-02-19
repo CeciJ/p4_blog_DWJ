@@ -181,16 +181,14 @@ a:hover{
     margin-top: 20px;
 }
 
-#commentsList{
+#commentsList p{
+    margin: auto;
     width: 60%;
-    margin:auto;
-    line-height: 16px;
 }
 
-.comment{
-    border: 1px solid gray;
-    margin-bottom: 20px;
-    padding: 5px;
+#table_comments_wrapper{
+    margin: auto;
+    width: 60%;
 }
 
 .reportedComment{
@@ -396,6 +394,12 @@ h1.listChapTitle{
 
 .chapter h3, .sectionViewChapter h3{
     color: #ba8f51;
+}
+
+/*View comments in chapter*/
+
+.commentsListAdmin{
+    font-size: 16px;
 }
 
 /*---Edit Chapter---*/

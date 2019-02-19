@@ -57,11 +57,89 @@
                     <?php } else { ?> commentaire reçu : </p>
                     <?php
                     }
+                    ?>
+
+                    <table id="table_comments" class="display">
+                    <thead>
+                        <tr>
+                            <th>Titre</th>
+                            <th>Auteur</th>
+                            <th>Publié le</th>
+                            <th>Contenu</th>
+                            <th>Signaler</th>
+                            <th>Observation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    <?php
+
+                    foreach($comments as $comment) //while ($comment = $comments->fetch())
+                    {
+                    ?>
+
+                        <tr>
+                            <td><?= htmlspecialchars($comment->title())?></td>
+                            <td><?= htmlspecialchars($comment->author()) ?></td>
+                            <td><?= $comment->creationDate()?></td>
+                            <td><?= htmlspecialchars($comment->content())?></td>
+                            <td><a href="<?php echo HOST; ?>reportComment-<?=$comment->id();?>-<?=$chapter->id();?>">Signaler</a></td>
+                            <td><?php
+                            if($comment->reported() == 1)
+                            {
+                            ?>
+                                <br/><span class="reportWaitComment">Commentaire en attente de modération</span>
+                            <?php
+                            }
+                            elseif($comment->editDate())
+                            {
+                            ?>
+                                <br/><span class="reportedCommentOK">Commentaire modéré par l'administrateur</span>
+                            <?php
+                            }
+                            ?></td>
+                        </tr>
+                    
+                    <?php
+                    }
+                    ?>
+
+                    </tbody>
+                </table>
+        
+                <?php
+                
+            } 
+            else 
+            {
+                ?><p>Il n'y a pas encore de commentaires, soyez le premier à donner votre avis !</p>
+            <?php
+            }
+            ?>
+        </div>
+    </div>
+        
+<?php $content = ob_get_clean(); ?>
+
+<?php require('template.php'); 
+
+/*
+<div id="commentsList">
+
+            <?php
+            if($chapter->nbComments() > 0){
+                ?><p>Il y a déjà <?= $chapter->nbComments(); ?>
+                    <?php
+                    if($chapter->nbComments() > 1) { ?> commentaires reçus : </p>
+                    <?php } else { ?> commentaire reçu : </p>
+                    <?php
+                    }
         
                 foreach($comments as $comment) //while ($comment = $comments->fetch())
                 {
                 ?>
                     <div class="comment">
+                        
                         <p><strong><?= htmlspecialchars($comment->title())?></strong> par <strong><?= htmlspecialchars($comment->author()) ?></strong> le <?= $comment->creationDate() ?>
                         <br/><?= nl2br(htmlspecialchars($comment->content())) ?></p>
                         <p class="reportedComment">
@@ -94,4 +172,4 @@
         
 <?php $content = ob_get_clean(); ?>
 
-<?php require('template.php'); ?>
+<?php require('template.php'); ?>*/

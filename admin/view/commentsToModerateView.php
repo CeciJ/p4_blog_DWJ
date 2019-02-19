@@ -13,17 +13,34 @@
         ?>
             <p>Tous les commentaires à modérer : </p>
 
-            <?php
+            <table id="table_comments_admin" class="display">
+                <thead>
+                    <tr>
+                        <th>Titre</th>
+                        <th>Auteur</th>
+                        <th>Publié le</th>
+                        <th>Contenu</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                <?php
                 foreach($commentsToModerate as $comment) //while ($comment = $comments->fetch())
                 {
                 ?>
-                    <div class="comment">
-                        <p><strong><?= htmlspecialchars($comment->title())?></strong> par <strong><?= htmlspecialchars($comment->author()) ?></strong> le <?= $comment->creationDate() ?>
-                        <br/><?= nl2br(htmlspecialchars($comment->content())) ?></p>
-                        <p><a href="<?php echo HOST; ?>editComment-<?= $comment->id()?>">Modifier</a> - <a href="<?php echo HOST; ?>deleteComment-<?= $comment->id()?>">Supprimer</a></p>
-                    </div>
+                    <tr>
+                        <td><?= htmlspecialchars($comment->title())?></td>
+                        <td><?= htmlspecialchars($comment->author()) ?></td>
+                        <td><?= $comment->creationDate()?></td>
+                        <td><?= htmlspecialchars($comment->content())?></td>
+                    </tr>
                 <?php
                 }
+                ?>
+
+                </tbody>
+            </table>
+        <?php
         }
         else
         {
