@@ -7,13 +7,12 @@
 <div id="viewChapters">
     
     <?php
-    foreach($chapters as $chapter) //while ($data = $chapters->fetch())
+    foreach($chapters as $chapter) 
     {
     ?>
         <div class="extraitChap">
             <h3>
                 <a href="<?php echo HOST; ?>chapter-<?= $chapter->id(); ?>"><?= htmlspecialchars($chapter->title()); ?></a>
-                <!--<a href="index.php?action=chapter&amp;id=<?= $chapter->id(); ?>"><?= htmlspecialchars($chapter->title()); ?></a>-->
             </h3>
             <h4>Publié le <?= $chapter->creationDate(); ?><?php
                 if($chapter->editDate() !== NULL){

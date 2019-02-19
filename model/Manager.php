@@ -1,12 +1,10 @@
 <?php
 
-//namespace CJ\p4\Model;
-
 class Manager
 {
     protected function dbConnect()
     {
-        $db = new PDO('mysql:host=localhost;dbname=p4_blog_ecrivain;charset=utf8', 'root', 'root');
+        $db = new PDO('mysql:host='.DB_HOST.';dbname='.DB_NAME.';charset=utf8', DB_USER, DB_PASS);
         return $db;
     }
 }
