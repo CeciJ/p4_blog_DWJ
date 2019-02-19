@@ -1,4 +1,4 @@
-<?php $title = 'Ma plateforme d\'administration'; ?>
+<?php $title = 'Connexion à ma plateforme d\'administration'; ?>
 
 <?php ob_start(); 
 

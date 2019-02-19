@@ -1,4 +1,4 @@
-<?php $title = 'Mon chapitre'; ?>
+<?php $title = 'Commentaires à modérer'; ?>
 
 <?php ob_start();?>
 

@@ -4,7 +4,6 @@ include_once('config.php');
 require(FRONTCONTROLLER.'frontendController.php');
 require(ADMINCONTROLLER.'backendController.php');
 
-// Utilisation et démarrage des sessions
 session_start();
 
 $action = $_GET['action'];
@@ -70,15 +69,15 @@ try {
             }
         }
         elseif (!empty($_SESSION['pseudo'])) {
-            // Page d'accueil Admin
+            // Admin Homepage
             if ($action == 'homeAdmin') {
                 homeAdmin();
             }
-            // Déconnexion
+            // Disconnection
             elseif ($action == 'deconnect') {
                 disconnection();
             }
-            // Ajouter un chapitre
+            // Add a chapter
             elseif ($action == 'addChapter') {
                 if (isset($_POST['title']) && isset($_POST['content'])) {
                     if(!empty($_POST['title']) && !empty($_POST['content'])){
@@ -93,7 +92,7 @@ try {
                     goToAddChapter();
                 }
             }
-            // Voir chapitres pour modifier ou supprimer
+            // See chapters to edit or delete
             elseif ($action == 'listAllChapters') {
                 listAllChapters();
             }
@@ -127,11 +126,10 @@ try {
                     deleteChapter($_GET['id']);
                 }
             }
-            // Modérer commentaires
+            // Control comments
             elseif ($action == 'getCommentsToModerate') {
                 getCommentsToModerate();
             }
-            /*elseif ($_GET['action'] == 'goToEditComment'){}*/
             elseif ($action == 'editComment') {
                 if (isset($_GET['id']) && isset($_POST['newTitle']) && isset($_POST['newContent'])) {
                     if(!empty($_POST['newTitle']) && !empty($_POST['newContent'])){
@@ -157,7 +155,7 @@ try {
                     throw new Exception('Aucun identifiant de commentaire envoyé');
                 }
             }
-            // Gestion des utilisateurs
+            // Admin users management
             elseif ($action == 'newUser') {
                 if(isset($_POST['pseudo']) && isset($_POST['mail']) && isset($_POST['pass']))
                 {
@@ -180,10 +178,10 @@ try {
         }
     }
     else {
-        listChapters(); // Par défaut page d'accueil frontend
+        listChapters(); 
     }
 }
-catch(Exception $e) { // S'il y a eu une erreur, alors...
+catch(Exception $e) { 
     $errorMessage = $e->getMessage();
     require(FRONTVIEW.'/errorView.php');
 }

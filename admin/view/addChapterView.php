@@ -1,4 +1,4 @@
-<?php $title = 'Mon chapitre'; ?>
+<?php $title = 'Ajouter un chapitre'; ?>
 
 <?php ob_start(); ?>   
     <div class="sectionAddChapter">   

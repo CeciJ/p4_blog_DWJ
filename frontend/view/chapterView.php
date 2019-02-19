@@ -1,4 +1,4 @@
-<?php $title = 'Mon chapitre'; ?>
+<?php $title = 'Chapitre : '.$chapter->title(); ?>
 
 <?php ob_start(); ?>
     <div class="sectionViewChapterLector">

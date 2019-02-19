@@ -1,4 +1,4 @@
-<?php $title = 'Mon chapitre'; ?>
+<?php $title = 'Administrateurs autorisés'; ?>
 
 <?php ob_start(); ?>
 

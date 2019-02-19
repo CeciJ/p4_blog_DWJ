@@ -1,4 +1,4 @@
-<?php $title = 'Mon chapitre'; ?>
+<?php $title = 'Ajouter un Administrateur'; ?>
 
 <?php ob_start(); ?>
 

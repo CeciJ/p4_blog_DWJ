@@ -1,4 +1,10 @@
 RewriteEngine on
+
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteRule index.php   index.php?action=home [QSA,L]
+#Alternate default index pages
+DirectoryIndex index.php?action=home
+
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^(.+)-([0-9]+)-([0-9]+)$  index.php?action=$1&id=$2&idChapter=$3 [QSA,L]
 

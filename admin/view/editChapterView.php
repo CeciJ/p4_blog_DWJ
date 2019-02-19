@@ -1,4 +1,4 @@
-<?php $title = 'Mon chapitre'; ?>
+<?php $title = 'Modifier le chapitre : '.$chapter->title(); ?>
 
 <?php ob_start(); ?>    
 
