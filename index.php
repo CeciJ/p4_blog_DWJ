@@ -31,21 +31,17 @@ try {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 prevChapter();
             }
-            /*
             else {
                 throw new Exception('Aucun identifiant de chapitre envoyé');
             }
-            */
         }
         elseif ($action == 'nextChapter') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 nextChapter();
             }
-            /*
             else {
                 throw new Exception('Aucun identifiant de chapitre envoyé');
             }
-            */
         }
 
         elseif ($action == 'addComment') {
@@ -194,8 +190,33 @@ try {
                     goToAddUser();
                 }
             }
-            elseif ($action == 'listUsers') {
+            elseif ($action == 'listUsers') 
+            {
                 listUsers();
+            }
+            elseif($action == 'editUser')
+            {
+                if (isset($_GET['id']) && isset($_POST['newPseudo']) && isset($_POST['newMail'])) {
+                    if(!empty($_POST['newPseudo']) && !empty($_POST['newMail'])){
+                        editUser($_GET['id'], $_POST['newPseudo'], $_POST['newMail']);
+                    }
+                    else
+                    {
+                        throw new Exception('Tous les champs ne sont pas remplis !');
+                    }
+                }
+                elseif (isset($_GET['id'])) {
+                    goToEditUser($_GET['id']);
+                }
+                else {
+                    throw new Exception('Aucun identifiant d\'administrateur envoyé');
+                }
+            }
+            elseif($action == 'deleteUser')
+            {
+                if (isset($_GET['id'])){
+                    deleteUser($_GET['id']);
+                }
             }
         }
     }

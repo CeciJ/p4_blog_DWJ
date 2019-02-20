@@ -231,3 +231,32 @@ function listUsers()
 
     require(ADMINVIEW.'/listUsersView.php');
 }
+
+function goToEditUser($userId)
+{
+    $userManager = new UserManager();
+    $editUser = $userManager->getUserById($userId);
+    //var_dump($editUser);
+    require(ADMINVIEW.'/editUserView.php');
+}
+
+function editUser($userId, $newPseudo, $newMail)
+{
+    $userManager = new UserManager();
+    $editedUser = $userManager->editUser($userId, $newPseudo, $newMail);
+
+    if ($editedUser === false) {
+        throw new Exception('Impossible de modifier l\'administrateur !');
+    }
+    else {
+        header('Location: index.php?action=listUsers');
+    }
+}
+
+function deleteUser($userId)
+{
+    $userManager = new UserManager();
+    $deletedUser = $userManager->deleteUser($userId);
+
+    header('Location: index.php?action=listUsers');
+}

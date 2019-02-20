@@ -47,6 +47,29 @@ class UserManager extends Manager
         return $user;
     }
 
+    public function getUserById($id)
+    {
+        $db = $this->dbConnect();
+        
+        $req = $db->prepare('
+            SELECT id, pseudo, mail, pass 
+            FROM users 
+            WHERE id = ?');
+
+        $req->execute(array($id));
+
+        while($data = $req->fetch()){
+            $user = new User();
+            $user->setId($data['id']);
+            $user->setPseudo($data['pseudo']);
+            $user->setMail($data['mail']);
+            $user->setPass($data['pass']);
+        }
+
+        //var_dump($user); // Objet
+        return $user;
+    }
+
     public function getUsers()
     {
         $db = $this->dbConnect();
@@ -68,15 +91,27 @@ class UserManager extends Manager
         return $users;
     }
 
-    public function editUser()
+    public function editUser($userId, $newPseudo, $newMail)
     {
         $db = $this->dbConnect();
-        //
+        
+        $editUser = $db->prepare('
+            UPDATE users 
+            SET pseudo = :newPseudo, mail = :newMail
+            WHERE id = :id');
+
+        $editUser->execute(array(
+            'newPseudo' => $newPseudo,  
+            'newMail' => $newMail, 
+            'id' => $userId
+            ));
+
+        return $editUser;
     }
 
-    public function deleteUser()
+    public function deleteUser($userId)
     {
         $db = $this->dbConnect();
-        //
+        $db->exec('DELETE FROM users WHERE id = '.$userId);
     }
 }

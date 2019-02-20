@@ -460,13 +460,18 @@ h1.listChapTitle{
     padding-left: 50px;
 }
 
-.user{
-    margin-bottom: 10px;
+#table_list_users_wrapper{
+    width: 75%;
+    margin-left: 0;
 }
 
-.user h3{
+/*---Edit Users---*/
+
+.sectionEditUser{
+    padding-left: 50px;
     font-size: 20px;
 }
+
 
 /*---MEDIA QUERIES---*/
 
