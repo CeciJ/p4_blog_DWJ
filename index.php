@@ -26,6 +26,28 @@ try {
                 throw new Exception('Aucun identifiant de chapitre envoyé');
             }
         }
+
+        elseif ($action == 'prevChapter') {
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+                prevChapter();
+            }
+            /*
+            else {
+                throw new Exception('Aucun identifiant de chapitre envoyé');
+            }
+            */
+        }
+        elseif ($action == 'nextChapter') {
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+                nextChapter();
+            }
+            /*
+            else {
+                throw new Exception('Aucun identifiant de chapitre envoyé');
+            }
+            */
+        }
+
         elseif ($action == 'addComment') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 if (!empty($_POST['title']) && !empty($_POST['author']) && !empty($_POST['content'])) {

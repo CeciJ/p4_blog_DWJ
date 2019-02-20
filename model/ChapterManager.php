@@ -34,6 +34,26 @@ class ChapterManager extends Manager
         return $chapters;
     }
 
+    public function getIdChapters()
+    {
+        $db = $this->dbConnect();
+
+        $req = $db->query('
+            SELECT id, title
+            FROM chapters 
+        ');
+        //var_dump($req);
+
+        $tab = array();
+
+        while ($donnees = $req->fetch())
+        {
+            array_push($tab, $donnees['id']);
+        }
+
+        return $tab;
+    }
+
     public function countChapters()
     {
         $db = $this->dbConnect();

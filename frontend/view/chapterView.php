@@ -9,7 +9,7 @@
         </div>
         <br/>
         <div class="row">
-            <div class="col-md-2"><a href="#" class="prev">Chapitre précédent</a></div>
+            <div class="col-md-2"><a href="<?php echo HOST; ?>prevChapter-<?= $chapter->id(); ?>" class="prev">Chapitre précédent</a></div>
             <div class="chapterView col-md-8">
                 <h3>
                     <?= htmlspecialchars($chapter->title()) ?>
@@ -20,7 +20,7 @@
                     <?= nl2br($chapter->content()) ?>
                 </p>
             </div>
-            <div class="col-md-2"><a href="#" class="next">Chapitre suivant</a></div>
+            <div class="col-md-2"><a href="<?php echo HOST; ?>nextChapter-<?= $chapter->id(); ?>" class="next">Chapitre suivant</a></div>
         </div>
         
         <br>

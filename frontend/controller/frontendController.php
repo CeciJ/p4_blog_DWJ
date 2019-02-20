@@ -24,6 +24,45 @@ function chapter()
     require(FRONTVIEW.'/chapterView.php');
 }
 
+
+function prevChapter()
+{
+    $chapterManager = new ChapterManager(); 
+    //J'appelle ma fonction getIdChapters et j'obtiens un tableau de tous les id de chapitres
+    $chaptersListId = $chapterManager->getIdChapters();
+    $currentChapter = $_GET['id']; 
+    $keyChapter = array_search($currentChapter, $chaptersListId);
+    $prevChapter = $keyChapter - 1;
+
+    if($prevChapter > -1){
+        header('Location: index.php?action=chapter&id=' . $chaptersListId[$prevChapter]);
+    }
+    else{
+        header('Location: index.php?action=chapter&id=' . $currentChapter);
+    }
+}
+
+function nextChapter()
+{
+    $chapterManager = new ChapterManager(); 
+    //J'appelle ma fonction getIdChapters et j'obtiens un tableau de tous les id de chapitres
+    $chaptersListId = $chapterManager->getIdChapters();
+    $currentChapter = $_GET['id']; 
+    $keyChapter = array_search($currentChapter, $chaptersListId);
+    $nextChapter = $keyChapter + 1;
+
+    //Je récupère la valeur de la dernière clé du tableau
+    $allKeys = array_keys($chaptersListId);
+    $lastId = end($allKeys);
+
+    if($nextChapter <= $lastId){
+        header('Location: index.php?action=chapter&id=' . $chaptersListId[$nextChapter]);
+    }
+    else{
+        header('Location: index.php?action=chapter&id=' . $currentChapter);
+    }
+}
+
 function addComment($chapterId, $title, $author, $content)
 {
     $commentManager = new CommentManager();
