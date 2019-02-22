@@ -115,10 +115,14 @@ class ChapterManager extends Manager
         $req = $db->prepare('
             INSERT INTO chapters(title, content, creationDate) 
             VALUES(:title, :content, NOW())');
-        $req->execute(array(
+        $result = $req->execute(array(
             'title' => $title, 
             'content' => $content
         ));
+
+        $lastId = $db->lastInsertId();
+
+        return $lastId;
     }
 
     public function editChapter($chapterId, $newTitle, $newContent)

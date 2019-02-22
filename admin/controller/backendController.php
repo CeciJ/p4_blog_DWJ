@@ -67,7 +67,7 @@ function disconnection()
     $chapterManager = new ChapterManager(); 
     $chapters = $chapterManager->getChapters(); 
     
-    require(FRONTVIEW.'/listChaptersView.php');
+    header('Location:home');
 }
 
 // Add a chapter
@@ -80,11 +80,17 @@ function goToAddChapter()
 function addNewChapter($title, $photo, $content)
 {
     $chapterManager = new ChapterManager();
-    $addedChapter = $chapterManager->addChapter($title, $content);
+    $addedChapter = $chapterManager->addChapter($title, $content); // Retourne l'id du chapitre ajouté
 
-    var_dump($_FILES['photo']);
-    $photo = new Image($_POST['photo'][0]);
-    var_dump($photo);
+    // Récupère le chapitre ajouté pour pouvoir assigner son id en nom d'image ajoutée
+    $chapter = $chapterManager->getChapter($addedChapter);
+
+    // Traitement de la photo
+    $photo = $_FILES['photo']['tmp_name'];
+    $photo = new Image($photo);
+    $photo->resize_to(IMAGE_LARGEUR_MAXI, IMAGE_HAUTEUR_MAXI); 
+    $photo_filename = ROOT.'images/'.$chapter->id().'.'.$photo->extension();
+    $savedPhoto = $photo->save_as($photo_filename);
 
     $chapters = $chapterManager->getChapters(); 
     $nbChapters = $chapterManager->countChapters(); 

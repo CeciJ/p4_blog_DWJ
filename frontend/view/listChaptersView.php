@@ -22,7 +22,7 @@
                 }
                 ?>
             </h4>
-            <div class="imgChapter"><img src="<?= HOST; ?>images/<?= $chapter->id(); ?>.jpg"></div>
+            <div class="imgChapter"><img src="<?= HOST; ?>images/<?= $chapter->id(); ?>"></div>
             <p class="extractChapter">
                 <?php
                 $tab = explode(' ', $chapter->content(), (LIMIT+1));
