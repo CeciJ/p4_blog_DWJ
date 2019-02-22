@@ -20,6 +20,8 @@
                         <th>Auteur</th>
                         <th>Publié le</th>
                         <th>Contenu</th>
+                        <th>Modifier</th>
+                        <th>Supprimer</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -33,6 +35,8 @@
                         <td><?= htmlspecialchars($comment->author()) ?></td>
                         <td><?= $comment->creationDate()?></td>
                         <td><?= htmlspecialchars($comment->content())?></td>
+                        <td><a href="<?php echo HOST; ?>editComment-<?= $comment->id() ?>">Modifier</a></td>
+                        <td><a href="<?php echo HOST; ?>deleteComment-<?= $comment->id() ?>">Supprimer</a></td>
                     </tr>
                 <?php
                 }

@@ -3,6 +3,7 @@
 require_once(MODEL.'/ChapterManager.php');
 require_once(MODEL.'/CommentManager.php');
 require_once(MODEL.'/UserManager.php');
+require_once(MODEL.'/Image.php');
 
 // Connection
 
@@ -76,10 +77,15 @@ function goToAddChapter()
     require(ADMINVIEW.'/addChapterView.php');
 }
 
-function addNewChapter($title, $content)
+function addNewChapter($title, $photo, $content)
 {
     $chapterManager = new ChapterManager();
     $addedChapter = $chapterManager->addChapter($title, $content);
+
+    var_dump($_FILES['photo']);
+    $photo = new Image($_POST['photo'][0]);
+    var_dump($photo);
+
     $chapters = $chapterManager->getChapters(); 
     $nbChapters = $chapterManager->countChapters(); 
 
@@ -136,7 +142,7 @@ function editChapter($chapterId, $newTitle, $newContent)
         throw new Exception('Impossible de modifier le chapitre !');
     }
     else {
-        header('Location: index.php?action=chapterAdmin&id=' . $chapterId);
+        header('Location: '.HOST.'chapterAdmin-' . $chapterId);
     }
 }
 
@@ -150,7 +156,7 @@ function deleteChapter($chapterId)
         throw new Exception('Impossible d\'effacer le chapitre et ses commentaires !');
     }
     else {
-        header('Location: index.php?action=homeAdmin');
+        header('Location: '.HOST.'listAllChapters');
     }
 }
 
@@ -249,7 +255,7 @@ function editUser($userId, $newPseudo, $newMail)
         throw new Exception('Impossible de modifier l\'administrateur !');
     }
     else {
-        header('Location: index.php?action=listUsers');
+        header('Location: '.HOST.'listUsers');
     }
 }
 
@@ -258,5 +264,5 @@ function deleteUser($userId)
     $userManager = new UserManager();
     $deletedUser = $userManager->deleteUser($userId);
 
-    header('Location: index.php?action=listUsers');
+    header('Location: '.HOST.'listUsers');
 }

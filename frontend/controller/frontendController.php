@@ -35,10 +35,10 @@ function prevChapter()
     $prevChapter = $keyChapter - 1;
 
     if($prevChapter > -1){
-        header('Location: index.php?action=chapter&id=' . $chaptersListId[$prevChapter]);
+        header('Location: '.HOST.'chapter-'.$chaptersListId[$prevChapter]);
     }
     else{
-        header('Location: index.php?action=chapter&id=' . $currentChapter);
+        header('Location: '.HOST.'chapter-'. $currentChapter);
     }
 }
 
@@ -56,10 +56,10 @@ function nextChapter()
     $lastId = end($allKeys);
 
     if($nextChapter <= $lastId){
-        header('Location: index.php?action=chapter&id=' . $chaptersListId[$nextChapter]);
+        header('Location: '.HOST.'chapter-'. $chaptersListId[$nextChapter]);
     }
     else{
-        header('Location: index.php?action=chapter&id=' . $currentChapter);
+        header('Location: '.HOST.'chapter-'. $currentChapter);
     }
 }
 

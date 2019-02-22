@@ -7,13 +7,12 @@ require(ADMINCONTROLLER.'backendController.php');
 session_start();
 
 $action = $_GET['action'];
-//echo 'l\'action est : '.$action; 
+
+// FRONT
 
 try {
     
     if (isset($_GET['action'])) {
-
-        // FRONT
 
         if ($action == 'home') {
             listChapters();
@@ -69,10 +68,24 @@ try {
         {
             legalMentions();
         }
+        
+    }
+    else {
+        listChapters(); 
+    }
+}
+catch(Exception $e) { 
+    $errorMessage = $e->getMessage();
+    require(FRONTVIEW.'/errorView.php');
+}
 
-        //ADMIN
+// ADMIN
 
-        elseif ($action == 'login') {
+try {
+    
+    if (isset($_GET['action'])) {
+
+        if ($action == 'login') {
             loginAdmin();
         }
         elseif ($action == 'connectOK') {
@@ -99,7 +112,13 @@ try {
             elseif ($action == 'addChapter') {
                 if (isset($_POST['title']) && isset($_POST['content'])) {
                     if(!empty($_POST['title']) && !empty($_POST['content'])){
-                        addNewChapter($_POST['title'], $_POST['content']);
+                        if ($_FILES['photo']['error'] < 4){
+                            addNewChapter($_POST['title'], $_FILES['photo'], $_POST['content']);
+                        }
+                        else
+                        {
+                            throw new Exception('Vous devez joindre une photo !');
+                        }
                     }
                     else
                     {
@@ -220,11 +239,8 @@ try {
             }
         }
     }
-    else {
-        listChapters(); 
-    }
 }
 catch(Exception $e) { 
     $errorMessage = $e->getMessage();
-    require(FRONTVIEW.'/errorView.php');
+    require(ADMINVIEW.'/errorView.php');
 }
