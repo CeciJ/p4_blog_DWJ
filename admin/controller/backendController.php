@@ -3,7 +3,7 @@
 require_once(MODEL.'/ChapterManager.php');
 require_once(MODEL.'/CommentManager.php');
 require_once(MODEL.'/UserManager.php');
-require_once(MODEL.'/Image.php');
+require_once(MODEL.'/ImageManager.php');
 
 // Connection
 
@@ -80,17 +80,17 @@ function goToAddChapter()
 function addNewChapter($title, $photo, $content)
 {
     $chapterManager = new ChapterManager();
-    $addedChapter = $chapterManager->addChapter($title, $content); // Retourne l'id du chapitre ajouté
+    $addedChapter = $chapterManager->addChapter($title, $content); // Return added chapter ID 
 
-    // Récupère le chapitre ajouté pour pouvoir assigner son id en nom d'image ajoutée
+    // Get the added chapter to assign its ID to the name of the added photo 
     $chapter = $chapterManager->getChapter($addedChapter);
 
-    // Traitement de la photo
+    // Photo management
     $photo = $_FILES['photo']['tmp_name'];
-    $photo = new Image($photo);
-    $photo->resize_to(IMAGE_LARGEUR_MAXI, IMAGE_HAUTEUR_MAXI); 
-    $photo_filename = ROOT.'images/'.$chapter->id().'.'.$photo->extension();
-    $savedPhoto = $photo->save_as($photo_filename);
+    $imageManager = new ImageManager($photo);
+    $imageManager->resize_to(IMAGE_LARGEUR_MAXI, IMAGE_HAUTEUR_MAXI); 
+    $photo_filename = ROOT.'images/'.$chapter->id().'.'.$imageManager->extension();
+    $savedPhoto = $imageManager->save_as($photo_filename);
 
     $chapters = $chapterManager->getChapters(); 
     $nbChapters = $chapterManager->countChapters(); 

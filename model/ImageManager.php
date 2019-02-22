@@ -1,11 +1,6 @@
 <?php
 
-class Image {
-
-    protected $resource;
-    protected $info;
-    protected $filename;
-    protected $extension;
+class ImageManager {
 
     public function __construct($filename) {
 
@@ -47,14 +42,14 @@ class Image {
 
         $new_img = imagecreatetruecolor($new_width, $new_height);
 
-        /* // If image is PNG or GIF, set it transparent
+        // If image is PNG or GIF, set it transparent
         if(($this->info[2] == 1) OR ($this->info[2]==3)) {
 
             imagealphablending($new_img, false);
             imagesavealpha($new_img, true);
             $transparent = imagecolorallocatealpha($new_img, 255, 255, 255, 127);
             imagefilledrectangle($new_img, 0, 0, $new_width, $new_height, $transparent);
-        }*/
+        }
 
         imagecopyresampled($new_img, $this->resource(), 0, 0, 0, 0, $new_width, $new_height, $this->info[0], $this->info[1]);
 
