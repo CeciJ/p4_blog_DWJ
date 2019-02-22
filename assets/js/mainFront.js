@@ -1,6 +1,5 @@
 //Comments as table in frontend chapter view
 $(document).ready( function () {
-    console.log('je suis entré dans la fonction');
     $('#table_comments').DataTable({
         language: {
             processing:     "Traitement en cours...",
@@ -27,3 +26,22 @@ $(document).ready( function () {
         lengthMenu: [ 5, 10, 15, 25, 50 ]
     });
 });
+
+//To adapt chapter view font-size
+
+function ChangeFontSize(){
+    document.getElementById('fontSizeForm').addEventListener("change", function (e) {
+        console.log("Taille de police : " + e.target.value);
+        if(e.target.value == 14){
+            document.getElementById('chapterView').style.fontSize = "14px";
+        } else if (e.target.value == 16){
+            document.getElementById('chapterView').style.fontSize = "16px";
+        } else if (e.target.value == 18){
+            document.getElementById('chapterView').style.fontSize = "18px";
+        } else if (e.target.value == 20){
+            document.getElementById('chapterView').style.fontSize = "20px";
+        } else if (e.target.value == 22){
+            document.getElementById('chapterView').style.fontSize = "22px";
+        }
+    });
+}

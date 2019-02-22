@@ -12,7 +12,19 @@
         <a href="<?php echo HOST; ?>editChapter-<?= $chapter->id() ?>" class="editChapter">Modifier le chapitre</a>  
         <a href="<?php echo HOST; ?>delete-<?= $chapter->id() ?>" class="deleteChapter">Supprimer le chapitre</a><br><br>
 
-        <div class="chapter">
+        <form id="fontSizeForm" name="Font-Size">
+            <select name="Font-Size" onChange="ChangeFontSize()">
+                <option value="">Changer la taille du texte</option>
+                <option value="14">14px</option>
+                <option value="16">16px</option>
+                <option value="18">18px</option>
+                <option value="20">20px</option>
+                <option value="22">22px</option>
+            </select>
+        </form>
+
+        <br/>
+        <div id="chapterViewAdmin" class="chapter">
             <h3><strong>
                 <?= htmlspecialchars($chapter->title()) ?>
             </strong></h3>

@@ -162,6 +162,11 @@ a:hover{
     text-align: justify;
 }
 
+.buttonsBackAndChgeText{
+    display: flex;
+    justify-content: left;
+}
+
 .chapterView h3{
     font-family: 'Caveat', cursive;
     font-size: 2rem;

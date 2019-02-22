@@ -54,3 +54,21 @@ $(document).ready( function () {
         }
     });
 });
+
+//To adapt chapter view font-size
+function ChangeFontSize(){
+    document.getElementById('fontSizeForm').addEventListener("change", function (e) {
+        console.log("Taille de police : " + e.target.value);
+        if(e.target.value == 14){
+            document.getElementById('chapterViewAdmin').style.fontSize = "14px";
+        } else if (e.target.value == 16){
+            document.getElementById('chapterViewAdmin').style.fontSize = "16px";
+        } else if (e.target.value == 18){
+            document.getElementById('chapterViewAdmin').style.fontSize = "18px";
+        } else if (e.target.value == 20){
+            document.getElementById('chapterViewAdmin').style.fontSize = "20px";
+        } else if (e.target.value == 22){
+            document.getElementById('chapterViewAdmin').style.fontSize = "22px";
+        }
+    });
+}

@@ -4,13 +4,25 @@
     <div class="sectionViewChapterLector">
 
         <br/>
-        <div class="row">
-            <div class="col-md-3"><a href="<?php echo HOST; ?>home" class="backListChaptersLector">Retour à la liste des chapitres</a></div>
+        <div class="row buttonsBackAndChgeText">
+            <div class="col-md-2"><a href="<?php echo HOST; ?>home" class="backListChaptersLector">Retour à la liste des chapitres</a></div>
+            <div class="col-md-10">
+                <form id="fontSizeForm" name="Font-Size">
+                    <select name="Font-Size" onChange="ChangeFontSize()">
+                        <option value="">Changer la taille du texte</option>
+                        <option value="14">14px</option>
+                        <option value="16">16px</option>
+                        <option value="18">18px</option>
+                        <option value="20">20px</option>
+                        <option value="22">22px</option>
+                    </select>
+                </form>
+            </div>
         </div>
         <br/>
         <div class="row">
             <div class="col-md-2"><a href="<?php echo HOST; ?>prevChapter-<?= $chapter->id(); ?>" class="prev">Chapitre précédent</a></div>
-            <div class="chapterView col-md-8">
+            <div id="chapterView" class="chapterView col-md-8">
                 <h3>
                     <?= htmlspecialchars($chapter->title()) ?>
                     le <?= $chapter->creationDate() ?>
