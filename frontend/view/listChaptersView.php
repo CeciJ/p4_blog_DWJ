@@ -17,6 +17,8 @@
         <div id="listChapters">
 
         <?php
+
+        if($chapters){
             foreach($chapters as $chapter) 
             {
             ?>
@@ -45,6 +47,13 @@
                 </div>
             <?php
             }
+        }
+        else
+        {
+            ?>
+            <div id="noChapters">Il n'y a pas encore de chapitres publiés !</div>
+            <?php
+        }
             ?>
 
         </div>

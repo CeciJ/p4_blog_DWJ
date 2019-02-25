@@ -35,8 +35,15 @@ class ChapterManager extends Manager
 
             $chapters[] = $chapter; // Tableau d'objets
         }
-        //var_dump($chapters);
-        return $chapters;
+
+        if($data == FALSE){
+            return false;
+        }
+        else
+        {
+            return $chapters;
+        }
+        
     }
 
     public function getIdChapters()
