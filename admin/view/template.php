@@ -3,19 +3,23 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <!--<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' *.tinymce.com *.tiny.cloud; connect-src 'self' *.tinymce.com *.tiny.cloud; img-src 'self' *.tinymce.com *.tiny.cloud data: blob:; style-src 'self' 'unsafe-inline' *.tinymce.com *.tiny.cloud; font-src 'self' *.tinymce.com *.tiny.cloud;" />-->
-
         <title><?= $title ?></title>
-        <script src="https://cloud.tinymce.com/5/tinymce.min.js?apiKey=9uyf4ek30xitcw0v12529n8aftz8d8kcu4iku61m0nwef8dc"></script>
-        <!-- Bootstrap CSS -->
-        <link href="<?php echo HOST; ?>bootstrap/css/bootstrap.css" rel="stylesheet" >
-        <!-- Datatables-->
+
+        <!--Bootstrap CSS-->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+        <!--Datatables-->
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/r-2.2.2/datatables.min.css"/>
-        <!--<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">-->
-        <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">-->
-        <link href="https://fonts.googleapis.com/css?family=Bad+Script|Caveat|Charm|Marck+Script|Nothing+You+Could+Do|Parisienne|Tangerine" rel="stylesheet"> 
-        <link href="https://fonts.googleapis.com/css?family=Dosis|Montserrat|Nunito|Quicksand|Raleway|Work+Sans" rel="stylesheet">
-        <link href="<?php echo ASSETS; ?>css/allStyle2.css" rel="stylesheet" />
+        
+        <!--Fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Caveat|Nothing+You+Could+Do|" rel="stylesheet"> 
+        <link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet">
+        
+        <!--All CSS-->
+        <link href="<?php echo ASSETS; ?>css/allStyle.css" rel="stylesheet" />
+
+        <!--TinyMce-->
+        <script src="https://cloud.tinymce.com/5/tinymce.min.js?apiKey=9uyf4ek30xitcw0v12529n8aftz8d8kcu4iku61m0nwef8dc"></script>
     </head>
         
     <body>
@@ -57,14 +61,19 @@
             </footer>
 
         </div>
-        <!-- Optional JavaScript -->
-        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+        <!--Bootstrap JS-->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/r-2.2.2/datatables.min.js"></script>
-        <!--<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-        <script src="<?php echo ASSETS; ?>js/mainBack.js"></script>
+
+        <!--DataTables-->
+        <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/r-2.2.2/datatables.min.js"></script>
+        
+        <!--TinyMce JS-->
         <script src="<?php echo ASSETS; ?>js/fr_FR.js"></script>
+
+        <!--Main Admin JS-->
+        <script src="<?php echo ASSETS; ?>js/mainBack.js"></script>
     </body>
 </html>

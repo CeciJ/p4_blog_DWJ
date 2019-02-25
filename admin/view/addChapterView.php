@@ -10,7 +10,8 @@
                 <input type="text" id="title" name="title"/>
             </div>
             <div>
-                <label for="photo">Photo du chapitre : </label><br />
+                <label for="photo">Photo du chapitre </label> <span id="photoWeigth">(Poids maximum autorisé : 2 Mo) :</span><br />
+                <input type="hidden" name="MAX_FILE_SIZE" value="2000000" />
                 <input type="file" id="photo" name="photo"/>
             </div>
             <div>
