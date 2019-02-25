@@ -6,10 +6,10 @@
 
         <div id="changeOrdenChapters">
             <form id="changeOrdenChaptersForm" name="OrdenChapters">
-                <select name="OrdenChapters" onChange="changeOrdenChapters()">
+                <select name="OrdenChapters" onChange="location = this.options[this.selectedIndex].value;">
                     <option value="">Ordre pour voir les chapitres</option>
-                    <option value="1" selected="selected">Du plus ancien au plus récent</option>
-                    <option value="2">Du plus récent au plus ancien</option>
+                    <option value="<?php echo HOST; ?>listChapters-ASC">Du plus ancien au plus récent</option>
+                    <option value="<?php echo HOST; ?>listChapters-DESC">Du plus récent au plus ancien</option>
                 </select>
             </form>
         </div>

@@ -45,3 +45,11 @@ function ChangeFontSize(){
         }
     });
 }
+
+//To get "order" of viewing chapters
+// Lorsque je sélectionne une option dans la liste déroulante
+    // Js l'analyse et récupère une valeur chaîne de caractères (ASC ou DESC)
+    // Js envoie cette valeur dans l'url
+    // Puis routeur (verifier que htaccess lit bien l'URL)
+    // FrontController
+    // ChapterManager

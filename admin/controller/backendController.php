@@ -110,10 +110,10 @@ function addNewChapter($title, $photo, $content)
 
 // See chapters to edit or delete
 
-function listAllChapters()
+function listAllChapters($order = null)
 {
     $chapterManager = new ChapterManager();
-    $chapters = $chapterManager->getChapters();
+    $chapters = $chapterManager->getChapters($order);
 
     require(ADMINVIEW.'/listAllChaptersView.php');
 }

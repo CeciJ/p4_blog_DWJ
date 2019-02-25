@@ -8,10 +8,10 @@ function homepage()
     require(FRONTVIEW.'/homepageView.php');
 }
 
-function listChapters()
+function listChapters($order = null)
 {
     $chapterManager = new ChapterManager(); 
-    $chapters = $chapterManager->getChapters(); 
+    $chapters = $chapterManager->getChapters($order); 
 
     require(FRONTVIEW.'/listChaptersView.php');
 }

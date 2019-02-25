@@ -18,7 +18,13 @@ try {
             homepage();
         }
         elseif ($action == 'listChapters') {
-            listChapters();
+            if (isset($_GET['order'])) {
+                listChapters($_GET['order']);
+            }
+            else 
+            {
+                listChapters();
+            }
         }
         elseif ($action == 'chapter') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
@@ -134,7 +140,13 @@ try {
             }
             // See chapters to edit or delete
             elseif ($action == 'listAllChapters') {
-                listAllChapters();
+                if (isset($_GET['order'])) {
+                    listAllChapters($_GET['order']);
+                }
+                else 
+                {
+                    listAllChapters();
+                }
             }
             elseif ($action == 'chapterAdmin') {
                 if (isset($_GET['id']) && $_GET['id'] > 0) {
