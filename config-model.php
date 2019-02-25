@@ -23,3 +23,6 @@ define('DB_HOST', 'localhost');
 define('DB_NAME', 'p4_blog_ecrivain');
 define('DB_PASS', 'root');
 define('DB_USER', 'root');
+
+define('IMAGE_LARGEUR_MAXI', 400);
+define('IMAGE_HAUTEUR_MAXI', 250);
