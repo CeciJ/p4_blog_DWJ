@@ -16,12 +16,12 @@
             <table id="table_comments_admin" class="display">
                 <thead>
                     <tr>
-                        <th>Titre</th>
-                        <th>Auteur</th>
-                        <th>Publié le</th>
-                        <th>Contenu</th>
-                        <th>Modifier</th>
-                        <th>Supprimer</th>
+                        <th data-priority='1'>Titre</th>
+                        <th data-priority='5'>Auteur</th>
+                        <th data-priority='6'>Publié le</th>
+                        <th data-priority='2'>Contenu</th>
+                        <th data-priority='3'>Modifier</th>
+                        <th data-priority='4'>Supprimer</th>
                     </tr>
                 </thead>
                 <tbody>

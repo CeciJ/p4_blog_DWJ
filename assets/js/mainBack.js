@@ -1,8 +1,8 @@
 //Comments as table in frontend chapter view
 $(document).ready( function () {
-    console.log('je suis entré dans la fonction');
     $('#table_comments_admin').DataTable({
         searching: false,
+        responsive: true,
         lengthMenu: [ 5, 10, 15, 25, 50 ],
         language: {
             processing:     "Traitement en cours...",
@@ -29,6 +29,7 @@ $(document).ready( function () {
     });
     $('#table_list_users').DataTable({
         searching: false,
+        responsive: true,
         lengthMenu: [ 5, 10, 15, 25, 50 ],
         language: {
             processing:     "Traitement en cours...",

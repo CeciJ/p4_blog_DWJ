@@ -15,6 +15,9 @@ try {
     if (isset($_GET['action'])) {
 
         if ($action == 'home') {
+            homepage();
+        }
+        elseif ($action == 'listChapters') {
             listChapters();
         }
         elseif ($action == 'chapter') {
@@ -71,7 +74,7 @@ try {
         
     }
     else {
-        listChapters(); 
+        homepage(); 
     }
 }
 catch(Exception $e) { 

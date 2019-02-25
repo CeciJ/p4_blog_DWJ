@@ -7,15 +7,23 @@ require_once(MODEL."/Chapter.php");
 
 class ChapterManager extends Manager
 {
-    public function getChapters()
+    public function getChapters(/*$order*/)
     {
         $db = $this->dbConnect();
+
+        /*
+        if($order == 'DESC'){
+            $order = 'DESC';
+        } else {
+            $order = 'ASC';
+        };
+        */
 
         $req = $db->query('
             SELECT id, title, content, DATE_FORMAT(creationDate, \'%d/%m/%Y\') AS creationDateFr, DATE_FORMAT(editDate, \'%d/%m/%Y\') AS editDateFr, nbComments
             FROM chapters 
-            ORDER BY creationDate 
-        ');
+            ORDER BY creationDate' /*.$order*/
+        );
         //var_dump($req);
 
         while($data = $req->fetch(PDO::FETCH_ASSOC)){

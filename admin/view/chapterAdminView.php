@@ -10,7 +10,7 @@
         ?>
         <br/><br/>
         <a href="<?php echo HOST; ?>editChapter-<?= $chapter->id() ?>" class="editChapter">Modifier le chapitre</a>  
-        <a href="<?php echo HOST; ?>delete-<?= $chapter->id() ?>" class="deleteChapter">Supprimer le chapitre</a><br><br>
+        <a id="deleteChapterButton" href="<?php echo HOST; ?>delete-<?= $chapter->id() ?>" class="deleteChapter">Supprimer le chapitre</a><br><br>
 
         <form id="fontSizeForm" name="Font-Size">
             <select name="Font-Size" onChange="ChangeFontSize()">
@@ -25,9 +25,9 @@
 
         <br/>
         <div id="chapterViewAdmin" class="chapter">
-            <h3><strong>
+            <h3>
                 <?= htmlspecialchars($chapter->title()) ?>
-            </strong></h3>
+            </h3>
             <em>Publié le <?= $chapter->creationDate() ?></em>
 
             <?php
@@ -59,11 +59,11 @@
                     <table id="table_comments_admin" class="display">
                         <thead>
                             <tr>
-                                <th>Titre</th>
-                                <th>Auteur</th>
-                                <th>Publié le</th>
-                                <th>Contenu</th>
-                                <th>Signalé?</th>
+                                <th data-priority='1'>Titre</th>
+                                <th data-priority='2'>Auteur</th>
+                                <th data-priority='5'>Publié le</th>
+                                <th data-priority='3'>Contenu</th>
+                                <th data-priority='4'>Signalé?</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -78,7 +78,10 @@
                                 <td><?= htmlspecialchars($comment->author()) ?></td>
                                 <td><?= $comment->creationDate()?></td>
                                 <td><?= htmlspecialchars($comment->content())?></td>
-                                <td><?php if($comment->reported()){echo 'Oui';} else {echo 'Non';}?></td>
+                                <td><?php 
+                                    if($comment->reported()){echo 'Oui';} 
+                                    elseif ($comment->editDate()){echo 'Vous avez déjà modéré le commentaire.';}
+                                    else {echo 'Non';}?></td>
                             </tr>
                         <?php
                         }

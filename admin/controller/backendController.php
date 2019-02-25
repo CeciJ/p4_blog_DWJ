@@ -67,7 +67,7 @@ function disconnection()
     $chapterManager = new ChapterManager(); 
     $chapters = $chapterManager->getChapters(); 
     
-    header('Location:home');
+    header('Location:listChapters');
 }
 
 // Add a chapter

@@ -4,7 +4,7 @@
 
     <div class="sectionEditUser">
         <div class="formEditUser">
-            <h1>Modifier les informations de l'administrateur : <strong><?php echo $editUser->pseudo(); ?></strong></h1><br/>
+            <h1>Modifier les informations de l'administrateur : <?php echo $editUser->pseudo(); ?></h1><br/>
 
             <form action="<?php echo HOST; ?>editUser-<?= $editUser->id(); ?>" method="post">
                 <label>Nouveau pseudo : <input type="text" id="newPseudo" name="newPseudo" value="<?php echo $editUser->pseudo(); ?>"></label><br><br>

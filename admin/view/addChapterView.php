@@ -11,7 +11,6 @@
             </div>
             <div>
                 <label for="photo">Photo du chapitre : </label><br />
-                <input type="hidden" name="MAX_FILE_SIZE" value="1048576" />
                 <input type="file" id="photo" name="photo"/>
             </div>
             <div>

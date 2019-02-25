@@ -3,6 +3,11 @@
 require_once(MODEL.'/ChapterManager.php');
 require_once(MODEL.'/CommentManager.php');
 
+function homepage()
+{
+    require(FRONTVIEW.'/homepageView.php');
+}
+
 function listChapters()
 {
     $chapterManager = new ChapterManager(); 

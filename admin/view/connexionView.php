@@ -9,14 +9,14 @@ if (!isset($_POST['password']) OR $_POST['password'] != PASSWORD)
     // Afficher le formulaire de saisie du mot de passe
     ?> 
     <div class="connexionDiv">
-        <p>Bienvenue sur votre interface d'administration ! <br/><br/>Veuillez entrer votre pseudo et mot de passe pour vous connecter :</p>
-        <br/>
+        <p><strong>Bienvenue sur votre interface d'administration ! </strong></p>
+        <p>Veuillez entrer votre pseudo et mot de passe pour vous connecter :</p>
         <form action="<?php echo HOST; ?>connectOK" method="post">
-            <p>
-                <label>Votre pseudo : </label> <input type="pseudo" name="pseudo" />
-                <label>Votre mot de passe : </label> <input type="password" name="password" />
-                <input type="submit" value="Valider" />
-            </p>
+            <div class="container-fluid row justify-content-center">
+                <div class="col-12 col-md-6"><label>Votre pseudo : </label> <input type="pseudo" name="pseudo" /></div>
+                <div class="col-12 col-md-6"><label>Votre mot de passe : </label> <input type="password" name="password" /></div>
+                <div class="col-12"><button type="submit">Valider</button>  </div>
+            </div>
         </form>
     </div>
 <?php

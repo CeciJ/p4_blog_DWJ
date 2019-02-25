@@ -5,7 +5,15 @@
     ?>
     <!--<br><a href="index.php?action=goToAddChapter">Ajouter un chapitre</a>-->
     <h1 class="listChapTitle">Liste des chapitres du blog</h1>
-    <br/>
+    <div id="changeOrdenChaptersAdmin">
+        <form id="changeOrdenChaptersForm" name="OrdenChapters">
+            <select name="OrdenChapters" onChange="changeOrdenChapters()">
+                <option value="">Ordre pour voir les chapitres</option>
+                <option value="1" selected="selected">Du plus ancien au plus récent</option>
+                <option value="2">Du plus récent au plus ancien</option>
+            </select>
+        </form>
+    </div>
     <div class="sectionListChapters">
 
         <br/><br/>
@@ -25,12 +33,12 @@
                     }
                     ?>
                 </h4>
-                <div class="imgChapter"><img src="<?= HOST; ?>images/<?= $chapter->id() ?>.jpg"></div>
+                <div class="imgChapterAdmin"><img src="<?= HOST; ?>images/<?= $chapter->id() ?>.jpg"></div>
                 <p class="extractChapter">
                     <?php
                     $tab = explode(' ', $chapter->content(), (LIMIT+1));
                     if(count($tab) > LIMIT){array_pop($tab); }
-                    echo nl2br(implode(' ', $tab)); ?><a href="<?php echo HOST; ?>chapterAdmin-<?= $chapter->id()  ?>" class="clickExcerpt">...</a>
+                    echo (implode(' ', $tab)); ?><a href="<?php echo HOST; ?>chapterAdmin-<?= $chapter->id()  ?>" class="clickExcerpt">...</a>
                     <br />
                 </p>
             </div>

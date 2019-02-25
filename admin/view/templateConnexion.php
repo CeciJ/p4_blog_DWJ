@@ -10,14 +10,14 @@
         <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">-->
         <link href="https://fonts.googleapis.com/css?family=Bad+Script|Caveat|Charm|Marck+Script|Nothing+You+Could+Do|Parisienne|Tangerine" rel="stylesheet"> 
         <link href="https://fonts.googleapis.com/css?family=Dosis|Montserrat|Nunito|Quicksand|Raleway|Work+Sans" rel="stylesheet">
-        <link href="<?php echo ASSETS; ?>css/allStyle.css" rel="stylesheet" />
+        <link href="<?php echo ASSETS; ?>css/allStyle2.css" rel="stylesheet" />
     </head>
         
     <body>
 
         <div class="page">
             <header>
-                <h1 id="bigTitle" class="titleConnexion"><a href="<?php echo HOST; ?>login">Ma plateforme d'administration<br><span id="titleBook">Billet simple pour l'Alaska</span></a></h1>
+                <h1 id="bigTitle" class="titleConnexion"><a href="<?php echo HOST; ?>login">Ma plateforme d'administration<br><span id="titleBookConnexion">Billet simple pour l'Alaska</span></a></h1>
             </header>
             
             <br><br>
@@ -25,8 +25,11 @@
                 <?= $content ?>
             </main>
 
-            <footer>
-                <p><a href="<?php echo HOST; ?>legalMentions">Mentions légales</a> - Tous droits réservés 2019</p></div>
+            <footer class="homepage">
+                <div class="row justify-content-end">
+                    <div class="col-6"><a href="<?php echo HOST; ?>legalMentions" id="legalMentions">Mentions légales</a></div> 
+                    <div class="col-6 reservedRights">Tous droits réservés 2019</div>
+                </div>
             </footer>
             <!-- Optional JavaScript -->
         </div>

@@ -7,14 +7,16 @@
 
         if (isset($_POST['pseudo']) && isset($_POST['mail']) && isset($_POST['pass']))
         {
-            echo 'Le nouvel administrateur a bien été ajouté !';
+        ?>
+            <p><?= 'Le nouvel administrateur a bien été ajouté !'; ?></p>
+        <?php 
         }
         else
         {
             ?>
             <h1>Ajouter un nouvel utilisateur</h1>
             <br/>
-            <form action="<?php echo HOST; ?>newUser" method="post">
+            <form action="<?php echo HOST; ?>newUser" method="post" class="formAddUser">
                 <div>
                     <label for="pseudo">Pseudo : </label><br />
                     <input type="text" id="pseudo" name="pseudo"/>
@@ -29,7 +31,7 @@
                 </div>
                 <br/>
                 <div>
-                    <input type="submit" />    
+                    <button type="submit">Enregistrer</button>  
                 </div>
             </form>
         <?php

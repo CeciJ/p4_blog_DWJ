@@ -11,11 +11,11 @@
         <?php
         if($commentsToModerate){
         ?>
-            <p>Vous avez <?= $commentsToModerate; ?> 
+            <p><strong>Vous avez <?= $commentsToModerate; ?> 
                     <?php
                     if($commentsToModerate > 1) { ?> commentaires à modérer !</p>
                     <?php } else { ?> commentaire à modérer !</p>
-                    <?php } ?></p>
+                    <?php } ?></strong></p>
         <?php
         } else {
         ?>

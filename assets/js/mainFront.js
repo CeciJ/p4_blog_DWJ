@@ -1,6 +1,7 @@
 //Comments as table in frontend chapter view
 $(document).ready( function () {
     $('#table_comments').DataTable({
+        responsive: true,
         language: {
             processing:     "Traitement en cours...",
             search:         "Rechercher&nbsp;:",
@@ -28,20 +29,19 @@ $(document).ready( function () {
 });
 
 //To adapt chapter view font-size
-
 function ChangeFontSize(){
     document.getElementById('fontSizeForm').addEventListener("change", function (e) {
         console.log("Taille de police : " + e.target.value);
         if(e.target.value == 14){
-            document.getElementById('chapterView').style.fontSize = "14px";
+            document.getElementById('chapterText').style.fontSize = "14px";
         } else if (e.target.value == 16){
-            document.getElementById('chapterView').style.fontSize = "16px";
+            document.getElementById('chapterText').style.fontSize = "16px";
         } else if (e.target.value == 18){
-            document.getElementById('chapterView').style.fontSize = "18px";
+            document.getElementById('chapterText').style.fontSize = "18px";
         } else if (e.target.value == 20){
-            document.getElementById('chapterView').style.fontSize = "20px";
+            document.getElementById('chapterText').style.fontSize = "20px";
         } else if (e.target.value == 22){
-            document.getElementById('chapterView').style.fontSize = "22px";
+            document.getElementById('chapterText').style.fontSize = "22px";
         }
     });
 }

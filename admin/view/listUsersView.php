@@ -10,10 +10,10 @@
         <table id="table_list_users" class="display">
             <thead>
                 <tr>
-                    <th>Pseudo</th>
-                    <th>Mail</th>
-                    <th>Éditer les informations</th>
-                    <th>Supprimer</th>
+                    <th data-priority='1'>Pseudo</th>
+                    <th data-priority='4'>Mail</th>
+                    <th data-priority='2'>Éditer les informations</th>
+                    <th data-priority='3'>Supprimer</th>
                 </tr>
             </thead>
             <tbody>

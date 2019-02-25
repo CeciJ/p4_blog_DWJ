@@ -1,12 +1,13 @@
 <?php $title = 'Chapitre : '.$chapter->title(); ?>
 
 <?php ob_start(); ?>
-    <div class="sectionViewChapterLector">
+    <div class="sectionViewChapterLector container-fluid">
 
-        <br/>
-        <div class="row buttonsBackAndChgeText">
-            <div class="col-md-2"><a href="<?php echo HOST; ?>home" class="backListChaptersLector">Retour à la liste des chapitres</a></div>
-            <div class="col-md-10">
+        <div class="row buttonsBackAndChgeText justify-content-between">
+            <div class="col-12 col-sm-6 col-md-6">
+                <a href="<?php echo HOST; ?>listChapters" class="backListChaptersLector">Retour à la liste des chapitres</a>
+            </div>
+            <div class="col-12 col-sm-6 col-md-6" id="changeTextSize">
                 <form id="fontSizeForm" name="Font-Size">
                     <select name="Font-Size" onChange="ChangeFontSize()">
                         <option value="">Changer la taille du texte</option>
@@ -19,118 +20,131 @@
                 </form>
             </div>
         </div>
+
         <br/>
-        <div class="row">
-            <div class="col-md-2"><a href="<?php echo HOST; ?>prevChapter-<?= $chapter->id(); ?>" class="prev">Chapitre précédent</a></div>
-            <div id="chapterView" class="chapterView col-md-8">
-                <h3>
-                    <?= htmlspecialchars($chapter->title()) ?>
-                    le <?= $chapter->creationDate() ?>
-                </h3>
-                
-                <p>
-                    <?= nl2br($chapter->content()) ?>
-                </p>
-            </div>
-            <div class="col-md-2"><a href="<?php echo HOST; ?>nextChapter-<?= $chapter->id(); ?>" class="next">Chapitre suivant</a></div>
-        </div>
-        
-        <br>
 
-        <div id="commentsForm">
-            <h2>Commentaires</h2>
-
-            <p>Laissez votre commentaire ici !</p>
-
-            <form action="<?php echo HOST; ?>addComment-<?= $chapter->id(); ?>" method="post" class="form">
+        <div class="row justify-content-center">
+            <div id="chapterView" class="chapterView col-11 col-sm-10 col-md-8">
                 <div>
-                    <label for="title">Titre : </label>
-                    <input type="text" id="title" name="title" />
-                    <label for="author">Auteur : </label>
-                    <input type="text" id="author" name="author" />
+                    <a href="<?php echo HOST; ?>prevChapter-<?= $chapter->id(); ?>" class="prev">Chapitre précédent</a>
+                    <a href="<?php echo HOST; ?>nextChapter-<?= $chapter->id(); ?>" class="next">Chapitre suivant</a>
                 </div>
-                <div>
-                    <label for="content">Commentaire : </label><br />
-                    <textarea id="content" name="content" rows="6" cols="70"></textarea>
-                </div>
-                <div>
-                    <input type="submit" />
-                </div>
-            </form>
-        </div>
-
-        <div id="commentsList">
-
-            <?php
-            if($chapter->nbComments() > 0){
-                ?><p>Il y a déjà <?= $chapter->nbComments(); ?>
-                    <?php
-                    if($chapter->nbComments() > 1) { ?> commentaires reçus : </p>
-                    <?php } else { ?> commentaire reçu : </p>
-                    <?php
-                    }
-                    ?>
-
-                    <table id="table_comments" class="display">
-                    <thead>
-                        <tr>
-                            <th>Titre</th>
-                            <th>Auteur</th>
-                            <th>Publié le</th>
-                            <th>Contenu</th>
-                            <th>Signaler</th>
-                            <th>Observation</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-
-                    <?php
-
-                    foreach($comments as $comment) //while ($comment = $comments->fetch())
-                    {
-                    ?>
-
-                        <tr>
-                            <td><?= htmlspecialchars($comment->title())?></td>
-                            <td><?= htmlspecialchars($comment->author()) ?></td>
-                            <td><?= $comment->creationDate()?></td>
-                            <td><?= htmlspecialchars($comment->content())?></td>
-                            <td><a href="<?php echo HOST; ?>reportComment-<?=$comment->id();?>-<?=$chapter->id();?>">Signaler</a></td>
-                            <td><?php
-                            if($comment->reported() == 1)
-                            {
-                            ?>
-                                <br/><span class="reportWaitComment">Commentaire en attente de modération</span>
-                            <?php
-                            }
-                            elseif($comment->editDate())
-                            {
-                            ?>
-                                <br/><span class="reportedCommentOK">Commentaire modéré par l'administrateur</span>
-                            <?php
-                            }
-                            ?></td>
-                        </tr>
+                <div id="chapterText">
+                    <h3>
+                        <?= htmlspecialchars($chapter->title()) ?>
+                        <br/><span>Publié le <?= $chapter->creationDate() ?></span>
+                    </h3>
                     
+                    <p>
+                        <?= nl2br($chapter->content()) ?>
+                    </p>
+                </div>
+                <div>
+                    <a href="<?php echo HOST; ?>prevChapter-<?= $chapter->id(); ?>" class="prev">Chapitre précédent</a>
+                    <a href="<?php echo HOST; ?>nextChapter-<?= $chapter->id(); ?>" class="next">Chapitre suivant</a>
+                </div>
+            </div>
+        </div>
+        
+        <br/>
+
+        <div class="row justify-content-center">
+            <div class="col-11 col-sm-10 col-md-8" id="commentsForm" >
+                <h2>Commentaires</h2>
+
+                <p>Laissez votre commentaire ici !</p>
+
+                <form action="<?php echo HOST; ?>addComment-<?= $chapter->id(); ?>" method="post" class="form">
+                    <div>
+                        <label for="title">Titre : </label>
+                        <input type="text" id="title" name="title" required/><br>
+                        <label for="author">Auteur : </label>
+                        <input type="text" id="author" name="author" required/><br>
+                    </div>
+                    <div>
+                        <label for="content">Commentaire : </label><br />
+                        <textarea id="content" name="content" rows="6" cols="70" required></textarea>
+                    </div>
+                    <div>
+                        <input type="submit" />
+                    </div>
+                </form>
+
+                <div id="commentsList">
+
+                    <?php
+                    if($chapter->nbComments() > 0){
+                        ?><p>Il y a déjà <?= $chapter->nbComments(); ?>
+                            <?php
+                            if($chapter->nbComments() > 1) { ?> commentaires reçus : </p>
+                            <?php } else { ?> commentaire reçu : </p>
+                            <?php
+                            }
+                            ?>
+
+                            <table id="table_comments" class="display">
+                            <thead>
+                                <tr>
+                                    <th data-priority='1'>Titre</th>
+                                    <th data-priority='3'>Auteur</th>
+                                    <th data-priority='6'>Publié le</th>
+                                    <th data-priority='2'>Contenu</th>
+                                    <th data-priority='4'>Signaler</th>
+                                    <th data-priority='5'>Observation</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                            <?php
+
+                            foreach($comments as $comment) //while ($comment = $comments->fetch())
+                            {
+                            ?>
+
+                                <tr>
+                                    <td><?= htmlspecialchars($comment->title())?></td>
+                                    <td><?= htmlspecialchars($comment->author()) ?></td>
+                                    <td><?= $comment->creationDate()?></td>
+                                    <td><?= htmlspecialchars($comment->content())?></td>
+                                    <td><a href="<?php echo HOST; ?>reportComment-<?=$comment->id();?>-<?=$chapter->id();?>">Signaler</a></td>
+                                    <td><?php
+                                    if($comment->reported() == 1)
+                                    {
+                                    ?>
+                                        <br/><span class="reportWaitComment">Commentaire en attente de modération</span>
+                                    <?php
+                                    }
+                                    elseif($comment->editDate())
+                                    {
+                                    ?>
+                                        <br/><span class="reportedCommentOK">Commentaire modéré par l'administrateur</span>
+                                    <?php
+                                    }
+                                    ?></td>
+                                </tr>
+                            
+                            <?php
+                            }
+                            ?>
+
+                            </tbody>
+                        </table>
+                
+                        <?php
+                        
+                    } 
+                    else 
+                    {
+                        ?><p>Il n'y a pas encore de commentaires, soyez le premier à donner votre avis !</p>
                     <?php
                     }
                     ?>
-
-                    </tbody>
-                </table>
-        
-                <?php
-                
-            } 
-            else 
-            {
-                ?><p>Il n'y a pas encore de commentaires, soyez le premier à donner votre avis !</p>
-            <?php
-            }
-            ?>
+                </div>
+            </div>
         </div>
+    
     </div>
-        
+  
 <?php $content = ob_get_clean(); ?>
 
 <?php require('template.php'); 
