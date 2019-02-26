@@ -65,6 +65,14 @@ footer.homepage{
     text-align: right;
 }
 
+/*Legal Mentions*/
+
+.sectionLegalMentions{
+    padding: 25px;
+    background-color: rgba(248, 237, 237, 0.8);
+    border-radius: 15px;
+}
+
 /*---FRONTEND---*/
 
 /*---Homepage---*/

@@ -1,4 +1,6 @@
 <?php
+ini_set('display_errors',1);
+
 include_once('config.php');
 
 require(FRONTCONTROLLER.'frontendController.php');

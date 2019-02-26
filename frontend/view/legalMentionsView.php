@@ -1,7 +1,8 @@
 <?php $title = 'Mentions légales'; ?>
 
 <?php ob_start(); ?>  
-                
+    
+<div class="sectionLegalMentions">
     <h2>Définitions</h2>
     <p><b>Client&nbsp;:</b>&nbsp;tout professionnel ou personne physique capable au sens des articles 1123 et suivants du Code civil, ou personne morale, qui visite le Site objet des présentes conditions générales.<br>
     <b>Prestations et Services&nbsp;:</b> <a href="http://p4.projets-cecile-jourdan.fr">http://p4.projets-cecile-jourdan.fr</a> met à disposition des Clients&nbsp;:</p>
@@ -210,6 +211,8 @@
         <p>
     Tout litige en relation avec l’utilisation du site&nbsp;<a href="http://p4.projets-cecile-jourdan.fr">http://p4.projets-cecile-jourdan.fr</a>&nbsp;est soumis au droit français. 
     En dehors des cas où la loi ne le permet pas, il est fait attribution exclusive de juridiction aux tribunaux compétents de Marseille</p>
+
+</div>
 
 <?php $content = ob_get_clean(); ?>
 
