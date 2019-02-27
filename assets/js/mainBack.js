@@ -72,4 +72,4 @@ function ChangeFontSize(){
             document.getElementById('chapterViewAdmin').style.fontSize = "22px";
         }
     });
-}
+};

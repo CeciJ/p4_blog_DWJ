@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -10,9 +10,11 @@
 
         <!--Datatables-->
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/r-2.2.2/datatables.min.css"/>
-        
+        <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css"/>
+
         <!--Fonts-->
-        <link href="https://fonts.googleapis.com/css?family=Caveat|Nothing+You+Could+Do" rel="stylesheet"> 
+        <link href="https://fonts.googleapis.com/css?family=Caveat" rel="stylesheet"> 
+        <link href="https://fonts.googleapis.com/css?family=Nothing+You+Could+Do" rel="stylesheet">  
         <link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet">
         
         <!--All CSS-->
@@ -30,7 +32,9 @@
                 </h1>
                 <div class="row justify-content-between container-fluid">
                     <div id="welcomeMsgAdmin" class="col-12 col-sm-10 col-md-10">Bienvenue <strong><?php echo $_SESSION['pseudo']; ?></strong></div>
-                    <div id="deconnectAdmin" class="col-4 col-sm-2 col-md-2"><a href="<?php echo HOST; ?>deconnect">Déconnexion</a></div>
+                    <div id="deconnectAdmin" class="col-4 col-sm-2 col-md-2">
+                        <a href="<?php echo HOST; ?>deconnect">Déconnexion</a>
+                    </div>
                 </div>
             </header>
             
@@ -39,12 +43,24 @@
             <main class="containerAdmin">
                 <nav class="menuAdmin">
                     <ul>
-                        <li><a href="<?php echo HOST; ?>homeAdmin">Page d'accueil</a></li>
-                        <li><a href="<?php echo HOST; ?>addChapter">Publier un nouveau chapitre</a></li>
-                        <li><a href="<?php echo HOST; ?>listAllChapters">Voir, modifier ou supprimer les chapitres publiés</a></li>
-                        <li><a href="<?php echo HOST; ?>getCommentsToModerate">Modérer les commentaires signalés</a></li>
-                        <li><a href="<?php echo HOST; ?>newUser">Ajouter un nouvel administrateur</a></li>
-                        <li><a href="<?php echo HOST; ?>listUsers">Voir tous les administrateurs</a></li>
+                        <li>
+                            <a href="<?php echo HOST; ?>homeAdmin">Page d'accueil</a>
+                        </li>
+                        <li>
+                            <a href="<?php echo HOST; ?>addChapter">Publier un nouveau chapitre</a>
+                        </li>
+                        <li>
+                            <a href="<?php echo HOST; ?>listAllChapters">Voir, modifier ou supprimer les chapitres publiés</a>
+                        </li>
+                        <li>
+                            <a href="<?php echo HOST; ?>getCommentsToModerate">Modérer les commentaires signalés</a>
+                        </li>
+                        <li>
+                            <a href="<?php echo HOST; ?>newUser">Ajouter un nouvel administrateur</a>
+                        </li>
+                        <li>
+                            <a href="<?php echo HOST; ?>listUsers">Voir tous les administrateurs</a>
+                        </li>
                     </ul>
                 </nav>
 
@@ -55,11 +71,12 @@
 
             <footer class="homepage">
                 <div class="row justify-content-end">
-                    <div class="col-6"><a href="<?php echo HOST; ?>legalMentions" id="legalMentions">Mentions légales</a></div> 
+                    <div class="col-6">
+                        <a href="<?php echo HOST; ?>legalMentions" id="legalMentions">Mentions légales</a>
+                    </div> 
                     <div class="col-6 reservedRights">Tous droits réservés 2019</div>
                 </div>
             </footer>
-
         </div>
 
         <!--Bootstrap JS-->
@@ -69,7 +86,8 @@
 
         <!--DataTables-->
         <script src="https://cdn.datatables.net/v/dt/dt-1.10.18/r-2.2.2/datatables.min.js"></script>
-        
+        <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+
         <!--TinyMce JS-->
         <script src="<?php echo ASSETS; ?>js/fr_FR.js"></script>
 

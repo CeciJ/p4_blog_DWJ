@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -10,9 +10,11 @@
         
         <!--DataTables-->
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/r-2.2.2/datatables.min.css"/>
-       
+        <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css"/>
+
         <!--Fonts-->
-        <link href="https://fonts.googleapis.com/css?family=Caveat|Nothing+You+Could+Do" rel="stylesheet"> 
+        <link href="https://fonts.googleapis.com/css?family=Caveat" rel="stylesheet"> 
+        <link href="https://fonts.googleapis.com/css?family=Nothing+You+Could+Do" rel="stylesheet">  
         <link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet">
 
         <!--All CSS-->
@@ -43,8 +45,9 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
         
         <!--DataTables JS-->
-        <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
-        
+        <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+        <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+
         <!--Main Front JS-->
         <script src="<?php echo ASSETS; ?>js/mainFront.js"></script>
     </body>

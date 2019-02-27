@@ -1,7 +1,5 @@
 <?php
 
-//namespace CJ\p4\Model;
-
 require_once(MODEL."/Manager.php");
 require_once(MODEL."/Comment.php");
 

@@ -1,7 +1,5 @@
 <?php
 
-//namespace CJ\p4\Model;
-
 require_once(MODEL."/Manager.php");
 require_once(MODEL."/Chapter.php");
 
@@ -36,13 +34,15 @@ class ChapterManager extends Manager
             $chapters[] = $chapter; // Tableau d'objets
         }
 
+        /*
         if($data == FALSE){
             return false;
         }
         else
         {
+        */
             return $chapters;
-        }
+        //}
         
     }
 
@@ -117,7 +117,6 @@ class ChapterManager extends Manager
             $chapter->setNbComments($data['nbComments']);
         }
 
-        //var_dump($chapter); // Objet
         return $chapter;
     }
 

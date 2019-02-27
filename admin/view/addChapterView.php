@@ -1,21 +1,26 @@
-<?php $title = 'Ajouter un chapitre'; ?>
+<?php 
+$title = 'Ajouter un chapitre';
+ob_start(); 
+?> 
 
-<?php ob_start(); ?>   
     <div class="sectionAddChapter">   
-        <h1>Ajouter un chapitre</h1>
-        <br/>
+        <h1>Ajouter un chapitre</h1><br/>
+        
         <form action="<?php echo HOST; ?>addChapter" method="post" enctype="multipart/form-data">
             <div>
-                <label for="title">Titre du chapitre : </label><br />
-                <input type="text" id="title" name="title"/>
+                <label for="title">Titre du chapitre : 
+                    <input type="text" id="title" name="title"/>
+                </label>
             </div>
             <div>
-                <label for="photo">Photo du chapitre </label> <span id="photoWeigth">(Poids maximum autorisé : 2 Mo) :</span><br />
-                <input type="hidden" name="MAX_FILE_SIZE" value="2000000" />
-                <input type="file" id="photo" name="photo"/>
+                <label for="photo">Photo du chapitre
+                    <span id="photoWeigth">(Poids maximum autorisé : 2 Mo) :</span><br/>
+                    <input type="hidden" name="MAX_FILE_SIZE" value="2000000" />
+                    <input type="file" id="photo" name="photo"/>
+                </label> 
             </div>
             <div>
-                <label for="content">Contenu : </label><br />
+                <label for="content">Contenu : </label>
                 <textarea id="contentNewChapter" name="content" rows="15" cols="100"></textarea>
             </div>
             <div>
@@ -24,8 +29,7 @@
         </form>
 
     </div>
-    
 
-<?php $content = ob_get_clean(); ?>
-
-<?php require('template.php'); ?>
+<?php 
+$content = ob_get_clean();
+require('template.php'); 

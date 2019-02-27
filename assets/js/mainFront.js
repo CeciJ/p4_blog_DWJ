@@ -1,5 +1,5 @@
 //Comments as table in frontend chapter view
-$(document).ready( function () {
+var table = $(document).ready( function () {
     $('#table_comments').DataTable({
         responsive: true,
         language: {

@@ -1,16 +1,30 @@
-<?php $title = 'Chapitre : '.$chapter->title(); ?>
+<?php 
+$title = 'Chapitre : '.$chapter->title();
+ob_start(); 
+?>
+    <script>
+        function ConfirmDelete(){
+            var r = confirm('Êtes-vous sûr de vouloir effacer ce chapitre ?');
+            if (r == true)
+            {
+                document.getElementById('deleteChapterButton').href = '<?php echo HOST; ?>delete-<?= $chapter->id() ?>';
+            }
+            else
+            {
+                return false;
+            }
+        };
+    </script>
 
-<?php ob_start(); ?>
-    
     <div class="sectionViewChapter">
 
         <a href="<?php echo HOST; ?>listAllChapters" class="backListChapters">Retour à la liste des chapitres</a>
-        <?php
-        //print_r($_SESSION);
-        ?>
+
         <br/><br/>
+
         <a href="<?php echo HOST; ?>editChapter-<?= $chapter->id() ?>" class="editChapter">Modifier le chapitre</a>  
-        <a id="deleteChapterButton" href="<?php echo HOST; ?>delete-<?= $chapter->id() ?>" class="deleteChapter">Supprimer le chapitre</a><br><br>
+
+        <a id="deleteChapterButton" href="#" class="deleteChapter" onClick="ConfirmDelete()">Supprimer le chapitre</a><br><br>
 
         <form id="fontSizeForm" name="Font-Size">
             <select name="Font-Size" onChange="ChangeFontSize()">
@@ -31,7 +45,8 @@
             <em>Publié le <?= $chapter->creationDate() ?></em>
 
             <?php
-            if($chapter->editDate() !== NULL){
+            if($chapter->editDate() !== NULL)
+            {
                 ?>
                 <em> - Modifié le <?= $chapter->editDate() ?></em><br><br>
             <?php
@@ -47,12 +62,18 @@
         
         <div class="commentsListAdmin">
             <?php
-            if($chapter->nbComments() > 0){
+            if($chapter->nbComments() > 0)
+            {
                 ?><p>Il y a <?= $chapter->nbComments(); ?> 
                     <?php
-                        if($chapter->nbComments() > 1) { ?> commentaires reçus pour ce chapitre : </p>
-                        <?php } else { ?> commentaire reçu pour ce chapitre : </p>
-                        <?php
+                        if($chapter->nbComments() > 1) 
+                        { 
+                            ?> commentaires reçus pour ce chapitre : </p>
+                            <?php 
+                        } 
+                        else 
+                        { ?> commentaire reçu pour ce chapitre : </p>
+                            <?php
                         }
                         ?>
 
@@ -68,26 +89,36 @@
                         </thead>
                         <tbody>
 
-                        <?php
+                            <?php
+                            foreach($comments as $comment) //while ($comment = $comments->fetch())
+                            {
+                            ?>
+                                <tr>
+                                    <td><?= htmlspecialchars($comment->title())?></td>
+                                    <td><?= htmlspecialchars($comment->author()) ?></td>
+                                    <td><?= $comment->creationDate()?></td>
+                                    <td><?= htmlspecialchars($comment->content())?></td>
+                                    <td><?php 
+                                        if($comment->reported())
+                                        {
+                                            echo 'Oui';
+                                        } 
+                                        elseif ($comment->editDate())
+                                        {
+                                            echo 'Vous avez déjà modéré le commentaire.';
+                                        }
+                                        else 
+                                        {
+                                            echo 'Non';
+                                        }
+                                        ?>
+                                    </td>
+                                </tr>
+                            <?php
+                            }
+                            ?>
 
-                        foreach($comments as $comment) //while ($comment = $comments->fetch())
-                        {
-                        ?>
-                            <tr>
-                                <td><?= htmlspecialchars($comment->title())?></td>
-                                <td><?= htmlspecialchars($comment->author()) ?></td>
-                                <td><?= $comment->creationDate()?></td>
-                                <td><?= htmlspecialchars($comment->content())?></td>
-                                <td><?php 
-                                    if($comment->reported()){echo 'Oui';} 
-                                    elseif ($comment->editDate()){echo 'Vous avez déjà modéré le commentaire.';}
-                                    else {echo 'Non';}?></td>
-                            </tr>
-                        <?php
-                        }
-                        ?>
-
-                    </tbody>
+                        </tbody>
                 </table>
 
             <?php
@@ -95,14 +126,13 @@
             else 
             {
             ?>
-            <p>Il n'y a pas encore de commentaires, soyez le premier à donner votre avis !</p>
+                <p>Il n'y a pas encore de commentaires, soyez le premier à donner votre avis !</p>
             <?php
             }
-        ?>
+            ?>
         </div>
     </div>
         
-        
-<?php $content = ob_get_clean(); ?>
-
-<?php require('template.php'); ?>
+<?php 
+$content = ob_get_clean();
+require('template.php'); 

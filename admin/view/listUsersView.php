@@ -1,11 +1,11 @@
-<?php $title = 'Administrateurs autorisés'; ?>
-
-<?php ob_start(); ?>
+<?php 
+$title = 'Administrateurs autorisés';
+ob_start(); 
+?>
 
     <div class="sectionViewUsers">
 
-        <h1>Liste des administrateurs autorisés</h1>
-        <br>
+        <h1>Liste des administrateurs autorisés</h1><br>
 
         <table id="table_list_users" class="display">
             <thead>
@@ -18,37 +18,50 @@
             </thead>
             <tbody>
 
-            <?php
-
-                foreach($users as $user) //while ($data = $chapters->fetch())
-                {
-                ?>
-                    <tr>
-                        <td><?= $user->pseudo() ?></td>
-                        <td><?= $user->mail() ?></td>
-                        <td><a href="<?php echo HOST; ?>editUser-<?= $user->id() ?>">Éditer</a></td>
-                        <td>
-                            <?php
-                            if(count($users) > 1)
-                            {
-                            ?>    
-                            <a href="<?php echo HOST; ?>deleteUser-<?= $user->id() ?>">Supprimer</a>
-                            <?php
-                            } else {
-                                echo 'Il n\'y a qu\'un seul administrateur enregistré, il ne peut pas être supprimé';
-                            }
-                            ?>
-                        </td>
-                    </tr>
                 <?php
-                }
-            ?>
 
-        </tbody>
-    </table>
+                    foreach($users as $user) //while ($data = $chapters->fetch())
+                    {
+                    ?>
 
+                        <script>
+                            function ConfirmDeleteUser(){
+                                var r = confirm('Êtes-vous sûr de vouloir effacer cet administrateur ?');
+                                if (r == true)
+                                {
+                                    document.getElementById('deleteUserButton').href = '<?php echo HOST; ?>deleteUser-<?= $user->id() ?>';
+                                }
+                                else
+                                {
+                                    return false;
+                                }
+                            };
+                        </script>
+
+                        <tr>
+                            <td><?= $user->pseudo() ?></td>
+                            <td><?= $user->mail() ?></td>
+                            <td><a href="<?php echo HOST; ?>editUser-<?= $user->id() ?>">Éditer</a></td>
+                            <td>
+                                <?php
+                                if(count($users) > 1)
+                                {
+                                ?>    
+                                <a id="deleteUserButton" href="#" onClick="ConfirmDeleteUser()">Supprimer</a>
+                                <?php
+                                } else {
+                                    echo 'Il n\'y a qu\'un seul administrateur enregistré, il ne peut pas être supprimé';
+                                }
+                                ?>
+                            </td>
+                        </tr>
+                    <?php
+                    }
+                ?>
+            </tbody>    
+        </table>
     </div> 
 
-<?php $content = ob_get_clean(); ?>
-
-<?php require('template.php'); ?>
+<?php 
+$content = ob_get_clean();
+require('template.php');
