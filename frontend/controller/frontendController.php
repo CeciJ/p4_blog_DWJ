@@ -19,16 +19,26 @@ function listChapters($order = null)
 function chapter()
 {
     $chapterManager = new ChapterManager();
-    $chapter = $chapterManager->getChapter($_GET['id']);
+    $lastChapter = $chapterManager->lastIdRegistered();
 
-    $commentManager = new CommentManager();
-    if ($chapter->nbComments() > 0){
-        $comments = $commentManager->getComments($_GET['id']);
+    if($_GET['id'] <= $lastChapter)
+    {
+        $chapter = $chapterManager->getChapter($_GET['id']);
+    }
+    else
+    {
+        throw new Exception('Ce chapitre n\'existe pas!');
     }
 
+    $commentManager = new CommentManager();
+    if(!is_null($chapter)){
+        if ($chapter->nbComments() > 0){
+            $comments = $commentManager->getComments($_GET['id']);
+        }
+    }
+        
     require(FRONTVIEW.'/chapterView.php');
 }
-
 
 function prevChapter()
 {

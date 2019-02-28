@@ -5,6 +5,7 @@ require_once(MODEL."/Chapter.php");
 
 class ChapterManager extends Manager
 {
+    // To show all chapters
     public function getChapters($order = null)
     {
         $db = $this->dbConnect();
@@ -31,21 +32,13 @@ class ChapterManager extends Manager
             $chapter->setEditDate($data['editDateFr']);
             $chapter->setNbComments($data['nbComments']);
 
-            $chapters[] = $chapter; // Tableau d'objets
+            $chapters[] = $chapter;
         }
 
-        /*
-        if($data == FALSE){
-            return false;
-        }
-        else
-        {
-        */
-            return $chapters;
-        //}
-        
+        return $chapters;
     }
 
+    // To get an array with all Id Chapters for next and prev functions in controllers
     public function getIdChapters()
     {
         $db = $this->dbConnect();
@@ -54,7 +47,6 @@ class ChapterManager extends Manager
             SELECT id, title
             FROM chapters 
         ');
-        //var_dump($req);
 
         $tab = array();
 
@@ -66,6 +58,7 @@ class ChapterManager extends Manager
         return $tab;
     }
 
+    // To count how many chapters in db
     public function countChapters()
     {
         $db = $this->dbConnect();
@@ -76,25 +69,23 @@ class ChapterManager extends Manager
         return $nbChapters;
     }
 
+    // To know how many comments are there by chapter. This function is called in getChapter($chapterId) function.
     public function getCommentsChapters($chapterId)
     {
         $db = $this->dbConnect();
 
         $req = $db->prepare('SELECT * FROM comments WHERE chapter = ?');
         $req->execute(array($chapterId));
-        //var_dump($req);
         $result = $req->rowcount();
-        //echo '<br/> Résultat de la requête : ';
-        //var_dump($result); exit;
 
         $nbComments = $db->prepare('UPDATE chapters SET nbComments = :nbComments WHERE id = :id');
         $nbComments->execute(array(
             'nbComments' => $result,  
             'id' => $chapterId
         ));
-        //return $nbComments;
     }
 
+    // To get a chapter by Id
     public function getChapter($chapterId)
     {
         $db = $this->dbConnect();
@@ -120,6 +111,7 @@ class ChapterManager extends Manager
         return $chapter;
     }
 
+    // To add a chapter
     public function addChapter($title, $content)
     {
         $db = $this->dbConnect();
@@ -136,6 +128,7 @@ class ChapterManager extends Manager
         return $lastId;
     }
 
+    // To edit a chapter
     public function editChapter($chapterId, $newTitle, $newContent)
     {
         $db = $this->dbConnect();
@@ -153,16 +146,28 @@ class ChapterManager extends Manager
         return $editChapter;
     }
 
+    // To delete a chapter
     public function delete($chapterId)
     {
         $db = $this->dbConnect();
         $db->exec('DELETE FROM chapters WHERE id = '.$chapterId);
     }
 
+    // To delete in the database the comments associated to the previously deleted chapter
     public function deleteFromChapters($chapterId)
     {
         $db = $this->dbConnect();
         $db->exec('DELETE FROM comments WHERE chapter = '. $chapterId);
+    }
+
+    // To get the last Id in database
+    public function lastIdRegistered()
+    {
+        $db = $this->dbConnect();
+        $req = $db->query('SELECT MAX(id) AS max_id FROM chapters');
+        $result = $req->fetch();
+
+        return $result['max_id'];
     }
 }
 

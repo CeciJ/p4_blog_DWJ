@@ -5,6 +5,7 @@ require_once(MODEL."/User.php");
 
 class UserManager extends Manager
 {
+    // To add a new admin
     public function addUser($pseudo, $mail, $pass_hache)
     {
         $db = $this->dbConnect();
@@ -19,11 +20,10 @@ class UserManager extends Manager
             'pass' => $pass_hache
         ));
 
-        //var_dump($result);
-
         return $result;
     }
 
+    // To get a specific admin by pseudo
     public function getUser($pseudo)
     {
         $db = $this->dbConnect();
@@ -43,10 +43,10 @@ class UserManager extends Manager
             $user->setPass($data['pass']);
         }
 
-        //var_dump($user); // Objet
         return $user;
     }
 
+    // To get a specific user by Id
     public function getUserById($id)
     {
         $db = $this->dbConnect();
@@ -66,10 +66,10 @@ class UserManager extends Manager
             $user->setPass($data['pass']);
         }
 
-        //var_dump($user); // Objet
         return $user;
     }
 
+    // To get all the admins registered in database
     public function getUsers()
     {
         $db = $this->dbConnect();
@@ -86,11 +86,12 @@ class UserManager extends Manager
             $user->setPseudo($data['pseudo']);
             $user->setMail($data['mail']);
 
-            $users[] = $user; // Tableau d'objets
+            $users[] = $user;
         }
         return $users;
     }
 
+    // To edit admin info
     public function editUser($userId, $newPseudo, $newMail)
     {
         $db = $this->dbConnect();
@@ -109,9 +110,20 @@ class UserManager extends Manager
         return $editUser;
     }
 
+    // To delete an admin
     public function deleteUser($userId)
     {
         $db = $this->dbConnect();
         $db->exec('DELETE FROM users WHERE id = '.$userId);
+    }
+
+    // To get the last Id in database
+    public function lastIdRegistered()
+    {
+        $db = $this->dbConnect();
+        $req = $db->query('SELECT MAX(id) AS max_id FROM users');
+        $result = $req->fetch();
+
+        return $result['max_id'];
     }
 }

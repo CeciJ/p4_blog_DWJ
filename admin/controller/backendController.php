@@ -121,11 +121,22 @@ function listAllChapters($order = null)
 function chapterAdmin()
 {
     $chapterManager = new ChapterManager();
-    $chapter = $chapterManager->getChapter($_GET['id']);
+    $lastChapter = $chapterManager->lastIdRegistered();
+
+    if($_GET['id'] <= $lastChapter)
+    {
+        $chapter = $chapterManager->getChapter($_GET['id']);
+    }
+    else
+    {
+        throw new Exception('Ce chapitre n\'existe pas!');
+    }
 
     $commentManager = new CommentManager();
-    if ($chapter->nbComments() > 0){
-        $comments = $commentManager->getComments($_GET['id']);
+    if(!is_null($chapter)){
+        if ($chapter->nbComments() > 0){
+            $comments = $commentManager->getComments($_GET['id']);
+        }
     }
     
     require(ADMINVIEW.'/chapterAdminView.php');
@@ -134,7 +145,16 @@ function chapterAdmin()
 function getChapterToEdit($chapterId)
 {
     $chapterManager = new ChapterManager();
-    $chapter = $chapterManager->getChapter($_GET['id']);
+    $lastChapter = $chapterManager->lastIdRegistered();
+
+    if($_GET['id'] <= $lastChapter)
+    {
+        $chapter = $chapterManager->getChapter($_GET['id']);
+    }
+    else
+    {
+        throw new Exception('Ce chapitre n\'existe pas!');
+    }
 
     require(ADMINVIEW.'/editChapterView.php');
 }
@@ -142,6 +162,7 @@ function getChapterToEdit($chapterId)
 function editChapter($chapterId, $newTitle, $newContent)
 {
     $chapterManager = new ChapterManager();
+    
     $editedChapter = $chapterManager->editChapter($_GET['id'], $newTitle, $newContent);
 
     if ($editedChapter === false) {
@@ -182,7 +203,16 @@ function getCommentsToModerate()
 function goToEditComment($commentId)
 {
     $commentManager = new CommentManager();
-    $editComment = $commentManager->getComment($_GET['id']);
+    $lastComment = $commentManager->lastIdRegistered();
+
+    if($_GET['id'] <= $lastComment)
+    {
+        $editComment = $commentManager->getComment($_GET['id']);
+    }
+    else
+    {
+        throw new Exception('Ce commentaire n\'existe pas!');
+    }
 
     require(ADMINVIEW.'/editCommentView.php');
 }
@@ -190,14 +220,26 @@ function goToEditComment($commentId)
 function editComment($commentId, $newTitle, $newContent)
 {
     $commentManager = new CommentManager();
-    $editedComment = $commentManager->editComment($_GET['id'], $_POST['newTitle'], $_POST['newContent']);
-    $commentsToModerate = $commentManager->getCommentsToModerate();
+    $lastComment = $commentManager->lastIdRegistered();
 
-    if ($editedComment === false) {
-        throw new Exception('Impossible de modifier le commentaire !');
+    if($_GET['id'] <= $lastComment)
+    {
+        $editedComment = $commentManager->editComment($_GET['id'], $_POST['newTitle'], $_POST['newContent']);
+
+        if(!is_null($editedComment)){
+            $commentsToModerate = $commentManager->getCommentsToModerate();
+        }
+
+        if ($editedComment === false) {
+            throw new Exception('Impossible de modifier le commentaire !');
+        }
+        else {
+            require(ADMINVIEW.'/commentsToModerateView.php');
+        }
     }
-    else {
-        require(ADMINVIEW.'/commentsToModerateView.php');
+    else
+    {
+        throw new Exception('Ce commentaire n\'existe pas!');
     }
 }
 
@@ -247,8 +289,17 @@ function listUsers()
 function goToEditUser($userId)
 {
     $userManager = new UserManager();
-    $editUser = $userManager->getUserById($userId);
-    //var_dump($editUser);
+    $lastUser = $userManager->lastIdRegistered();
+
+    if($_GET['id'] <= $lastUser)
+    {
+        $editUser = $userManager->getUserById($userId);
+    }
+    else
+    {
+        throw new Exception('Cet administrateur n\'existe pas!');
+    }
+
     require(ADMINVIEW.'/editUserView.php');
 }
 

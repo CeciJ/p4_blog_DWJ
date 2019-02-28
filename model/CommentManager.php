@@ -5,6 +5,7 @@ require_once(MODEL."/Comment.php");
 
 class CommentManager extends Manager
 {
+    // To gets comments by chapters
     public function getComments($chapterId)
     {
         $db = $this->dbConnect();
@@ -27,11 +28,12 @@ class CommentManager extends Manager
             $comment->setEditDate($data['editDateFr']);
             $comment->setReported($data['reported']);
 
-            $comments[] = $comment; // Tableau d'objets
+            $comments[] = $comment;
         }
         return $comments;
     }
 
+    // To count how many comments are registered in database
     public function countComments()
     {
         $db = $this->dbConnect();
@@ -42,6 +44,7 @@ class CommentManager extends Manager
         return $nbComments;
     }
 
+    // To add a comment 
     public function addComment($chapterId, $title, $author, $content)
     {
         $db = $this->dbConnect();
@@ -51,6 +54,7 @@ class CommentManager extends Manager
         $affectedLines = $comments->execute(array($chapterId, $title, $author, $content));
     }
 
+    // To report a comment. Update "reported" to true in the database
     public function reportComment($commentId)
     {
         $db = $this->dbConnect();
@@ -70,6 +74,7 @@ class CommentManager extends Manager
         return $reportedComment;
     }
 
+    // To count how many comments have been moderated by admins
     public function countModeratedComments()
     {
         $db = $this->dbConnect();
@@ -80,6 +85,7 @@ class CommentManager extends Manager
         return $nbEditedComments;
     }
 
+    // To count how many comments must be moderated ("reported" == TRUE in database)
     public function countCommentsToModerate()
     {
         $db = $this->dbConnect();
@@ -87,10 +93,10 @@ class CommentManager extends Manager
         $req = $db->query('SELECT COUNT(id) FROM comments WHERE reported = TRUE');
         $nbComments = $req->fetchColumn();
         
-        //var_dump($nbComments);
         return $nbComments;
     }
 
+    // To get all the comments to be moderated
     public function getCommentsToModerate()
     {
         $db = $this->dbConnect();
@@ -102,9 +108,8 @@ class CommentManager extends Manager
             ORDER BY creationDate DESC');
         $result=$req->execute();
         $result=$req->rowCount();
-        //var_dump($result);
 
-        if($result > 0){
+        if(!is_null($result) && $result > 0){
             while($data = $req->fetch(PDO::FETCH_ASSOC)){
 
                 $comment = new Comment();
@@ -114,9 +119,8 @@ class CommentManager extends Manager
                 $comment->setAuthor($data['author']);
                 $comment->setCreationDate($data['creationDateFr']);
     
-                $comments[] = $comment; // Tableau d'objets
+                $comments[] = $comment;
             }
-            //var_dump($comments);
     
             return $comments;
         }
@@ -127,6 +131,7 @@ class CommentManager extends Manager
         
     }
     
+    // To get a specific comment by Id
     public function getComment($commentId)
     {
         $db = $this->dbConnect();
@@ -151,6 +156,7 @@ class CommentManager extends Manager
         return $comment;
     }
 
+    // To edit a comment
     public function editComment($commentId, $newTitle, $newContent)
     {
         $db = $this->dbConnect();
@@ -170,11 +176,20 @@ class CommentManager extends Manager
         return $editComment;
     }
 
+    // To delete a comment
     public function deleteComment($commentId)
     {
         $db = $this->dbConnect();
-
         $db->exec('DELETE FROM comments WHERE id = '.$commentId);
     }
-    
+
+    // To get the last Id in database
+    public function lastIdRegistered()
+    {
+        $db = $this->dbConnect();
+        $req = $db->query('SELECT MAX(id) AS max_id FROM comments');
+        $result = $req->fetch();
+
+        return $result['max_id'];
+    } 
 }

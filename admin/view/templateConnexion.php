@@ -22,7 +22,7 @@
         <div class="page">
             <header>
                 <h1 id="bigTitle" class="titleConnexion">
-                    <a href="<?php echo HOST; ?>login">Ma plateforme d'administration<br>
+                    <a href="<?php echo HOST; ?>listChapters">Ma plateforme d'administration<br>
                         <span id="titleBookConnexion">Billet simple pour l'Alaska</span>
                     </a>
                 </h1>

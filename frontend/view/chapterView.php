@@ -124,13 +124,13 @@
                                                 if($comment->reported() == 1)
                                                 {
                                                     ?>
-                                                    <br/><span class="reportWaitComment">Commentaire en attente de modération</span>
+                                                    <span class="reportWaitComment">Commentaire en attente de modération</span>
                                                 <?php
                                                 }
                                                 elseif ($comment->editDate())
                                                 {
                                                     ?>
-                                                    <br/><span class="reportedCommentOK">Commentaire modéré par l'administrateur</span>
+                                                    <span class="reportedCommentOK">Commentaire modéré par l'administrateur</span>
                                                 <?php
                                                 }
                                                 ?>
