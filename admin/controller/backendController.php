@@ -17,7 +17,14 @@ function connectOK($pseudo, $pass)
     $userManager = new UserManager();
     $loggedUser = $userManager->getUser($pseudo);
 
-    $isPasswordCorrect = password_verify($_POST['password'], $loggedUser->pass());
+    if($loggedUser)
+    {
+        $isPasswordCorrect = password_verify($_POST['password'], $loggedUser->pass());
+    }
+    else
+    {
+        throw new Exception('Votre identifiant ou mot de passe est erroné !');
+    }
 
     if($_POST['pseudo'] === $loggedUser->pseudo() && $isPasswordCorrect)
     {
@@ -61,13 +68,20 @@ function homeAdmin()
 
 function disconnection()
 {
-    $_SESSION = array();
-    session_destroy();
+    if(!is_null($_SESSION)){
+        $_SESSION = array();
+        session_destroy();
 
-    $chapterManager = new ChapterManager(); 
-    $chapters = $chapterManager->getChapters(); 
+        $chapterManager = new ChapterManager(); 
+        $chapters = $chapterManager->getChapters(); 
+        
+        header('Location:listChapters');
+    }
+    else
+    {
+        header('Location:login');
+    }
     
-    header('Location:listChapters');
 }
 
 // Add a chapter

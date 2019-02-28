@@ -81,8 +81,20 @@ footer.homepage{
 
 /*Error*/
 
-.sectionError{
+.sectionError.front{
     padding: 25px;
+    background-color: rgba(248, 237, 237, 0.8);
+    border-radius: 15px;
+    width: 70%;
+    margin: auto;
+}
+
+.sectionError h1{
+    font-size: 30px;
+}
+
+.sectionError p{
+    font-size: 20px;
 }
 
 /*---FRONTEND---*/
@@ -464,6 +476,12 @@ h1#bigTitle.titleConnexion{
 .connexionDiv button {
     margin-top: 20px;
     padding: 5px;
+}
+
+a#reconnexion{
+    font-size: 20px;
+    color: black;
+    text-decoration: underline dotted;
 }
 
 /*---Homepage Admin---*/
