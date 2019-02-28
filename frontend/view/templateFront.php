@@ -31,9 +31,13 @@
             </main>
 
             <footer class="homepage">
-                <div class="row justify-content-end">
-                    <div class="col-6"><a href="<?php echo HOST; ?>legalMentions" id="legalMentions">Mentions légales</a></div> 
-                    <div class="col-6 divAccessAdmin"><a id="accessAdmin" href="<?php echo HOST; ?>login">Administration</a></div>
+                <div class="row divFooter">
+                    <div class="col-6">
+                        <a href="<?php echo HOST; ?>legalMentions" id="legalMentions">Mentions légales</a>
+                    </div> 
+                    <div class="col-6 divAccessAdmin">
+                        <a id="accessAdmin" href="<?php echo HOST; ?>login">Administration</a>
+                    </div>
                     <div class="col-12">Tous droits réservés 2019</div>
                 </div>
             </footer>

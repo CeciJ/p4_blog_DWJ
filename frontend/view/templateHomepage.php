@@ -29,7 +29,7 @@
             </main>
 
             <footer class="homepage">
-                <div class="row justify-content-end">
+                <div class="row divFooter">
                     <div class="col-6">
                         <a href="<?php echo HOST; ?>legalMentions" id="legalMentions">Mentions légales</a>
                     </div> 

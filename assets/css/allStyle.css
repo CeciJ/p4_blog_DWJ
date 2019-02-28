@@ -11,6 +11,10 @@
     font-family: 'dosis', arial;
 }
 
+header, main, footer{
+    width: 100%;
+}
+
 main{
     flex: 1;
     padding-top: 20px;
@@ -49,6 +53,11 @@ footer.homepage{
     font-size: 16px;
     text-align: left;
     padding: 10px;
+}
+
+.divFooter{
+    margin-right:-5px;
+    margin-left: -5px;
 }
 
 .homepage #legalMentions{
@@ -219,7 +228,7 @@ header{
     text-decoration: none;
     text-shadow: 2px 2px 4px white;
     width: 100%;
-    margin-left: 2.5%;
+    /*margin-left: 2.5%;*/
 }
 
 /*---List Chapters---*/
