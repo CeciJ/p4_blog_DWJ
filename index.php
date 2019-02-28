@@ -34,7 +34,6 @@ try {
                 throw new Exception('Aucun identifiant de chapitre envoyé');
             }
         }
-
         elseif ($action == 'prevChapter') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 prevChapter();
@@ -51,7 +50,6 @@ try {
                 throw new Exception('Aucun identifiant de chapitre envoyé');
             }
         }
-
         elseif ($action == 'addComment') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 if (!empty($_POST['title']) && !empty($_POST['author']) && !empty($_POST['content'])) {
@@ -73,28 +71,11 @@ try {
                 throw new Exception('Aucun identifiant de commentaire envoyé');
             }
         }
-        elseif ($action == 'legalMentions')
-        {
+        elseif ($action == 'legalMentions') {
             legalMentions();
         }
-        
-    }
-    else {
-        homepage(); 
-    }
-}
-catch(Exception $e) { 
-    $errorMessage = $e->getMessage();
-    require(FRONTVIEW.'/errorView.php');
-}
 
-// ADMIN
-
-try {
-    
-    if (isset($_GET['action'])) {
-
-        if ($action == 'login') {
+        elseif ($action == 'login') {
             loginAdmin();
         }
         elseif ($action == 'connectOK') {
@@ -104,7 +85,8 @@ try {
                 }
                 else
                 {
-                    throw new Exception('Tous les champs pour vous connecter ne sont pas remplis !');
+                    $msgErrorCon = 'Tous les champs pour vous connecter ne sont pas remplis !';
+                    throw new Exception($msgErrorCon);
                 }
             }
         }
@@ -224,12 +206,10 @@ try {
                     goToAddUser();
                 }
             }
-            elseif ($action == 'listUsers') 
-            {
+            elseif ($action == 'listUsers') {
                 listUsers();
             }
-            elseif($action == 'editUser')
-            {
+            elseif($action == 'editUser') {
                 if (isset($_GET['id']) && isset($_POST['newPseudo']) && isset($_POST['newMail'])) {
                     if(!empty($_POST['newPseudo']) && !empty($_POST['newMail'])){
                         editUser($_GET['id'], $_POST['newPseudo'], $_POST['newMail']);
@@ -246,16 +226,18 @@ try {
                     throw new Exception('Aucun identifiant d\'administrateur envoyé');
                 }
             }
-            elseif($action == 'deleteUser')
-            {
+            elseif($action == 'deleteUser') {
                 if (isset($_GET['id'])){
                     deleteUser($_GET['id']);
                 }
             }
         }
     }
+    else {
+        throw new Exception('Cette page n\'existe pas !');
+    }
 }
 catch(Exception $e) { 
     $errorMessage = $e->getMessage();
-    require(ADMINVIEW.'/errorView.php');
+    require(FRONTVIEW.'/errorView.php');
 }

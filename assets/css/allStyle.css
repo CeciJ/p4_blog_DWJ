@@ -107,6 +107,12 @@ footer.homepage{
     font-size: 20px;
 }
 
+a#backHome{
+    font-size: 20px;
+    color: black;
+    text-decoration: underline dotted;
+}
+
 /*---FRONTEND---*/
 
 /*---Homepage---*/
