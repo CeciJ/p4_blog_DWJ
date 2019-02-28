@@ -26,7 +26,7 @@ ob_start();
         }
         ?>
 
-        <ul>Vos statistiques :
+        <ul id="statistiques">Vos statistiques :
             <li>Vous avez déjà publié <?= $nbChapters; ?> 
                 <?php
                 if($nbChapters > 1) { ?> chapitres.

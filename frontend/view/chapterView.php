@@ -26,13 +26,20 @@
         <div class="row justify-content-center">
             <div id="chapterView" class="chapterView col-11 col-sm-10 col-md-8">
                 <div>
-                    <a href="<?php echo HOST; ?>prevChapter-<?= $chapter->id(); ?>" class="prev">Chapitre précédent</a>
-                    <a href="<?php echo HOST; ?>nextChapter-<?= $chapter->id(); ?>" class="next">Chapitre suivant</a>
+                    <a href="<?php echo HOST; ?>prevChapter-<?= $chapter->id(); ?>" class="prev">Précédent</a>
+                    <a href="<?php echo HOST; ?>nextChapter-<?= $chapter->id(); ?>" class="next">Suivant</a>
                 </div>
                 <div id="chapterText">
                     <h3>
                         <?= htmlspecialchars($chapter->title()) ?><br/>
-                        <span>Publié le <?= $chapter->creationDate() ?></span>
+                        <span>Publié le <?= $chapter->creationDate() ?></span><br/>
+                        <?php
+                        if($chapter->editDate()){
+                            ?>
+                            <span>Modifié le <?= $chapter->editDate() ?></span>
+                            <?php
+                        }
+                        ?>
                     </h3>
                     
                     <p>
@@ -40,8 +47,8 @@
                     </p>
                 </div>
                 <div>
-                    <a href="<?php echo HOST; ?>prevChapter-<?= $chapter->id(); ?>" class="prev">Chapitre précédent</a>
-                    <a href="<?php echo HOST; ?>nextChapter-<?= $chapter->id(); ?>" class="next">Chapitre suivant</a>
+                    <a href="<?php echo HOST; ?>prevChapter-<?= $chapter->id(); ?>" class="prev">Précédent</a>
+                    <a href="<?php echo HOST; ?>nextChapter-<?= $chapter->id(); ?>" class="next">Suivant</a>
                 </div>
             </div>
         </div>

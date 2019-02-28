@@ -25,10 +25,10 @@ ob_start();
                     <h3>
                         <a href="<?php echo HOST; ?>chapterAdmin-<?= $chapter->id(); ?>"><?= htmlspecialchars($chapter->title()) ?></a>
                     </h3>
-                    <h4>Publié le <?= $chapter->creationDate() ?><?php
+                    <h4 class="dates">Publié le <?= $chapter->creationDate() ?><?php
                         if($chapter->editDate() !== NULL){
                             ?>
-                            - Modifié le <?= $chapter->editDate() ?>
+                            <br/><span class="editDates">Modifié le <?= $chapter->editDate() ?></span>
                         <?php
                         }
                         ?>

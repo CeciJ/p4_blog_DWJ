@@ -22,9 +22,9 @@ ob_start();
 
         <br/><br/>
 
-        <a href="<?php echo HOST; ?>editChapter-<?= $chapter->id() ?>" class="editChapter">Modifier le chapitre</a>  
+        <a href="<?php echo HOST; ?>editChapter-<?= $chapter->id() ?>" class="editChapter">Modifier</a>  
 
-        <a id="deleteChapterButton" href="#" class="deleteChapter" onClick="ConfirmDelete()">Supprimer le chapitre</a><br><br>
+        <a id="deleteChapterButton" href="#" class="deleteChapter" onClick="ConfirmDelete()">Supprimer</a><br><br>
 
         <form id="fontSizeForm" name="Font-Size">
             <select name="Font-Size" onChange="ChangeFontSize()">
@@ -48,7 +48,7 @@ ob_start();
             if($chapter->editDate() !== NULL)
             {
                 ?>
-                <em> - Modifié le <?= $chapter->editDate() ?></em><br><br>
+                <em>- Modifié le <?= $chapter->editDate() ?></em><br><br>
             <?php
             }
             ?>

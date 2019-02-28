@@ -1,7 +1,7 @@
 /* GENERAL STYLES LINE 6 (including footers)*/
-/* FRONTEND LINE 88 */
-/* ADMIN LINE 426 */
-/* MEDIA QUERIES LINE 807*/
+/* FRONTEND LINE 110 */
+/* ADMIN LINE 449 */
+/* MEDIA QUERIES LINE 821*/
 
 /*-----GENERAL STYLES-----*/
 
@@ -71,6 +71,7 @@ footer.homepage{
 
 #accessAdmin{
     color: white !important;
+    width: 100%;
 }
 
 /*Connexion and Admin Footer*/
@@ -120,14 +121,14 @@ footer.homepage{
     background-size: cover;
 }
 
-.sectionHomepage {
+.sectionHomepage{
     padding-top: 100px;
     text-align: center;
     display: flex;
     flex-direction: column;
 }
 
-.animate-pop-in {
+.animate-pop-in{
     -webkit-animation: pop-in .6s cubic-bezier(0, 0.9, 0.3, 1.2) forwards;
             animation: pop-in .6s cubic-bezier(0, 0.9, 0.3, 1.2) forwards;
     opacity: 0;
@@ -137,7 +138,7 @@ h1#bigTitle{
     text-align: center;
 }
 
-#bigTitle a {      
+#bigTitle a{      
     font-family: 'Caveat', cursive;
     font-size: 7rem;
     color: black !important;
@@ -148,7 +149,7 @@ h1#bigTitle{
             animation-delay: .8s;
 }
 
-#introWelcome { 
+#introWelcome{ 
     padding-left: 2%;
     color: white;
     font-family: 'Nothing You Could Do';
@@ -177,7 +178,7 @@ h1#bigTitle{
 
 /*Homepage Animations*/
 
-@-webkit-keyframes pop-in {
+@-webkit-keyframes pop-in{
     0% {
         opacity: 0;
         -webkit-transform: translateY(-4rem) scale(.8);
@@ -190,7 +191,7 @@ h1#bigTitle{
     }
 }
 
-@keyframes pop-in {
+@keyframes pop-in{
     0% {
         opacity: 0;
         -webkit-transform: translateY(-4rem) scale(.8);
@@ -228,7 +229,6 @@ header{
     text-decoration: none;
     text-shadow: 2px 2px 4px white;
     width: 100%;
-    /*margin-left: 2.5%;*/
 }
 
 /*---List Chapters---*/
@@ -287,6 +287,15 @@ header{
     font-size: 1.3rem;
 }
 
+.dates{
+    text-align: left;
+}
+
+.editDates{
+    font-size: 1rem;
+    font-family: 'Caveat', cursive;
+}
+
 .imgChapter{
     margin-top: 10px;
     margin-bottom: 10px;
@@ -331,7 +340,10 @@ header{
 .next, .prev{
     color: black;
     border-radius: 15px;
-    padding: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 10px;
+    padding-left: 10px;
     background-color: rgba(147, 202, 224, 0.8);
     text-align: center;
     margin-bottom: 20px;
@@ -364,7 +376,7 @@ header{
     justify-content: space-between;
 }
 
-#chapterText {
+#chapterText{
     display: flex;
     flex-direction: column; 
 }
@@ -408,23 +420,13 @@ header{
     margin-top: 20px;
 }
 
-#commentsList {
+#commentsList{
     width: 100%;
 }
 
 #commentsList p{
     margin-bottom: 10px;
 }
-
-/*
-#table_comments {
-    width: 100%;
-}
-
-#table_comments_wrapper{
-    width: 100%;
-}
-*/
 
 .reportedComment{
     color: red;
@@ -452,7 +454,7 @@ h1#bigTitle.titleConnexion{
     text-align: left;
 }
 
-#bigTitle.titleConnexion a {
+#bigTitle.titleConnexion a{
     font-size: 3rem;
 }
 
@@ -478,11 +480,11 @@ h1#bigTitle.titleConnexion{
     box-shadow: inset -5px -5px 15px #888;
 }
 
-.connexionDiv p:nth-child(2) {
+.connexionDiv p:nth-child(2){
     margin-bottom: 30px;
 }
 
-.connexionDiv button {
+.connexionDiv button{
     margin-top: 20px;
     padding: 5px;
 }
@@ -526,7 +528,7 @@ header.headerAdmin{
     padding-bottom: 20px;
 }
 
-h1#bigTitleAdmin {
+h1#bigTitleAdmin{
     text-align: left;
     font-size: 4rem;
     text-decoration: none;
@@ -593,6 +595,11 @@ nav.menuAdmin{
 .sectionAdmin{
     padding-left: 50px;
     font-size: 20px;
+}
+
+#statistiques li{
+    margin-left: 20px;
+    padding-left: 15px;
 }
 
 /*---Add a chapter---*/
@@ -686,7 +693,10 @@ h1.listChapTitle{
 
 .editChapter, .deleteChapter{
     border-radius: 15px;
-    padding: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
     background-color: rgba(147, 202, 224, 0.8);
 }
 
@@ -702,16 +712,6 @@ h1.listChapTitle{
     font-size: 16px;
 }
 
-/*
-#table_comments_admin_wrapper{
-    width: 100%;
-}
-
-#table_comments_admin{
-    width: 100%;
-}
-*/
-
 /*---Edit Chapter---*/
 
 .sectionEditChapter{
@@ -720,13 +720,13 @@ h1.listChapTitle{
     font-size: 20px;
 }
 
-.sectionEditChapter .backChaptersButton {
+.sectionEditChapter .backChaptersButton{
     text-align: end;
     height: 45px;
     padding: 5px;
 }
 
-.sectionEditChapter .backChaptersButton a {
+.sectionEditChapter .backChaptersButton a{
     color: black;
 }
 
@@ -748,12 +748,6 @@ h1.listChapTitle{
     margin-bottom: 20px;
     padding: 5px;
 }
-
-/*
-#table_comments_admin{
-    width: 100%;
-}
-*/
 
 /*---Edit comments---*/
 
@@ -807,13 +801,6 @@ h1.listChapTitle{
     padding-left: 50px;
 }
 
-/*
-#table_list_users_wrapper{
-    width: 100%;
-    margin-left: 0;
-}
-*/
-
 /*---Edit Users---*/
 
 .sectionEditUser{
@@ -839,18 +826,19 @@ h1.listChapTitle{
     footer.homepage{
         font-size: 14px;
     }
-    #bigTitle a {
+    #bigTitle a{
         font-size: 5rem;
     }
-    #introWelcome { 
+    #introWelcome{ 
         margin-top: 30px;
         margin-bottom: 50px;
     }
-    #buttonWelcome {
+    #buttonWelcome{
+        margin-top: 50px;
         font-size: 1.5rem;
         width: 35%;
     }
-    #bigTitleFrontend a {
+    #bigTitleFrontend a{
         font-size: 3.5rem;
     }
     #introWelcomeFrontend{
@@ -864,7 +852,7 @@ h1.listChapTitle{
     }
     
     /*---Connexion page---*/
-    #bigTitle.titleConnexion a {
+    #bigTitle.titleConnexion a{
         font-size: 2.5rem;
     }
     #titleBookConnexion{
@@ -875,7 +863,7 @@ h1.listChapTitle{
     }
 
     /*---Admin---*/
-    h1#bigTitleAdmin {
+    h1#bigTitleAdmin{
         font-size: 3rem;
     }
     #welcomeMsgAdmin{
@@ -894,7 +882,6 @@ h1.listChapTitle{
         width: 95%;
         margin-left: 2.5%;
         margin-right: 2.5%;
-        font-size: 14px;
         display: flex;
         padding: 5px;
     }
@@ -923,21 +910,17 @@ h1.listChapTitle{
     h1.listChapTitle{
         padding-left: 5px;
     }
-
     #changeOrdenChaptersAdmin{
         margin-left: 5px;
     }
-
     .sectionListChapters{
         padding-left: 5px;
         padding-right: 5px;
         font-size: 16px;
     }
-
     .extraitChapAdmin h3 a{
         font-size: 2.5rem;
     }
-
     .extraitChapAdmin h4{
         font-size: 1.7rem;
     }
@@ -958,8 +941,7 @@ h1.listChapTitle{
         padding-right: 5px;
         font-size: 18px;
     }
-    
-    .sectionEditChapter .backChaptersButton {
+    .sectionEditChapter .backChaptersButton{
         text-align: end;
     }
 
@@ -975,7 +957,6 @@ h1.listChapTitle{
         padding-right: 5px;
         font-size: 18px;
     }
-
     .formEditComment{
         padding: 10px;
     }
@@ -986,7 +967,6 @@ h1.listChapTitle{
         padding-right: 5px;
         font-size: 18px;
     }
-
     .sectionAddUser p{
         padding: 5px;
     }
@@ -1005,18 +985,23 @@ h1.listChapTitle{
     }
 }
 
+
 @media (max-width: 576px) {
     
     /*---Frontend---*/
-    #buttonWelcome {
+    .sectionHomepage{
+        padding-top: 50px;
+    }
+    #buttonWelcome{
         font-size: 1.4rem;
         width: 50%;
         padding: 10px;
+        margin-top: 10px;
     }
-    #bigTitle a {
+    #bigTitle a{
         font-size: 4rem;
     }
-    #bigTitleFrontend a {
+    #bigTitleFrontend a{
         font-size: 3rem;
     }
     #introWelcomeFrontend{
@@ -1034,9 +1019,15 @@ h1.listChapTitle{
         margin-top: 10px;
         text-align: left;
     }
+    .next, .prev{
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-right: 10px;
+        padding-left: 10px;
+    }
 
     /*---Connexion---*/
-    #bigTitle.titleConnexion a {
+    #bigTitle.titleConnexion a{
         font-size: 2rem;
     }
     #titleBookConnexion{
@@ -1044,13 +1035,15 @@ h1.listChapTitle{
     }
     #contentConnexion{
         font-size: 16px;
+        margin-bottom: 30px;
+        margin-top: 30px;
     }
-    .connexionDiv p:nth-child(2) {
+    .connexionDiv p:nth-child(2){
         margin-bottom: 20px;
     }
 
     /*---Admin---*/
-    h1#bigTitleAdmin {
+    h1#bigTitleAdmin{
         font-size: 2.5rem;
     }
     #welcomeMsgAdmin{
@@ -1060,8 +1053,8 @@ h1.listChapTitle{
         font-size: 2rem;
     }
     nav.menuAdmin{
-        font-size: 15px;
         display: flex;
+        margin-top: -40px;
     }
     .menuAdmin ul li{
         font-size: 14px;
@@ -1093,8 +1086,7 @@ h1.listChapTitle{
     .sectionEditChapter{
         font-size: 16px;
     }
-    
-    .sectionEditChapter .backChaptersButton {
+    .sectionEditChapter .backChaptersButton{
         text-align: start;
         margin-top: 10px;
         margin-bottom: 10px;
@@ -1109,7 +1101,6 @@ h1.listChapTitle{
     .sectionEditComment{
         font-size: 16px;
     }
-
     .formEditComment{
         padding: 5px;
     }
