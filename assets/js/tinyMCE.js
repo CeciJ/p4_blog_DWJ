@@ -1,14 +1,10 @@
 tinymce.init({
     selector: '#contentEditChapter',
-    language : 'fr_FR',
-    language_url : "<?=ROOT?>assets/js/tinymce/fr_FR.js"  // site absolute URL
-    //plugins : ['advlist autolink link image lists charmap print preview'],
+    language : 'fr_FR'
 });
 tinymce.init({
     selector: '#contentNewChapter',
-    language : 'fr_FR',
-    //language_url : "<?=ROOT;?>assets/js/tinymce/fr_FR.js"  // site absolute URL
-    //plugins : ['advlist autolink link image lists charmap print preview'],
+    language : 'fr_FR'
 });
 tinymce.addI18n('fr_FR',{
     "Redo": "R\u00e9tablir",

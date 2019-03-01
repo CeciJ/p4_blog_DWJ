@@ -8,7 +8,7 @@
     <p>Vous rencontrez l'erreur suivante : <?= $errorMessage ?></p>
 
     <?php
-    if ($errorMessage == $msgErrorCon2 OR $errorMessage == $msgErrorCon)
+    if ($errorMessage == 'Tous les champs pour vous connecter ne sont pas remplis !' OR $errorMessage == 'Votre identifiant ou mot de passe est erroné !')
     {
         ?>
         <br/>
@@ -18,14 +18,14 @@
     elseif($_SESSION['id'])
     {
         ?>
-         <br/>
+        <br/>
         <a id="backHome" href="<?php HOST; ?>homeAdmin">Revenir à la page d'accueil de l'Administration</a>
         <?php
     }
     else
     {
         ?>
-         <br/>
+        <br/>
         <a id="backHome" href="<?php HOST; ?>listChapters">Revenir à la page d'accueil</a>
         <?php
     }

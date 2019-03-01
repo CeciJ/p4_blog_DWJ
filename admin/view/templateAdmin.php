@@ -89,7 +89,7 @@
         <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
 
         <!--TinyMce JS-->
-        <script src="<?php echo ASSETS; ?>js/fr_FR.js"></script>
+        <script src="<?php echo ASSETS; ?>js/tinyMCE.js"></script>
 
         <!--Main Admin JS-->
         <script src="<?php echo ASSETS; ?>js/mainBack.js"></script>

@@ -85,8 +85,7 @@ try {
                 }
                 else
                 {
-                    $msgErrorCon = 'Tous les champs pour vous connecter ne sont pas remplis !';
-                    throw new Exception($msgErrorCon);
+                    throw new Exception('Tous les champs pour vous connecter ne sont pas remplis !');
                 }
             }
         }
@@ -232,9 +231,13 @@ try {
                 }
             }
         }
+        else {
+            throw new Exception('Cette page n\'existe pas !');
+        }
     }
-    else {
-        throw new Exception('Cette page n\'existe pas !');
+    else
+    {
+        homepage();
     }
 }
 catch(Exception $e) { 

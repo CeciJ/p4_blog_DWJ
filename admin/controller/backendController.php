@@ -23,8 +23,7 @@ function connectOK($pseudo, $pass)
     }
     else
     {
-        $msgErrorCon2 = 'Votre identifiant ou mot de passe est erroné !';
-        throw new Exception($msgErrorCon2);
+        throw new Exception('Votre identifiant ou mot de passe est erroné !');
     }
 
     if($_POST['pseudo'] === $loggedUser->pseudo() && $isPasswordCorrect)
