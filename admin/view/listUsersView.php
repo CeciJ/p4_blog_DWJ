@@ -39,8 +39,8 @@ ob_start();
                         </script>
 
                         <tr>
-                            <td><?= $user->pseudo() ?></td>
-                            <td><?= $user->mail() ?></td>
+                            <td><?= htmlspecialchars($user->pseudo()); ?></td>
+                            <td><?= htmlspecialchars($user->mail()); ?></td>
                             <td><a href="<?php echo HOST; ?>editUser-<?= $user->id() ?>">Éditer</a></td>
                             <td>
                                 <?php
