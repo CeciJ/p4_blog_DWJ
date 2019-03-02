@@ -9,7 +9,22 @@ require_once(MODEL.'/ImageManager.php');
 
 function loginAdmin()
 {
-    require(ADMINVIEW.'/connexionView.php');
+    if($_SESSION['id'])
+    {
+        $chapterManager = new ChapterManager(); 
+        $chapters = $chapterManager->getChapters(); 
+        $nbChapters = $chapterManager->countChapters(); 
+
+        $commentManager = new CommentManager();
+        $commentsToModerate = $commentManager->countCommentsToModerate();
+        $nbComments = $commentManager->countComments();
+        $nbEditedComments = $commentManager->countModeratedComments();
+        require(ADMINVIEW.'/homeAdminView.php');
+    }
+    else
+    {
+        require(ADMINVIEW.'/connexionView.php');
+    }
 }
 
 function connectOK($pseudo, $pass)
@@ -47,7 +62,7 @@ function connectOK($pseudo, $pass)
     else
     {
         throw new Exception('Votre identifiant ou mot de passe est erroné !');
-    }
+    } 
 }
 
 function homeAdmin() 

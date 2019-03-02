@@ -230,6 +230,9 @@ try {
                     deleteUser($_GET['id']);
                 }
             }
+            else {
+                throw new Exception('Cette page n\'existe pas !');
+            }
         }
         else {
             throw new Exception('Cette page n\'existe pas !');
