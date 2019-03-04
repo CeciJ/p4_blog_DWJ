@@ -8,7 +8,7 @@
     <p>Vous rencontrez l'erreur suivante : <?= $errorMessage ?></p>
 
     <?php
-    if ($errorMessage == 'Tous les champs pour vous connecter ne sont pas remplis !' OR $errorMessage == 'Votre identifiant ou mot de passe est erroné !')
+    if (($errorMessage === $msgErrorCon) || ($errorMessage === $msgErrorCon2))
     {
         ?>
         <br/>

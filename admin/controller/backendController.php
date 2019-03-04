@@ -61,7 +61,8 @@ function connectOK($pseudo, $pass)
     }
     else
     {
-        throw new Exception('Votre identifiant ou mot de passe est erroné !');
+        $msgErrorCon = 'Votre identifiant ou mot de passe est erroné !';
+        throw new Exception($msgErrorCon);
     } 
 }
 
