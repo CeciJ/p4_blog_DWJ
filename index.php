@@ -83,8 +83,8 @@ try {
                 }
                 else
                 {
-                    $msgErrorCon2 = 'Tous les champs pour vous connecter ne sont pas remplis !';
-                    throw new Exception($msgErrorCon2);
+                    $msgErrorConnexion3 = 'Tous les champs pour vous connecter ne sont pas remplis !';
+                    throw new Exception($msgErrorConnexion3);
                 }
             }
         }

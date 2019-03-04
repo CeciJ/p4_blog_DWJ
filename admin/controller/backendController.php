@@ -32,38 +32,46 @@ function connectOK($pseudo, $pass)
     $userManager = new UserManager();
     $loggedUser = $userManager->getUser($pseudo);
 
-    if($loggedUser)
-    {
-        $isPasswordCorrect = password_verify($_POST['password'], $loggedUser->pass());
+    try {
+        if($loggedUser)
+        {
+            $isPasswordCorrect = password_verify($_POST['password'], $loggedUser->pass());
+
+            if($_POST['pseudo'] === $loggedUser->pseudo() && $isPasswordCorrect)
+            {
+                $userManager = new UserManager();
+                $loggedUser = $userManager->getUser($pseudo);
+                $_SESSION['id'] = $loggedUser->id();
+                $_SESSION['pseudo'] = $loggedUser->pseudo();
+
+                $chapterManager = new ChapterManager(); 
+                $chapters = $chapterManager->getChapters(); 
+                $nbChapters = $chapterManager->countChapters(); 
+
+                $commentManager = new CommentManager();
+                $commentsToModerate = $commentManager->countCommentsToModerate();
+                $nbComments = $commentManager->countComments();
+                $nbEditedComments = $commentManager->countModeratedComments();
+
+                require(ADMINVIEW.'/homeAdminView.php');
+            }
+            else
+            {
+                $msgErrorConnexion1 = 'Votre identifiant ou mot de passe est erroné !';
+                throw new Exception($msgErrorConnexion1);
+            } 
+        }
+        else
+        {
+            $msgErrorConnexion2 = 'Votre identifiant ou mot de passe est erroné !';
+            throw new Exception($msgErrorConnexion2);
+            require(FRONTVIEW.'/errorView.php');
+        }
     }
-    else
-    {
-        throw new Exception('Votre identifiant ou mot de passe est erroné !');
+    catch(Exception $e) { 
+        $errorMessage = $e->getMessage();
+        require(FRONTVIEW.'/errorView.php');
     }
-
-    if($_POST['pseudo'] === $loggedUser->pseudo() && $isPasswordCorrect)
-    {
-        $userManager = new UserManager();
-        $loggedUser = $userManager->getUser($pseudo);
-        $_SESSION['id'] = $loggedUser->id();
-        $_SESSION['pseudo'] = $loggedUser->pseudo();
-
-        $chapterManager = new ChapterManager(); 
-        $chapters = $chapterManager->getChapters(); 
-        $nbChapters = $chapterManager->countChapters(); 
-
-        $commentManager = new CommentManager();
-        $commentsToModerate = $commentManager->countCommentsToModerate();
-        $nbComments = $commentManager->countComments();
-        $nbEditedComments = $commentManager->countModeratedComments();
-
-        require(ADMINVIEW.'/homeAdminView.php');
-    }
-    else
-    {
-        $msgErrorCon = 'Votre identifiant ou mot de passe est erroné !';
-        throw new Exception($msgErrorCon);
-    } 
 }
 
 function homeAdmin() 

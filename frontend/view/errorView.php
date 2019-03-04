@@ -8,7 +8,7 @@
     <p>Vous rencontrez l'erreur suivante : <?= $errorMessage ?></p>
 
     <?php
-    if (($errorMessage === $msgErrorCon) || ($errorMessage === $msgErrorCon2))
+    if (($errorMessage === $msgErrorConnexion1) || ($errorMessage === $msgErrorConnexion2) || ($errorMessage === $msgErrorConnexion3))
     {
         ?>
         <br/>
