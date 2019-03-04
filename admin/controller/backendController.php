@@ -204,6 +204,11 @@ function editChapter($chapterId, $newTitle, $newContent)
 
 function deleteChapter($chapterId)
 {
+    
+    $image = ROOT .'images/' . $chapterId . '.jpg';
+    $delImage = new ImageManager($image);
+    $msgSuppression = $delImage->delete($image);
+    
     $chapterManager = new ChapterManager();
     $deletedChapter = $chapterManager->delete($_GET['id']);
     $deletedCommentsChapter = $chapterManager->deleteFromChapters($_GET['id']);

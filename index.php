@@ -8,8 +8,6 @@ session_start();
 
 $action = $_GET['action'];
 
-// FRONT
-
 try {
     
     if (isset($_GET['action'])) {

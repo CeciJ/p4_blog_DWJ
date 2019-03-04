@@ -2,11 +2,6 @@
 
 <?php ob_start(); ?>
 
-<?php
-echo $_SESSION['id'];
-echo $_SESSION['pseudo'];
-?>
-
     <p id="introWelcomeFrontend">Plongez-vous dès maintenant dans les aventures de ce livre !</p>
 
     <div id="changeOrdenChapters">

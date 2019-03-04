@@ -75,6 +75,50 @@ class ImageManager {
         return $this;
     }
 
+    public function delete($filename) {
+       if (file_exists ($filename)) {
+            unlink($filename);
+            return 'Fichier supprimé';
+       } else {
+           return 'Fichier inexistant';
+       }
+            
+        /* // Ouvre un dossier bien connu, et liste tous les fichiers
+        // Pour chaque fichier on extrait le partie avant l'extension
+            // Si le nom du fichier avant l'extension est = au idchpter
+                // Alors on efface ce fichier
+                $dir = ROOT."images/";
+                
+                if (is_dir($dir)) {
+
+                    echo "Le dossier est bien un dossier";
+        
+                    if ($dh = opendir($dir)) {
+        
+                        echo "On est bien entré dans le dossier";
+        
+                        while (($file = readdir($dh)) !== false) {
+        
+                            echo $file . ' ';
+                            $detailsFile = pathinfo($file);
+                            echo $detailsFile['filename'] . ' ' . $detailsFile['extension'] . ' ' . $detailsFile['dirname'] . ' ' . $detailsFile['basename'];
+        
+                            if ($detailsFile['filename'] === $chapterId)
+                            {
+                                echo "filename et chapter sont égaux";
+        
+                                fclose($file);
+                                //unlink($detailsFile['basename']);
+                                $result = unlink(realpath($file));
+                                echo $result;
+                            }
+                        }
+                        closedir($dh);
+                    }
+                } 
+                */
+    }
+
     public function filename() {
 
         return $this->filename;
