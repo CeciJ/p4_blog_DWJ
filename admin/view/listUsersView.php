@@ -5,7 +5,7 @@ ob_start();
 
     <div class="sectionViewUsers">
 
-        <h1>Liste des administrateurs autorisés</h1><br>
+        <h2>Liste des administrateurs autorisés</h2><br>
 
         <table id="table_list_users" class="display">
             <thead>

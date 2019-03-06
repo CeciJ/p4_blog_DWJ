@@ -38,7 +38,7 @@
                     </h4>
                     
                     <div class="imgChapter">
-                        <img src="<?= HOST; ?>images/<?= $chapter->id(); ?>">
+                        <img src="<?= HOST; ?>images/<?= $chapter->id(); ?>" alt="image Alaska">
                     </div>
 
                     <?php

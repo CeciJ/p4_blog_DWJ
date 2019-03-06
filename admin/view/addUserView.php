@@ -15,7 +15,7 @@ ob_start();
         else
         {
             ?>
-            <h1>Ajouter un nouvel utilisateur</h1><br/>
+            <h2>Ajouter un nouvel utilisateur</h2><br/>
 
             <form action="<?php echo HOST; ?>newUser" method="post" class="formAddUser">
                 <div>
@@ -29,7 +29,7 @@ ob_start();
                     </label>
                 </div>
                 <div>
-                    <label for="pass">Mot de passe : </label>
+                    <label for="pass">Mot de passe :
                         <input type="password" id="pass" name="pass" />
                     </label>
                 </div>
@@ -41,7 +41,7 @@ ob_start();
         }
         ?>
     
-    <div>
+    </div>
 
 <?php 
 $content = ob_get_clean();

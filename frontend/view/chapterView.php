@@ -90,16 +90,17 @@
                                 if($chapter->nbComments() > 1) 
                                 { 
                                     ?> 
-                                    commentaires reçus : </p>
+                                    commentaires reçus :
                                 <?php 
                                 } 
                                 else 
                                 { 
                                     ?> 
-                                    commentaire reçu : </p>
+                                    commentaire reçu :
                                 <?php
                                 }
                                 ?>
+                            </p>
 
                             <table id="table_comments" class="display">
                                 <thead>

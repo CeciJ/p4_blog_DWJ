@@ -4,7 +4,7 @@ ob_start();
 ?> 
 
     <div class="sectionAddChapter">   
-        <h1>Ajouter un chapitre</h1><br/>
+        <h2>Ajouter un chapitre</h2><br/>
         
         <form action="<?php echo HOST; ?>addChapter" method="post" enctype="multipart/form-data">
             <div>

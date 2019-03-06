@@ -5,7 +5,7 @@ ob_start();
 
     <div class="sectionModerComments">   
 
-        <h1>Commentaires à modérer</h1><br/>
+        <h2>Commentaires à modérer</h2><br/>
         
         <?php
         if($commentsToModerate)

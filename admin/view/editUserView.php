@@ -5,7 +5,7 @@ ob_start();
 
     <div class="sectionEditUser">
         <div class="formEditUser">
-            <h1>Modifier les informations de l'administrateur : <?php echo $editUser->pseudo(); ?></h1><br/>
+            <h2>Modifier les informations de l'administrateur : <?php echo $editUser->pseudo(); ?></h2><br/>
 
             <form action="<?php echo HOST; ?>editUser-<?= $editUser->id(); ?>" method="post">
                 <div>

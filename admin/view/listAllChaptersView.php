@@ -3,12 +3,12 @@ $title = 'Ma plateforme d\'administration';
 ob_start(); 
 ?>
 
-<h1 class="listChapTitle">Liste des chapitres du blog</h1>
+<h2 class="listChapTitle">Liste des chapitres du blog</h2>
     <div id="changeOrdenChaptersAdmin">
         <form id="changeOrdenChaptersForm" name="OrdenChapters">
             <select name="OrdenChapters" onChange="location = this.options[this.selectedIndex].value;">
                 <option value="">Ordre pour voir les chapitres</option>
-                <option value="<?php echo HOST; ?>listAllChapters-ASC"">Du plus ancien au plus récent</option>
+                <option value="<?php echo HOST; ?>listAllChapters-ASC">Du plus ancien au plus récent</option>
                 <option value="<?php echo HOST; ?>listAllChapters-DESC">Du plus récent au plus ancien</option>
             </select>
         </form>
@@ -34,13 +34,14 @@ ob_start();
                         ?>
                     </h4>
                     <div class="imgChapterAdmin">
-                        <img src="<?= HOST; ?>images/<?= $chapter->id() ?>.jpg">
+                        <img src="<?= HOST; ?>images/<?= $chapter->id() ?>.jpg" alt="image Alaska">
                     </div>
                     <p class="extractChapter">
                         <?php
                         $tab = explode(' ', $chapter->content(), (LIMIT+1));
                         if(count($tab) > LIMIT){array_pop($tab); }
-                        echo (implode(' ', $tab)); ?>
+                        echo (implode(' ', $tab)); 
+                        ?>
                         <a href="<?php echo HOST; ?>chapterAdmin-<?= $chapter->id()  ?>" class="clickExcerpt">...</a><br />
                     </p>
                 </div>

@@ -5,7 +5,7 @@ ob_start();
 
     <div class="sectionAdmin">
 
-    <h1>Bienvenue sur votre page d'administration !</h1><br/>
+    <h2>Bienvenue sur votre page d'administration !</h2><br/>
         <?php
         if($commentsToModerate){
         ?>
@@ -26,7 +26,8 @@ ob_start();
         }
         ?>
 
-        <ul id="statistiques">Vos statistiques :
+        <h3>Vos statistiques :</h3>
+        <ul id="statistiques">
             <li>Vous avez déjà publié <?= $nbChapters; ?> 
                 <?php
                 if($nbChapters > 1) { ?> chapitres.
