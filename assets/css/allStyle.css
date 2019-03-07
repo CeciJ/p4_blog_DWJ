@@ -749,8 +749,8 @@ h2.listChapTitle{
     font-size: 20px;
 }
 
-.sectionEditChapter .backChaptersButton{
-    text-align: end;
+.sectionEditChapter.backChaptersButton{
+    text-align: left;
     height: 45px;
     padding: 5px;
 }
@@ -762,6 +762,10 @@ h2.listChapTitle{
 #editTitle{
     display: flex;
     justify-content: space-between;
+}
+
+.sectionEditChapter form{
+    margin-top: 20px;
 }
 
 /*---Moderate comments---*/

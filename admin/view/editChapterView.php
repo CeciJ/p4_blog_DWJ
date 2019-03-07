@@ -15,8 +15,7 @@ ob_start();
     <?php 
     } else {
     ?>
-        <div class="col-12 col-sm-12 col-md-6 backChaptersButton"><a href="<?= HOST; ?>chapterAdmin-<?= $chapter->id() ?>" class="editChapter">Retourner au chapitre</a></div>
-        </div>
+        <a href="<?= HOST; ?>chapterAdmin-<?= $chapter->id() ?>" class="editChapter">Retourner au chapitre</a>
 
         <form action="<?= HOST; ?>editChapter-<?= $chapter->id(); ?>" method="post">
             <div>
