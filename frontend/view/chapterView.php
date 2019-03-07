@@ -3,9 +3,11 @@
 
     <div class="sectionViewChapterLector container-fluid">
 
-        <?php if ($newComment) { ?>
+        <?php if (isset($newComment)) {
+            if ($newComment) { ?>
             <div id="msgConfirNewComment"><?= $newComment; ?></div>
-        <?php } ?>
+        <?php } 
+        }?>
         
         <div class="row buttonsBackAndChgeText justify-content-between">
             <div class="col-12 col-sm-6 col-md-6">

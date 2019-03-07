@@ -7,9 +7,11 @@ ob_start();
 
     <h2>Commentaires à modérer</h2><br/>
     
-    <?php if ($msgEditCommentOk) { ?>
+    <?php if (isset($msgEditCommentOk)) {
+        if($msgEditCommentOk) { ?>
         <div id="msgEditCommentOk"><?= $msgEditCommentOk; ?></div>
-    <?php } ?>
+    <?php } 
+    }?>
 
     <?php if($commentsToModerate) 
     { ?>

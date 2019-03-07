@@ -7,9 +7,11 @@ ob_start();
 
     <h2>Liste des administrateurs autorisés</h2><br>
 
-    <?php if ($msgEditUserOk) { ?>
+    <?php if (isset($msgEditUserOk)) { 
+        if ($msgEditUserOk) { ?>
         <div id="msgEditCommentOk"><?= $msgEditUserOk; ?></div>
-    <?php } ?>
+    <?php } 
+    }?>
 
     <table id="table_list_users" class="display">
         <thead>
