@@ -9,7 +9,7 @@ require_once(MODEL.'/ImageManager.php');
 
 function loginAdmin()
 {
-    if($_SESSION['pseudo'])
+    if(isset($_SESSION['pseudo']))
     {
         $chapterManager = new ChapterManager(); 
         $chapters = $chapterManager->getChapters(); 
