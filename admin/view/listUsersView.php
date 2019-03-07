@@ -23,7 +23,7 @@ ob_start();
 
         <tbody>
             <?php
-                foreach($users as $user) //while ($data = $chapters->fetch())
+                foreach($users as $user)
                 {
                 ?>
 
