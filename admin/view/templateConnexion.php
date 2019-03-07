@@ -14,7 +14,7 @@
         <link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet">
         
         <!--All CSS-->
-        <link href="<?php echo ASSETS; ?>css/allStyle.css" rel="stylesheet" />
+        <link href="<?= ASSETS; ?>css/allStyle.css" rel="stylesheet" />
     </head>
         
     <body>
@@ -22,7 +22,7 @@
         <div class="page">
             <header>
                 <h1 id="bigTitle" class="titleConnexion">
-                    <a href="<?php echo HOST; ?>listChapters">Ma plateforme d'administration<br>
+                    <a href="<?= HOST; ?>listChapters">Ma plateforme d'administration<br>
                         <span id="titleBookConnexion">Billet simple pour l'Alaska</span>
                     </a>
                 </h1>
@@ -36,7 +36,7 @@
             <footer class="homepage">
                 <div class="row divFooter">
                     <div class="col-6">
-                        <a href="<?php echo HOST; ?>legalMentions" id="legalMentions">Mentions légales</a>
+                        <a href="<?= HOST; ?>legalMentions" id="legalMentions">Mentions légales</a>
                     </div> 
                     <div class="col-6 reservedRights">Tous droits réservés 2019</div>
                 </div>

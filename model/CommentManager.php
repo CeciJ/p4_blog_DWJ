@@ -9,7 +9,6 @@ class CommentManager extends Manager
     public function getComments($chapterId)
     {
         $db = $this->dbConnect();
-
         $req = $db->prepare('
             SELECT id, title, content, author, DATE_FORMAT(creationDate, \'%d/%m/%Y à %Hh%imin%ss\') AS creationDateFr, DATE_FORMAT(editDate, \'%d/%m/%Y à %Hh%imin%ss\') AS editDateFr, reported
             FROM comments 
@@ -37,7 +36,6 @@ class CommentManager extends Manager
     public function countComments()
     {
         $db = $this->dbConnect();
-
         $req = $db->query('SELECT COUNT(id) FROM comments');
         $nbComments = $req->fetchColumn();
 
@@ -48,10 +46,17 @@ class CommentManager extends Manager
     public function addComment($chapterId, $title, $author, $content)
     {
         $db = $this->dbConnect();
-        $comments = $db->prepare('
-            INSERT INTO comments(chapter, title, author, content, creationDate) 
-            VALUES(?, ?, ?, ?, NOW())');
-        $affectedLines = $comments->execute(array($chapterId, $title, $author, $content));
+        $comments = $db->prepare('INSERT INTO comments(chapter, title, author, content, creationDate) VALUES(?, ?, ?, ?, NOW())');
+        $newComment = $comments->execute(array($chapterId, $title, $author, $content));
+
+        if($newComment === true) 
+        {
+            return 'Votre commentaire a bien été ajouté !';
+        }
+        else
+        {
+            throw new Exception('Impossible d\'ajouter le commentaire !');
+        }
     }
 
     // To report a comment. Update "reported" to true in the database
@@ -78,9 +83,8 @@ class CommentManager extends Manager
     public function countModeratedComments()
     {
         $db = $this->dbConnect();
-
-        $req2 = $db->query('SELECT COUNT(id) FROM comments WHERE editDate IS NOT NULL');
-        $nbEditedComments = $req2->fetchColumn();
+        $req = $db->query('SELECT COUNT(id) FROM comments WHERE editDate IS NOT NULL');
+        $nbEditedComments = $req->fetchColumn();
 
         return $nbEditedComments;
     }
@@ -89,7 +93,6 @@ class CommentManager extends Manager
     public function countCommentsToModerate()
     {
         $db = $this->dbConnect();
-
         $req = $db->query('SELECT COUNT(id) FROM comments WHERE reported = TRUE');
         $nbComments = $req->fetchColumn();
         
@@ -135,7 +138,6 @@ class CommentManager extends Manager
     public function getComment($commentId)
     {
         $db = $this->dbConnect();
-
         $req = $db->prepare('
             SELECT id, chapter, title, content, author, DATE_FORMAT(creationDate, \'%d/%m/%Y à %Hh%imin%ss\') AS creationDateFr 
             FROM comments 
@@ -160,7 +162,6 @@ class CommentManager extends Manager
     public function editComment($commentId, $newTitle, $newContent)
     {
         $db = $this->dbConnect();
-
         $editComment = $db->prepare('
             UPDATE comments 
             SET title = :newTitle, content = :newContent, editDate = NOW(), reported = FALSE 

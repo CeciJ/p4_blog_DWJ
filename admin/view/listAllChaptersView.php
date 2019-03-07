@@ -4,12 +4,13 @@ ob_start();
 ?>
 
 <h2 class="listChapTitle">Liste des chapitres du blog</h2>
+
     <div id="changeOrdenChaptersAdmin">
         <form id="changeOrdenChaptersForm" name="OrdenChapters">
             <select name="OrdenChapters" onChange="location = this.options[this.selectedIndex].value;">
                 <option value="">Ordre pour voir les chapitres</option>
-                <option value="<?php echo HOST; ?>listAllChapters-ASC">Du plus ancien au plus récent</option>
-                <option value="<?php echo HOST; ?>listAllChapters-DESC">Du plus récent au plus ancien</option>
+                <option value="<?= HOST; ?>listAllChapters-ASC">Du plus ancien au plus récent</option>
+                <option value="<?= HOST; ?>listAllChapters-DESC">Du plus récent au plus ancien</option>
             </select>
         </form>
     </div>
@@ -23,38 +24,39 @@ ob_start();
             ?>
                 <div class="extraitChapAdmin">
                     <h3>
-                        <a href="<?php echo HOST; ?>chapterAdmin-<?= $chapter->id(); ?>"><?= htmlspecialchars($chapter->title()) ?></a>
+                        <a href="<?= HOST; ?>chapterAdmin-<?= $chapter->id(); ?>"><?= htmlspecialchars($chapter->title()) ?></a>
                     </h3>
-                    <h4 class="dates">Publié le <?= $chapter->creationDate() ?><?php
-                        if($chapter->editDate() !== NULL){
-                            ?>
-                            <br/><span class="editDates">Modifié le <?= $chapter->editDate() ?></span>
-                        <?php
-                        }
-                        ?>
+                    <h4 class="dates">Publié le <?= $chapter->creationDate() ?>
+                        <?php if($chapter->editDate() !== NULL){ ?>
+                                <br/><span class="editDates">Modifié le <?= $chapter->editDate() ?></span>
+                        <?php } ?>
                     </h4>
                     <div class="imgChapterAdmin">
-                        <img src="<?= HOST; ?>images/<?= $chapter->id() ?>.jpg" alt="image Alaska">
+                        <img src="<?= HOST; ?>images/<?= $chapter->id(); ?>" alt="image Alaska">
                     </div>
-                    <p class="extractChapter">
-                        <?php
-                        $tab = explode(' ', $chapter->content(), (LIMIT+1));
-                        if(count($tab) > LIMIT){array_pop($tab); }
-                        echo (implode(' ', $tab)); 
-                        ?>
-                        <a href="<?php echo HOST; ?>chapterAdmin-<?= $chapter->id()  ?>" class="clickExcerpt">...</a><br />
-                    </p>
+                    <?php
+                        $textChapter = $chapter->content();
+                        $textOK = strip_tags($textChapter);
+                        $tab = explode(' ', $textOK, (LIMIT+1));
+                        if(count($tab) > LIMIT)
+                        {
+                            array_pop($tab); 
+                        }
+                        $text = implode(' ', $tab);
+                    ?>
+                    <?= $text; ?>
+                    <a href="<?= HOST; ?>chapter-<?= $chapter->id(); ?>" class="clickExcerpt">...cliquez ici pour lire la suite</a>
                 </div>
             <?php
             }
         }
         else
         {
-            ?>
+        ?>
             <div id="noChapters">Vous n'avez pas encore publié de chapitres !</div>
-            <?php
+        <?php
         }
-            ?> 
+        ?> 
     </div>
 
 <?php

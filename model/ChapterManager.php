@@ -19,7 +19,7 @@ class ChapterManager extends Manager
         $req = $db->query('
             SELECT id, title, content, DATE_FORMAT(creationDate, \'%d/%m/%Y\') AS creationDateFr, DATE_FORMAT(editDate, \'%d/%m/%Y\') AS editDateFr, nbComments
             FROM chapters 
-            ORDER BY creationDate '.$order
+            ORDER BY creationDate ' . $order
         );
 
         while($data = $req->fetch(PDO::FETCH_ASSOC)){
@@ -42,11 +42,7 @@ class ChapterManager extends Manager
     public function getIdChapters()
     {
         $db = $this->dbConnect();
-
-        $req = $db->query('
-            SELECT id, title
-            FROM chapters 
-        ');
+        $req = $db->query('SELECT id, title FROM chapters');
 
         $tab = array();
 
@@ -62,18 +58,26 @@ class ChapterManager extends Manager
     public function countChapters()
     {
         $db = $this->dbConnect();
-
         $req = $db->query('SELECT COUNT(id) FROM chapters');
         $nbChapters = $req->fetchColumn();
 
         return $nbChapters;
     }
 
+    // To get the last chapter Id in database
+    public function lastIdRegistered()
+    {
+        $db = $this->dbConnect();
+        $req = $db->query('SELECT MAX(id) AS max_id FROM chapters');
+        $result = $req->fetch();
+
+        return $result['max_id'];
+    }
+
     // To know how many comments are there by chapter. This function is called in getChapter($chapterId) function.
     public function getCommentsChapters($chapterId)
     {
         $db = $this->dbConnect();
-
         $req = $db->prepare('SELECT * FROM comments WHERE chapter = ?');
         $req->execute(array($chapterId));
         $result = $req->rowcount();
@@ -115,9 +119,7 @@ class ChapterManager extends Manager
     public function addChapter($title, $content)
     {
         $db = $this->dbConnect();
-        $req = $db->prepare('
-            INSERT INTO chapters(title, content, creationDate) 
-            VALUES(:title, :content, NOW())');
+        $req = $db->prepare('INSERT INTO chapters(title, content, creationDate) VALUES(:title, :content, NOW())');
         $result = $req->execute(array(
             'title' => $title, 
             'content' => $content
@@ -158,16 +160,6 @@ class ChapterManager extends Manager
     {
         $db = $this->dbConnect();
         $db->exec('DELETE FROM comments WHERE chapter = '. $chapterId);
-    }
-
-    // To get the last Id in database
-    public function lastIdRegistered()
-    {
-        $db = $this->dbConnect();
-        $req = $db->query('SELECT MAX(id) AS max_id FROM chapters');
-        $result = $req->fetch();
-
-        return $result['max_id'];
     }
 }
 

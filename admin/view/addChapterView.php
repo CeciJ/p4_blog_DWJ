@@ -3,10 +3,17 @@ $title = 'Ajouter un chapitre';
 ob_start(); 
 ?> 
 
-    <div class="sectionAddChapter">   
-        <h2>Ajouter un chapitre</h2><br/>
-        
-        <form action="<?php echo HOST; ?>addChapter" method="post" enctype="multipart/form-data">
+<div class="sectionAddChapter">   
+
+    <h2>Ajouter un chapitre</h2>
+    
+    <?php if (isset($_POST['title']) && isset($_FILES['photo']) && isset($_POST['content'])) { ?>
+        <div class="msgConfirNewAndEdit">Le nouveau chapitre a bien été ajouté !</div>
+        <a href="<?= HOST; ?>addChapter" class="msgPublishOrEditNew col-sm-6 col-md-4">Publier un autre chapitre</a>
+    <?php 
+    } else {
+    ?>
+        <form action="<?= HOST; ?>addChapter" method="post" enctype="multipart/form-data">
             <div>
                 <label for="title">Titre du chapitre : 
                     <input type="text" id="title" name="title"/>
@@ -20,15 +27,17 @@ ob_start();
                 </label> 
             </div>
             <div>
-                <label for="content">Contenu : </label>
+                <label for="contentNewChapter">Contenu : </label>
                 <textarea id="contentNewChapter" name="content" rows="15" cols="100"></textarea>
             </div>
             <div>
-                <input type="submit" />    
+                <button type="submit">Publier</button>    
             </div>
         </form>
-
-    </div>
+    <?php
+    }
+    ?>
+</div>
 
 <?php 
 $content = ob_get_clean();

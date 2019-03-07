@@ -18,7 +18,7 @@
         <link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet">
         
         <!--All CSS-->
-        <link href="<?php echo ASSETS; ?>css/allStyle.css" rel="stylesheet" />
+        <link href="<?= ASSETS; ?>css/allStyle.css" rel="stylesheet" />
 
         <!--TinyMce-->
         <script src="https://cloud.tinymce.com/5/tinymce.min.js?apiKey=9uyf4ek30xitcw0v12529n8aftz8d8kcu4iku61m0nwef8dc"></script>
@@ -28,12 +28,12 @@
         <div class="pageAdmin">
             <header class="headerAdmin">
                 <h1 id="bigTitleAdmin" class="titleAdmin">
-                    <a href="<?php echo HOST; ?>homeAdmin">Ma plateforme d'administration</a>
+                    <a href="<?= HOST; ?>homeAdmin">Ma plateforme d'administration</a>
                 </h1>
                 <div class="row justify-content-between container-fluid">
-                    <div id="welcomeMsgAdmin" class="col-12 col-sm-10 col-md-10">Bienvenue <strong><?php echo $_SESSION['pseudo']; ?></strong></div>
+                    <div id="welcomeMsgAdmin" class="col-12 col-sm-10 col-md-10">Bienvenue <strong><?= $_SESSION['pseudo']; ?></strong></div>
                     <div id="deconnectAdmin" class="col-4 col-sm-2 col-md-2">
-                        <a href="<?php echo HOST; ?>deconnect">Déconnexion</a>
+                        <a href="<?= HOST; ?>deconnect">Déconnexion</a>
                     </div>
                 </div>
             </header>
@@ -44,22 +44,22 @@
                 <nav class="menuAdmin">
                     <ul>
                         <li>
-                            <a href="<?php echo HOST; ?>homeAdmin">Page d'accueil</a>
+                            <a href="<?= HOST; ?>homeAdmin">Page d'accueil</a>
                         </li>
                         <li>
-                            <a href="<?php echo HOST; ?>addChapter">Publier un nouveau chapitre</a>
+                            <a href="<?= HOST; ?>addChapter">Publier un nouveau chapitre</a>
                         </li>
                         <li>
-                            <a href="<?php echo HOST; ?>listAllChapters">Voir, modifier ou supprimer les chapitres publiés</a>
+                            <a href="<?= HOST; ?>listAllChapters">Voir, modifier ou supprimer les chapitres publiés</a>
                         </li>
                         <li>
-                            <a href="<?php echo HOST; ?>getCommentsToModerate">Modérer les commentaires signalés</a>
+                            <a href="<?= HOST; ?>getCommentsToModerate">Modérer les commentaires signalés</a>
                         </li>
                         <li>
-                            <a href="<?php echo HOST; ?>newUser">Ajouter un nouvel administrateur</a>
+                            <a href="<?= HOST; ?>newUser">Ajouter un nouvel administrateur</a>
                         </li>
                         <li>
-                            <a href="<?php echo HOST; ?>listUsers">Voir tous les administrateurs</a>
+                            <a href="<?= HOST; ?>listUsers">Voir tous les administrateurs</a>
                         </li>
                     </ul>
                 </nav>
@@ -72,7 +72,7 @@
             <footer class="homepage">
                 <div class="row divFooter">
                     <div class="col-6">
-                        <a href="<?php echo HOST; ?>legalMentions" id="legalMentions">Mentions légales</a>
+                        <a href="<?= HOST; ?>legalMentions" id="legalMentions">Mentions légales</a>
                     </div> 
                     <div class="col-6 reservedRights">Tous droits réservés 2019</div>
                 </div>
@@ -89,9 +89,9 @@
         <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
 
         <!--TinyMce JS-->
-        <script src="<?php echo ASSETS; ?>js/tinyMCE.js"></script>
+        <script src="<?= ASSETS; ?>js/tinyMCE.js"></script>
 
         <!--Main Admin JS-->
-        <script src="<?php echo ASSETS; ?>js/mainBack.js"></script>
+        <script src="<?= ASSETS; ?>js/mainBack.js"></script>
     </body>
 </html>

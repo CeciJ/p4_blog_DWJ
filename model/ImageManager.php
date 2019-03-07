@@ -2,8 +2,10 @@
 
 class ImageManager {
 
-    public function __construct($filename) {
+    // Constructor, file as parameter
 
+    public function __construct($filename) 
+    {
         if (is_file($filename)) 
         {
             $this->filename  = $filename;
@@ -18,8 +20,10 @@ class ImageManager {
         }
     }
 
-    public function resize_to($max_width, $max_height) {
+    // To resize the uploaded photo in new chapter
 
+    public function resize_to($max_width, $max_height) 
+    {
         //If image dimension is smaller, do not resize
         if ($this->info[0] <= $max_width && $this->info[1] <= $max_height) 
         {
@@ -62,7 +66,10 @@ class ImageManager {
         return $this;
     }
 
-    public function save_as($filename) {
+    // To save the photo and limit authorized formats
+
+    public function save_as($filename) 
+    {
         switch($this->info[2]) 
         {
             case IMAGETYPE_PNG:  imagepng ($this->resource(), $filename); break;
@@ -75,6 +82,8 @@ class ImageManager {
         return $this;
     }
 
+    // To delete the saved photo when deleting the chapter
+
     public function delete($filename) {
        if (file_exists ($filename)) {
             unlink($filename);
@@ -82,42 +91,9 @@ class ImageManager {
        } else {
            return 'Fichier inexistant';
        }
-            
-        /* // Ouvre un dossier bien connu, et liste tous les fichiers
-        // Pour chaque fichier on extrait le partie avant l'extension
-            // Si le nom du fichier avant l'extension est = au idchpter
-                // Alors on efface ce fichier
-                $dir = ROOT."images/";
-                
-                if (is_dir($dir)) {
-
-                    echo "Le dossier est bien un dossier";
-        
-                    if ($dh = opendir($dir)) {
-        
-                        echo "On est bien entré dans le dossier";
-        
-                        while (($file = readdir($dh)) !== false) {
-        
-                            echo $file . ' ';
-                            $detailsFile = pathinfo($file);
-                            echo $detailsFile['filename'] . ' ' . $detailsFile['extension'] . ' ' . $detailsFile['dirname'] . ' ' . $detailsFile['basename'];
-        
-                            if ($detailsFile['filename'] === $chapterId)
-                            {
-                                echo "filename et chapter sont égaux";
-        
-                                fclose($file);
-                                //unlink($detailsFile['basename']);
-                                $result = unlink(realpath($file));
-                                echo $result;
-                            }
-                        }
-                        closedir($dh);
-                    }
-                } 
-                */
     }
+
+    // GETTERS
 
     public function filename() {
 

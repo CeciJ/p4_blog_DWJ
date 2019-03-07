@@ -67,12 +67,6 @@ class Comment
 
     public function setTitle($title)
     {
-        /*
-        if (!is_string($title) || empty($title))
-        {
-            $this->erreurs[] = self::TITRE_INVALIDE;
-        }
-        */
 
         $this->title = $title;
     }

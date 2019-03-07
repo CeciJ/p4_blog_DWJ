@@ -45,3 +45,11 @@ function ChangeFontSize(){
         }
     });
 }
+
+//To disappear the message of confirmation when posting a new comment
+(function disappearMsg(){
+    console.log('OK detecté');
+    setTimeout(function(){
+        $('#msgConfirNewComment').hide(); 
+    }, 5000);
+}())

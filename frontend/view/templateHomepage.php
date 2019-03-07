@@ -17,7 +17,7 @@
         <link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet">
         
         <!--All CSS-->
-        <link href="<?php echo ASSETS; ?>css/allStyle.css" rel="stylesheet" />
+        <link href="<?= ASSETS; ?>css/allStyle.css" rel="stylesheet" />
     </head>
     <body class="pageHomepage">
 
@@ -31,10 +31,10 @@
             <footer class="homepage">
                 <div class="row divFooter">
                     <div class="col-6">
-                        <a href="<?php echo HOST; ?>legalMentions" id="legalMentions">Mentions légales</a>
+                        <a href="<?= HOST; ?>legalMentions" id="legalMentions">Mentions légales</a>
                     </div> 
                     <div class="col-6 divAccessAdmin">
-                        <a id="accessAdmin" href="<?php echo HOST; ?>login">Administration</a>
+                        <a id="accessAdmin" href="<?= HOST; ?>login">Administration</a>
                     </div>
                     <div class="col-12">Tous droits réservés 2019</div>
                 </div>
@@ -46,6 +46,6 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
         
         <!--Main Front JS-->
-        <script src="<?php echo ASSETS; ?>js/mainFront.js"></script>
+        <script src="<?= ASSETS; ?>js/mainFront.js"></script>
     </body>
 </html>

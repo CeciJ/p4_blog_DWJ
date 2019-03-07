@@ -1,7 +1,7 @@
 /* GENERAL STYLES LINE 6 (including footers)*/
 /* LECTOR INTERFACE LINE 116 */
-/* ADMIN INTERFACE LINE 455 */
-/* MEDIA QUERIES LINE 827*/
+/* ADMIN INTERFACE LINE 457 */
+/* MEDIA QUERIES LINE 854*/
 
 /*-----GENERAL STYLES-----*/
 
@@ -99,7 +99,7 @@ footer.homepage{
     margin: auto;
 }
 
-.sectionError h1{
+.sectionError h2{
     font-size: 30px;
 }
 
@@ -123,7 +123,7 @@ a#backHome{
     flex-direction: column;
     font-size: 18px;
     text-align: center;
-    background-image: url("../../images/background/5.jpg");
+    background-image: url("../../images/background/traineau.jpg");
     background-size: cover;
 }
 
@@ -216,7 +216,7 @@ h1#bigTitle{
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-image: url("../../images/background/2.jpg");
+    background-image: url("../../images/background/ours.jpg");
     background-size: cover;
 }
 
@@ -277,7 +277,8 @@ header{
     margin-left: 2%;
     margin-right: 2%;
     margin-bottom: 20px;
-    padding: 10px;
+    padding: 15px;
+    text-align: justify;
 }
 
 .panelChapter h3 a{
@@ -286,11 +287,13 @@ header{
     text-decoration: none;
     text-shadow: 2px 2px 4px black;    
     font-size: 2.5rem;
+    text-align: left;
 }
 
 .panelChapter h4{
     font-family: 'Caveat', cursive;
     font-size: 1.3rem;
+    text-align: left;
 }
 
 .dates{
@@ -312,11 +315,6 @@ header{
     display: block;
     margin: auto;
     border-radius: 10px;
-}
-
-.panelChapter p{
-    text-align: justify;
-    padding: 5px;
 }
 
 .clickExcerpt{
@@ -367,7 +365,6 @@ header{
 
 .chapterView{
     margin:auto;
-    text-align: justify;
     background-color: white;
     padding-top: 20px;
     padding-left: 35px;
@@ -377,7 +374,7 @@ header{
     border-radius: 5px;
 }
 
-.chapterView div{
+.chapterView div.nextPrevButtons{
     display: flex;
     justify-content: space-between;
 }
@@ -385,6 +382,7 @@ header{
 #chapterText{
     display: flex;
     flex-direction: column; 
+    text-align: justify;
 }
 
 .buttonsBackAndChgeText{
@@ -450,6 +448,10 @@ header{
     color: red;
     font-style: italic;
     text-align: right;
+}
+
+#noComments{
+    font-size: 20px;
 }
 
 /*---ADMIN INTERFACE---*/
@@ -571,7 +573,7 @@ h1#bigTitleAdmin a{
     background-color: rgba(255,255,255,0.7);
 }
 
-.adminSection h1{
+.adminSection h2{
     font-family: 'Caveat';
     font-size: 3rem;
     color: rgb(115, 187, 216);
@@ -603,6 +605,10 @@ nav.menuAdmin{
     font-size: 20px;
 }
 
+.sectionAdmin h3{
+    margin-top: 25px;
+}
+
 #statistiques li{
     margin-left: 20px;
     padding-left: 15px;
@@ -621,9 +627,26 @@ nav.menuAdmin{
     font-size: 14px;
 }
 
+.msgConfirNewAndEdit{
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.msgPublishOrEditNew{
+    margin-top: 50px;
+    border-radius: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: rgba(147, 202, 224, 0.8);
+    text-align: center;
+    color: black;
+}
+
 /*---List chapters---*/
 
-h1.listChapTitle{
+h2.listChapTitle{
     padding-left: 50px;
 }
 
@@ -755,6 +778,10 @@ h1.listChapTitle{
     padding: 5px;
 }
 
+#msgEditCommentOk{
+    margin-bottom: 50px;
+}
+
 /*---Edit comments---*/
 
 .sectionEditComment{
@@ -881,7 +908,7 @@ h1.listChapTitle{
     .adminSection{
         width: 95%;
     }
-    .adminSection h1{
+    .adminSection h2{
         font-size: 2.5rem;
     }
     nav.menuAdmin{
@@ -911,9 +938,13 @@ h1.listChapTitle{
         padding-right: 5px;
         font-size: 18px;
     }
+    .msgConfirNewAndEdit{
+        margin-top: 0px;
+        margin-bottom: 35px;
+    }
 
     /*---List chapters---*/
-    h1.listChapTitle{
+    h2.listChapTitle{
         padding-left: 5px;
     }
     #changeOrdenChaptersAdmin{
@@ -1067,6 +1098,9 @@ h1.listChapTitle{
     .sectionAdmin{
         font-size: 14px;
     }
+    .sectionAdmin h3{
+        font-size: 1.3rem;
+    }
 
     /*---Add a chapter---*/
     .sectionAddChapter{
@@ -1080,6 +1114,10 @@ h1.listChapTitle{
     }
     .extraitChapAdmin h4{
         font-size: 1.5rem;
+    }
+    .msgConfirNewAndEdit{
+        margin-top: 0px;
+        margin-bottom: 20px;
     }
 
     /*---View a chapter---*/
@@ -1100,6 +1138,9 @@ h1.listChapTitle{
     /*---Moderate comments---*/
     .sectionModerComments{
         font-size: 16px;
+    }
+    #msgEditCommentOk{
+        margin-bottom: 20px;
     }
 
     /*---Edit comments---*/

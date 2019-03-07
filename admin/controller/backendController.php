@@ -9,7 +9,7 @@ require_once(MODEL.'/ImageManager.php');
 
 function loginAdmin()
 {
-    if($_SESSION['id'])
+    if($_SESSION['pseudo'])
     {
         $chapterManager = new ChapterManager(); 
         $chapters = $chapterManager->getChapters(); 
@@ -25,6 +25,20 @@ function loginAdmin()
     {
         require(ADMINVIEW.'/connexionView.php');
     }
+}
+
+function homeAdmin() 
+{
+    $chapterManager = new ChapterManager(); 
+    $chapters = $chapterManager->getChapters(); 
+    $nbChapters = $chapterManager->countChapters(); 
+
+    $commentManager = new CommentManager();
+    $commentsToModerate = $commentManager->countCommentsToModerate();
+    $nbComments = $commentManager->countComments();
+    $nbEditedComments = $commentManager->countModeratedComments();
+
+    require(ADMINVIEW.'/homeAdminView.php');
 }
 
 function connectOK($pseudo, $pass)
@@ -44,16 +58,7 @@ function connectOK($pseudo, $pass)
                 $_SESSION['id'] = $loggedUser->id();
                 $_SESSION['pseudo'] = $loggedUser->pseudo();
 
-                $chapterManager = new ChapterManager(); 
-                $chapters = $chapterManager->getChapters(); 
-                $nbChapters = $chapterManager->countChapters(); 
-
-                $commentManager = new CommentManager();
-                $commentsToModerate = $commentManager->countCommentsToModerate();
-                $nbComments = $commentManager->countComments();
-                $nbEditedComments = $commentManager->countModeratedComments();
-
-                require(ADMINVIEW.'/homeAdminView.php');
+                homeAdmin();
             }
             else
             {
@@ -65,27 +70,12 @@ function connectOK($pseudo, $pass)
         {
             $msgErrorConnexion2 = 'Votre identifiant ou mot de passe est erroné !';
             throw new Exception($msgErrorConnexion2);
-            require(FRONTVIEW.'/errorView.php');
         }
     }
     catch(Exception $e) { 
         $errorMessage = $e->getMessage();
         require(FRONTVIEW.'/errorView.php');
     }
-}
-
-function homeAdmin() 
-{
-    $chapterManager = new ChapterManager(); 
-    $chapters = $chapterManager->getChapters(); 
-    $nbChapters = $chapterManager->countChapters(); 
-
-    $commentManager = new CommentManager();
-    $commentsToModerate = $commentManager->countCommentsToModerate();
-    $nbComments = $commentManager->countComments();
-    $nbEditedComments = $commentManager->countModeratedComments();
-
-    require(ADMINVIEW.'/homeAdminView.php');
 }
 
 // Disconnection
@@ -100,12 +90,7 @@ function disconnection()
         $chapters = $chapterManager->getChapters(); 
         
         header('Location:listChapters');
-    }
-    else
-    {
-        header('Location:login');
-    }
-    
+    }    
 }
 
 // Add a chapter
@@ -120,29 +105,19 @@ function addNewChapter($title, $photo, $content)
     $chapterManager = new ChapterManager();
     $addedChapter = $chapterManager->addChapter($title, $content); // Return added chapter ID 
 
-    // Get the added chapter to assign its ID to the name of the added photo 
+    // Get the added chapter to assign its ID to the name of the chapter photo 
     $chapter = $chapterManager->getChapter($addedChapter);
-
-    // Photo management
     $photo = $_FILES['photo']['tmp_name'];
     $imageManager = new ImageManager($photo);
     $imageManager->resize_to(IMAGE_LARGEUR_MAXI, IMAGE_HAUTEUR_MAXI); 
     $photo_filename = ROOT.'images/'.$chapter->id().'.'.$imageManager->extension();
     $savedPhoto = $imageManager->save_as($photo_filename);
 
-    $chapters = $chapterManager->getChapters(); 
-    $nbChapters = $chapterManager->countChapters(); 
-
-    $commentManager = new CommentManager();
-    $commentsToModerate = $commentManager->countCommentsToModerate();
-    $nbComments = $commentManager->countComments();
-    $nbEditedComments = $commentManager->countModeratedComments();
-
     if ($addedChapter === false) {
         throw new Exception('Impossible d\'ajouter le chapitre !');
     }
     else {
-        require(ADMINVIEW.'/homeAdminView.php');
+        require(ADMINVIEW.'/addChapterView.php');
     }
 }
 
@@ -200,23 +175,23 @@ function getChapterToEdit($chapterId)
 function editChapter($chapterId, $newTitle, $newContent)
 {
     $chapterManager = new ChapterManager();
-    
     $editedChapter = $chapterManager->editChapter($_GET['id'], $newTitle, $newContent);
+    $chapter = $chapterManager->getChapter($_GET['id']);
 
     if ($editedChapter === false) {
         throw new Exception('Impossible de modifier le chapitre !');
     }
     else {
-        header('Location: '.HOST.'chapterAdmin-' . $chapterId);
+        require(ADMINVIEW.'/editChapterView.php');
     }
 }
 
 function deleteChapter($chapterId)
 {
-    
-    $image = ROOT .'images/' . $chapterId . '.jpg';
-    $delImage = new ImageManager($image);
-    $msgSuppression = $delImage->delete($image);
+    $image = glob(ROOT .'images/' . $chapterId . '*');
+    $filename = $image[0];
+    $delImage = new ImageManager($filename);
+    $msgSuppression = $delImage->delete($filename);
     
     $chapterManager = new ChapterManager();
     $deletedChapter = $chapterManager->delete($_GET['id']);
@@ -277,6 +252,7 @@ function editComment($commentId, $newTitle, $newContent)
             throw new Exception('Impossible de modifier le commentaire !');
         }
         else {
+            $msgEditCommentOk = 'Le commentaire a bien été modéré.';
             require(ADMINVIEW.'/commentsToModerateView.php');
         }
     }
@@ -350,12 +326,14 @@ function editUser($userId, $newPseudo, $newMail)
 {
     $userManager = new UserManager();
     $editedUser = $userManager->editUser($userId, $newPseudo, $newMail);
+    $users = $userManager->getUsers();
 
     if ($editedUser === false) {
         throw new Exception('Impossible de modifier l\'administrateur !');
     }
     else {
-        header('Location: '.HOST.'listUsers');
+        $msgEditUserOk = 'Les informations de l\'administrateur ont bien été modifiées.';
+        require(ADMINVIEW.'/listUsersView.php');
     }
 }
 
