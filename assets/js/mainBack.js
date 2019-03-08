@@ -79,6 +79,13 @@ function ChangeFontSize(){
     });
 };
 
+//To add confirm before deleting chapter, comment and user
+function Supp(link){
+    if(confirm('Confirmer la suppression ?')){
+        document.location.href = link;
+    }
+}
+
 //To disappear the message of confirmation when editing a new comment
 (function disappearMsg(){
     setTimeout(function(){

@@ -3,24 +3,13 @@ $title = 'Chapitre : '.$chapter->title();
 ob_start(); 
 ?>
 
-<script>
-    function ConfirmDelete(){
-        var r = confirm('Êtes-vous sûr de vouloir effacer ce chapitre ?');
-        if (r == true) {
-            document.getElementById('deleteChapterButton').href = '<?= HOST; ?>delete-<?= $chapter->id() ?>';
-        } else {
-            return false;
-        }
-    };
-</script>
-
 <div class="sectionViewChapter">
 
     <a href="<?= HOST; ?>listAllChapters" class="backListChapters">Retour à la liste des chapitres</a><br/><br/>
 
     <a href="<?= HOST; ?>editChapter-<?= $chapter->id() ?>" class="editChapter">Modifier</a>  
 
-    <a id="deleteChapterButton" href="#" class="deleteChapter" onClick="ConfirmDelete()">Supprimer</a><br><br>
+    <a id="deleteChapterButton" href="<?= HOST; ?>delete-<?= $chapter->id() ?>" class="deleteChapter" onClick="Supp(this.href); return(false);">Supprimer</a><br><br>
 
     <form id="fontSizeForm" name="Font-Size">
         <select name="Font-Size" onChange="ChangeFontSize()">

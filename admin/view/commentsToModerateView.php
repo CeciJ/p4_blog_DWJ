@@ -31,20 +31,11 @@ ob_start();
 
             <tbody>
                 <?php
-                foreach($commentsToModerate as $comment) //while ($comment = $comments->fetch())
+                foreach($commentsToModerate as $comment) 
                 {
+          
                 ?>
-                    <script>
-                        function ConfirmDeleteComment(){
-                            var r = confirm('Êtes-vous sûr de vouloir effacer ce commentaire ?');
-                            if (r == true) {
-                                document.getElementById('deleteCommentButton').href = '<?= HOST; ?>deleteComment-<?= $comment->id() ?>';
-                            } else {
-                                return false;
-                            }
-                        };
-                    </script>
-                
+
                     <tr>
                         <td><?= htmlspecialchars($comment->title())?></td>
                         <td><?= htmlspecialchars($comment->author()) ?></td>
@@ -54,7 +45,7 @@ ob_start();
                             <a href="<?= HOST; ?>editComment-<?= $comment->id() ?>">Modifier</a>
                         </td>
                         <td>
-                            <a id="deleteCommentButton" href="#" onClick="ConfirmDeleteComment()">Supprimer</a>
+                            <a id="deleteCommentButton<?=$comment->id()?>" href="<?= HOST; ?>deleteComment-<?= $comment->id() ?> " onClick="Supp(this.href); return(false);">Supprimer</a>
                         </td>
                     </tr>
                 <?php
