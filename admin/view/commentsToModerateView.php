@@ -9,11 +9,17 @@ ob_start();
     
     <?php if (isset($msgEditCommentOk)) {
         if($msgEditCommentOk) { ?>
-        <div id="msgEditCommentOk"><?= $msgEditCommentOk; ?></div>
+        <div id="msgEditCommentOk" class="alert alert-info" role="alert"><?= $msgEditCommentOk; ?></div>
     <?php } 
     }?>
 
-    <?php if($commentsToModerate) 
+    <?php if (isset($msgDelCommentOk)) {
+        if($msgDelCommentOk) { ?>
+        <div id="msgDelCommentOk" class="alert alert-info" role="alert"><?= $msgDelCommentOk; ?></div>
+    <?php } 
+    }?>
+
+    <?php if(!empty($commentsToModerate))
     { ?>
         <p>Tous les commentaires à modérer : </p>
 
@@ -56,7 +62,7 @@ ob_start();
         </table>
     <?php
     } else { ?>
-        <p>Il n'y a pas de commentaires à modérer.</p>
+        <p class="alert alert-info">Il n'y a pas de commentaires à modérer.</p>
     <?php
     }
     ?>

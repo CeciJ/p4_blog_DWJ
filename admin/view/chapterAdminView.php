@@ -43,7 +43,7 @@ ob_start();
     
     <div class="commentsListAdmin">
         <?php if($chapter->nbComments() > 0) {?> 
-            <p>Il y a déjà <?= $chapter->nbComments(); ?>     
+            <p>Il y a <?= $chapter->nbComments(); ?>     
                 <?php if($chapter->nbComments() > 1) { ?> 
                     commentaires reçus :
                 <?php } else { ?> 
@@ -91,7 +91,7 @@ ob_start();
         <?php
         } else {
         ?>
-            <p id="noComments">Il n'y a pas encore de commentaires, soyez le premier à donner votre avis !</p>
+            <p id="noComments">Il n'y a pas encore de commentaires sur ce chapitre.</p>
         <?php
         }
         ?>

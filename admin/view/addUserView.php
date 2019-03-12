@@ -8,34 +8,29 @@ ob_start();
     <h2>Ajouter un nouvel utilisateur</h2>
 
     <?php if (isset($_POST['pseudo']) && isset($_POST['mail']) && isset($_POST['pass'])) { ?>
-        <div class="msgConfirNewAndEdit">Le nouvel administrateur a bien été ajouté !</div>
-        <a href="<?= HOST; ?>newUser" class="msgPublishOrEditNew col-sm-6 col-md-4">Ajouter un autre administrateur</a>
+        <div id="msgConfirmAddUserOK" class="msgConfirNewAndEdit alert alert-info"><?= $success ?></div>
     <?php 
-    } else {
+    } 
     ?>
         <form action="<?= HOST; ?>newUser" method="post" class="formAddUser">
-            <div>
+            <div class="form-group">
                 <label for="pseudo">Pseudo : 
-                    <input type="text" id="pseudo" name="pseudo"/>
+                    <input class="form-control" type="text" id="pseudo" name="pseudo"/>
                 </label>
             </div>
-            <div>
+            <div class="form-group">
                 <label for="mail">Mail : 
-                    <input type="email" id="mail" name="mail" />
+                    <input class="form-control" type="email" id="mail" name="mail" />
                 </label>
             </div>
-            <div>
+            <div class="form-group">
                 <label for="pass">Mot de passe :
-                    <input type="password" id="pass" name="pass" />
+                    <input class="form-control" type="password" id="pass" name="pass" />
                 </label>
             </div>
-            <div>
-                <br/><button type="submit">Enregistrer</button>  
-            </div>
+            <button class="btn btn-primary" type="submit">Enregistrer</button>  
         </form>
-    <?php
-    }
-    ?>
+   
 </div>
 
 <?php 

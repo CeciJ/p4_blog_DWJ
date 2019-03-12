@@ -5,21 +5,20 @@ ob_start();
 
 <div class="sectionEditComment">
     <div class="formEditComment">
-        <h2>Modérer le commentaire</h2><br>
-        <strong><?= $editComment->title(); ?></strong> du <?php echo $editComment->creationDate(); ?>
+        <h2>Modérer le commentaire</h2>
+        <strong><?= $editComment->title(); ?></strong> du <?php echo $editComment->creationDate(); ?><br><br>
 
         <form action="<?= HOST; ?>editComment-<?= $editComment->id(); ?>" method="post">
-            <div>
+            <div class="form-group">
                 <label>Titre : 
-                    <input type="text" id="newTitle" name="newTitle" value="<?= $editComment->title(); ?>">
+                    <input class="form-control" type="text" id="newTitle" name="newTitle" value="<?= $editComment->title(); ?>">
                 </label>
             </div>
-            <div>
+            <div class="form-group">
                 <label>Contenu : </label>
-                <textarea id="newContent" name="newContent" rows="4" cols="50"><?= $editComment->content(); ?></textarea>
+                <textarea id="newContent" class="form-control" name="newContent" rows="4" cols="50"><?= $editComment->content(); ?></textarea>
             </div>
-            <br/>
-            <button type="submit">Modifier</button>
+            <button class="btn-primary btn" type="submit">Modifier</button>
         </form>
     </div>
 </div>

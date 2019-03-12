@@ -3,12 +3,18 @@
 require_once(MODEL.'/ChapterManager.php');
 require_once(MODEL.'/CommentManager.php');
 
+/**
+ * First function to go to the welcome page
+ */
 function homepage()
 {
     require(FRONTVIEW.'/homepageView.php');
 }
 
-function listChapters($order = null)
+/**
+ * To get and list all the chapters, with order parameter by rising or decreasing order
+ */
+function listChapters(string $order = null)
 {
     $chapterManager = new ChapterManager(); 
     $chapters = $chapterManager->getChapters($order); 
@@ -16,30 +22,32 @@ function listChapters($order = null)
     require(FRONTVIEW.'/listChaptersView.php');
 }
 
+/**
+ * To get a specific chapter
+ */
 function chapter()
 {
     $chapterManager = new ChapterManager();
     $lastChapter = $chapterManager->lastIdRegistered();
-
-    if($_GET['id'] <= $lastChapter)
+    $chapter = $chapterManager->getChapter($_GET['id']);
+    
+    if(!is_null($chapter) && ($chapter->nbComments() > 0))
     {
-        $chapter = $chapterManager->getChapter($_GET['id']);
+        $commentManager = new CommentManager();
+        $comments = $commentManager->getComments($_GET['id']);
     }
-    else
+
+    if (($_GET['id'] > $lastChapter) OR !isset($chapter)) 
     {
         throw new Exception('Ce chapitre n\'existe pas!');
     }
-
-    $commentManager = new CommentManager();
-    if(!is_null($chapter)){
-        if ($chapter->nbComments() > 0){
-            $comments = $commentManager->getComments($_GET['id']);
-        }
-    }
-        
+ 
     require(FRONTVIEW.'/chapterView.php');
 }
 
+/**
+ * To get the correct URL (the previous ID of the current chapter) to activate the "Prev Chapter" button
+ */
 function prevChapter()
 {
     $chapterManager = new ChapterManager(); 
@@ -56,6 +64,9 @@ function prevChapter()
     }
 }
 
+/**
+ * To get the correct URL (the next ID of the current chapter) to activate the "Next Chapter" button
+ */
 function nextChapter()
 {
     $chapterManager = new ChapterManager(); 
@@ -74,46 +85,53 @@ function nextChapter()
     }
 }
 
-function addComment($chapterId, $title, $author, $content)
+/**
+ * To add a comment to a chapter
+ */
+function addComment(int $chapterId, string $title, string $author, string $content)
 {
     $commentManager = new CommentManager();
     $newComment = $commentManager->addComment($chapterId, $title, $author, $content);
     
     $chapterManager = new ChapterManager();
     $lastChapter = $chapterManager->lastIdRegistered();
+    $chapter = $chapterManager->getChapter($_GET['id']);
 
-    if($_GET['id'] <= $lastChapter)
-    {
-        $chapter = $chapterManager->getChapter($_GET['id']);
-    }
-    else
+    if (($_GET['id'] > $lastChapter) OR !isset($chapter)) 
     {
         throw new Exception('Ce chapitre n\'existe pas!');
     }
 
-    if(!is_null($chapter)){
-        if ($chapter->nbComments() > 0){
-            $comments = $commentManager->getComments($_GET['id']);
-        }
+    if(!is_null($chapter) && ($chapter->nbComments() > 0))
+    {
+        $comments = $commentManager->getComments($_GET['id']);
     }
     
     require(FRONTVIEW.'/chapterView.php');
 }
 
-function reportComment($commentId, $chapterId)
+/**
+ * To report a comment
+ */
+function reportComment(int $commentId, int $chapterId)
 {
     $commentManager = new CommentManager();
     $reportedComment = $commentManager->reportComment($_GET['id']);
-    if ($reportedComment === false) {
-        throw new Exception('Impossible de signaler le commentaire !');
+ 
+    $chapterManager = new ChapterManager(); 
+    $chapter = $chapterManager->getChapter($chapterId);
+
+    if(!is_null($chapter) && ($chapter->nbComments() > 0))
+    {
+        $comments = $commentManager->getComments($chapterId);
     }
 
-    $chapterManager = new ChapterManager(); 
-    $chapters = $chapterManager->getChapters();
-
-    header('Location: '.HOST.'chapter-' . $chapterId);
+    require(FRONTVIEW.'/chapterView.php');
 }
 
+/**
+ * To go and see legalMentions
+ */
 function legalMentions()
 {
     require(FRONTVIEW.'/legalMentionsView.php');

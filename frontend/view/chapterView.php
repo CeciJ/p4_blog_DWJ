@@ -5,7 +5,13 @@
 
         <?php if (isset($newComment)) {
             if ($newComment) { ?>
-            <div id="msgConfirNewComment"><?= $newComment; ?></div>
+            <div id="msgConfirNewComment" class="alert alert-info"><?= $newComment; ?></div>
+        <?php } 
+        }?>
+
+        <?php if (isset($reportedComment)) {
+            if ($reportedComment) { ?>
+            <div id="msgConfirReportComment" class="alert alert-info"><?= $reportedComment; ?></div>
         <?php } 
         }?>
         
@@ -62,22 +68,22 @@
                 <p>Laissez votre commentaire ici !</p>
 
                 <form action="<?= HOST; ?>addComment-<?= $chapter->id(); ?>" method="post" class="form">
-                    <div>
+                    <div class="form-group">
                         <label for="title">Titre : 
-                            <input type="text" id="title" name="title" required/>
+                            <input class="form-control" type="text" id="title" name="title" required/>
                         </label>
+                    </div>
+                    <div class="form-group">
                         <label for="author">Auteur : 
-                            <input type="text" id="author" name="author" required/>
+                            <input class="form-control" type="text" id="author" name="author" required/>
                         </label>
                     </div>
-                    <div>
+                    <div class="form-group">
                         <label for="content">Commentaire : 
-                            <textarea id="content" name="content" rows="6" cols="70" required></textarea>
+                            <textarea class="form-control" id="content" name="content" rows="6" cols="70" required></textarea>
                         </label>
                     </div>
-                    <div id="sendComment">
-                        <input type="submit"/>
-                    </div>
+                    <input class="btn btn-primary" type="submit"/>
                 </form>
 
                 <div id="commentsList">

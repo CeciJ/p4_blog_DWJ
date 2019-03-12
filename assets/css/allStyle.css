@@ -1,7 +1,7 @@
 /* GENERAL STYLES LINE 6 (including footers)*/
-/* LECTOR INTERFACE LINE 116 */
-/* ADMIN INTERFACE LINE 457 */
-/* MEDIA QUERIES LINE 854*/
+/* LECTOR INTERFACE LINE 117 */
+/* ADMIN INTERFACE LINE 464 */
+/* MEDIA QUERIES LINE 877*/
 
 /*-----GENERAL STYLES-----*/
 
@@ -25,9 +25,10 @@ a:hover{
     text-decoration: none;
 }
 
-label{
-    margin-bottom: 15px;
-    margin-top: 15px;
+.btn.btn-primary {
+    color: black !important;
+    background-color: rgba(147, 202, 224, 0.8) !important;
+    border: none;
 }
 
 /*Footer all pages except Homepage*/
@@ -255,7 +256,7 @@ header{
 #changeOrdenChaptersForm select{
     background-color: rgba(248, 237, 237, 0.8);
     margin-right: 2.5%;
-    border-radius: 15px;
+    border-radius: .5rem;
     padding: 5px;
 }
 
@@ -336,14 +337,14 @@ header{
 .backListChaptersLector{
     color: black;
     padding: 5px;
-    border-radius: 15px;
+    border-radius: .5rem;
     padding: 5px;
     background-color: #d5d5d5;
 }
 
 .next, .prev{
     color: black;
-    border-radius: 15px;
+    border-radius: .5rem;
     padding-top: 5px;
     padding-bottom: 5px;
     padding-right: 10px;
@@ -360,7 +361,7 @@ header{
 #fontSizeForm select{
     background-color: #d5d5d5;
     margin-right: 2.5%;
-    border-radius: 15px;
+    border-radius: .5rem;
 }
 
 .chapterView{
@@ -413,15 +414,21 @@ header{
     font-size: 2.5rem;
 }
 
+/*
 #commentsForm textarea{
     width: 80%;
 }
+*/
 
 .form{
     padding: 20px;
     border: 1px solid grey;
     margin-bottom: 20px;
     margin-top: 20px;
+}
+
+.form-group{
+    margin-bottom: 0rem !important; 
 }
 
 #commentsList{
@@ -493,8 +500,7 @@ h1#bigTitle.titleConnexion{
 }
 
 .connexionDiv button{
-    margin-top: 20px;
-    padding: 5px;
+    font-size: 20px !important;
 }
 
 a#reconnexion{
@@ -517,7 +523,7 @@ a#reconnexion{
 
 #deconnectAdmin{
     background-color: white;
-    border-radius: 5px;
+    border-radius: .5rem;
     display: block;
     padding: 5px;
     text-align: center;
@@ -593,7 +599,7 @@ nav.menuAdmin{
     padding: 10px;
     margin-bottom: 15px;
     background-color: rgba(255,255,255,0.9);
-    border-radius: 15px;
+    border-radius: .5rem;
 }
 
 .menuAdmin ul li a{
@@ -602,6 +608,7 @@ nav.menuAdmin{
 
 .sectionAdmin{
     padding-left: 50px;
+    padding-right: 50px;
     font-size: 20px;
 }
 
@@ -622,6 +629,11 @@ nav.menuAdmin{
     font-size: 20px;
 }
 
+.sectionAddChapter button, .sectionEditChapter button, .sectionEditComment button, .sectionAddUser button, .sectionEditUser button{
+    margin-top: 5px;
+    font-size: 20px;
+}
+
 #photoWeigth{
     font-style: italic;
     font-size: 14px;
@@ -634,7 +646,7 @@ nav.menuAdmin{
 
 .msgPublishOrEditNew{
     margin-top: 50px;
-    border-radius: 15px;
+    border-radius: .25rem;
     padding-top: 5px;
     padding-bottom: 5px;
     padding-left: 10px;
@@ -671,7 +683,7 @@ h2.listChapTitle{
     margin-right: 2.5%;
     margin-bottom: 20px;
     background-color: rgba(194, 194, 194, 0.6);
-    border-radius: 15px;
+    border-radius: .5rem;
     padding: 15px;
 }
 
@@ -698,6 +710,11 @@ h2.listChapTitle{
     border-radius: 10px;
 }
 
+#msgConfirmDelChapterOK{
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
 /*---View Chapter---*/
 
 .sectionViewChapter{
@@ -713,7 +730,7 @@ h2.listChapTitle{
 }
 
 .backListChapters{
-    border-radius: 15px;
+    border-radius: .5rem;
     padding: 5px;
     border: 3px solid rgba(147, 202, 224, 0.8);
     background-color: white;
@@ -721,7 +738,7 @@ h2.listChapTitle{
 }
 
 .editChapter, .deleteChapter{
-    border-radius: 15px;
+    border-radius: .5rem;
     padding-top: 5px;
     padding-bottom: 5px;
     padding-left: 10px;
@@ -790,6 +807,7 @@ h2.listChapTitle{
 
 .sectionEditComment{
     padding-left: 50px;
+    padding-right: 50px;
     font-size: 20px;
 }
 
@@ -816,16 +834,12 @@ h2.listChapTitle{
 
 .sectionAddUser{
     padding-left: 50px;
+    padding-right: 50px;
     font-size: 20px;
 }
 
 .sectionAddUser p{
     padding: 50px;
-}
-
-.formAddUser button{
-    border-radius: 5px;
-    padding: 5px;
 }
 
 .formAddUser input{
@@ -838,10 +852,15 @@ h2.listChapTitle{
     padding-left: 50px;
 }
 
+#table_list_users_wrapper{
+    margin-top: 40px;
+}
+
 /*---Edit Users---*/
 
 .sectionEditUser{
     padding-left: 50px;
+    padding-right: 50px;
     font-size: 20px;
 }
 
@@ -859,6 +878,11 @@ h2.listChapTitle{
 
 @media (max-width: 768px) {
     
+    .sectionAddChapter button, .sectionEditChapter button, .sectionEditComment button, .sectionAddUser button, .sectionEditUser button{
+        margin-top: 5px;
+        font-size: 18px;
+    }
+
     /*---LECTOR INTERFACE---*/
     footer.homepage{
         font-size: 14px;
@@ -1028,6 +1052,11 @@ h2.listChapTitle{
 
 @media (max-width: 576px) {
     
+    .sectionAddChapter button, .sectionEditChapter button, .sectionEditComment button, .sectionAddUser button, .sectionEditUser button{
+        margin-top: 5px;
+        font-size: 16px;
+    }
+
     /*---LECTOR INTERFACE---*/
     .sectionHomepage{
         padding-top: 50px;
@@ -1094,7 +1123,6 @@ h2.listChapTitle{
     }
     nav.menuAdmin{
         display: flex;
-        margin-top: -40px;
     }
     .menuAdmin ul li{
         font-size: 14px;

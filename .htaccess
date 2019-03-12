@@ -2,6 +2,7 @@ RewriteEngine on
 
 DirectoryIndex index.php?action=home
 
+# For local installation comment next line and elimine the '/' (slash) before each url lines 9, 12, 15, 18
 RewriteBase /
 
 RewriteCond %{REQUEST_FILENAME} !-f
@@ -15,6 +16,5 @@ RewriteRule ^(.+)-([0-9]+)$  /index.php?action=$1&id=$2 [QSA,L]
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^(.+)$   /index.php?action=$1 [QSA,L]
-
 
 

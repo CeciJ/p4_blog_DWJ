@@ -12,10 +12,10 @@ try {
     
     if (isset($_GET['action'])) {
 
-        if ($action == 'home') {
+        if ($action === 'home') {
             homepage();
         }
-        elseif ($action == 'listChapters') {
+        elseif ($action === 'listChapters') {
             if (isset($_GET['order'])) {
                 listChapters($_GET['order']);
             }
@@ -24,7 +24,7 @@ try {
                 listChapters();
             }
         }
-        elseif ($action == 'chapter') {
+        elseif ($action === 'chapter') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 chapter();
             }
@@ -32,7 +32,7 @@ try {
                 throw new Exception('Aucun identifiant de chapitre envoyé');
             }
         }
-        elseif ($action == 'prevChapter') {
+        elseif ($action === 'prevChapter') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 prevChapter();
             }
@@ -40,7 +40,7 @@ try {
                 throw new Exception('Aucun identifiant de chapitre envoyé');
             }
         }
-        elseif ($action == 'nextChapter') {
+        elseif ($action === 'nextChapter') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 nextChapter();
             }
@@ -48,7 +48,7 @@ try {
                 throw new Exception('Aucun identifiant de chapitre envoyé');
             }
         }
-        elseif ($action == 'addComment') {
+        elseif ($action === 'addComment') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 if (!empty($_POST['title']) && !empty($_POST['author']) && !empty($_POST['content'])) {
                     addComment($_GET['id'], $_POST['title'], $_POST['author'], $_POST['content']);
@@ -61,7 +61,7 @@ try {
                 throw new Exception('Aucun identifiant de chapitre envoyé');
             }
         }
-        elseif ($action == 'reportComment') {  
+        elseif ($action === 'reportComment') {  
             if (isset($_GET['id']) && ($_GET['id'] > 0) && isset($_GET['idChapter'])) {
                 reportComment(($_GET['id']), ($_GET['idChapter']));
             }
@@ -69,14 +69,14 @@ try {
                 throw new Exception('Aucun identifiant de commentaire envoyé');
             }
         }
-        elseif ($action == 'legalMentions') {
+        elseif ($action === 'legalMentions') {
             legalMentions();
         }
 
-        elseif ($action == 'login') {
+        elseif ($action === 'login') {
             loginAdmin();
         }
-        elseif ($action == 'connectOK') {
+        elseif ($action === 'connectOK') {
             if (isset($_POST['pseudo']) && isset($_POST['password'])) {
                 if(!empty($_POST['pseudo']) && !empty($_POST['password'])){
                     connectOK($_POST['pseudo'], $_POST['password']);
@@ -90,15 +90,15 @@ try {
         }
         elseif (!empty($_SESSION['pseudo'])) {
             // Admin Homepage
-            if ($action == 'homeAdmin') {
+            if ($action === 'homeAdmin') {
                 homeAdmin();
             }
             // Disconnection
-            elseif ($action == 'deconnect') {
+            elseif ($action === 'deconnect') {
                 disconnection();
             }
             // Add a chapter
-            elseif ($action == 'addChapter') {
+            elseif ($action === 'addChapter') {
                 if (isset($_POST['title']) && isset($_POST['content'])) {
                     if(!empty($_POST['title']) && !empty($_POST['content'])){
                         if ($_FILES['photo']['error'] < 4){
@@ -119,7 +119,7 @@ try {
                 }
             }
             // See chapters to edit or delete
-            elseif ($action == 'listAllChapters') {
+            elseif ($action === 'listAllChapters') {
                 if (isset($_GET['order'])) {
                     listAllChapters($_GET['order']);
                 }
@@ -128,7 +128,7 @@ try {
                     listAllChapters();
                 }
             }
-            elseif ($action == 'chapterAdmin') {
+            elseif ($action === 'chapterAdmin') {
                 if (isset($_GET['id']) && $_GET['id'] > 0) {
                     chapterAdmin();
                 }
@@ -136,7 +136,7 @@ try {
                     throw new Exception('Aucun identifiant de chapitre envoyé');
                 }
             }
-            elseif ($action == 'editChapter') {
+            elseif ($action === 'editChapter') {
                 if (isset($_GET['id']) && isset($_POST['newTitle']) && isset($_POST['newContent'])) {
                     if(!empty($_POST['newTitle']) && !empty($_POST['newContent'])){
                         editChapter($_GET['id'], $_POST['newTitle'], $_POST['newContent']);
@@ -153,16 +153,16 @@ try {
                     throw new Exception('Aucun identifiant de chapitre envoyé');
                 }
             }
-            elseif ($action == 'delete') {
+            elseif ($action === 'delete') {
                 if (isset($_GET['id'])) {
                     deleteChapter($_GET['id']);
                 }
             }
             // Control comments
-            elseif ($action == 'getCommentsToModerate') {
+            elseif ($action === 'getCommentsToModerate') {
                 getCommentsToModerate();
             }
-            elseif ($action == 'editComment') {
+            elseif ($action === 'editComment') {
                 if (isset($_GET['id']) && isset($_POST['newTitle']) && isset($_POST['newContent'])) {
                     if(!empty($_POST['newTitle']) && !empty($_POST['newContent'])){
                         editComment($_GET['id'], $_POST['newTitle'], $_POST['newContent']);
@@ -179,7 +179,7 @@ try {
                     throw new Exception('Aucun identifiant de commentaire envoyé');
                 }
             }
-            elseif ($action == 'deleteComment') {
+            elseif ($action === 'deleteComment') {
                 if (isset($_GET['id'])){
                     deleteComment($_GET['id']);
                 }
@@ -188,7 +188,7 @@ try {
                 }
             }
             // Admin users management
-            elseif ($action == 'newUser') {
+            elseif ($action === 'newUser') {
                 if(isset($_POST['pseudo']) && isset($_POST['mail']) && isset($_POST['pass']))
                 {
                     if(!empty($_POST['pseudo']) && !empty($_POST['mail']) && !empty($_POST['pass'])){
@@ -204,10 +204,10 @@ try {
                     goToAddUser();
                 }
             }
-            elseif ($action == 'listUsers') {
+            elseif ($action === 'listUsers') {
                 listUsers();
             }
-            elseif($action == 'editUser') {
+            elseif($action === 'editUser') {
                 if (isset($_GET['id']) && isset($_POST['newPseudo']) && isset($_POST['newMail'])) {
                     if(!empty($_POST['newPseudo']) && !empty($_POST['newMail'])){
                         editUser($_GET['id'], $_POST['newPseudo'], $_POST['newMail']);
@@ -224,7 +224,7 @@ try {
                     throw new Exception('Aucun identifiant d\'administrateur envoyé');
                 }
             }
-            elseif($action == 'deleteUser') {
+            elseif($action === 'deleteUser') {
                 if (isset($_GET['id'])){
                     deleteUser($_GET['id']);
                 }

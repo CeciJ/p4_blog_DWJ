@@ -7,7 +7,7 @@ ob_start();
 
     <h2>Bienvenue sur votre page d'administration !</h2><br/>
 
-    <p>
+    <p class="alert alert-info">
         <?php if($commentsToModerate){ ?>
             <strong>
                 Vous avez <?= $commentsToModerate; ?> 

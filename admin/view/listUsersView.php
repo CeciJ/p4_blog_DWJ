@@ -5,13 +5,19 @@ ob_start();
 
 <div class="sectionViewUsers">
 
-    <h2>Liste des administrateurs autorisés</h2><br>
+    <h2>Liste des administrateurs autorisés</h2>
 
     <?php if (isset($msgEditUserOk)) { 
         if ($msgEditUserOk) { ?>
-        <div id="msgEditCommentOk"><?= $msgEditUserOk; ?></div>
+        <div class="alert alert-info" id="msgConfirmEditUserOk"><?= $msgEditUserOk; ?></div>
     <?php } 
     }?>
+
+    <?php if (isset($success)) { ?>
+        <div id="msgConfirmDelUserOK" class="msgConfirNewAndEdit alert alert-info"><?= $success ?></div>
+    <?php
+    }
+    ?>
 
     <table id="table_list_users" class="display">
         <thead>

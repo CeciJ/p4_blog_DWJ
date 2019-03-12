@@ -5,6 +5,10 @@ ob_start();
 
 <h2 class="listChapTitle">Liste des chapitres du blog</h2>
 
+    <?php if(isset($deletedChapter)) { ?>
+        <div id="msgConfirmDelChapterOK" class="alert alert-info" role="info"><?= $deletedChapter ?></div>
+    <?php } ?>
+
     <div id="changeOrdenChaptersAdmin">
         <form id="changeOrdenChaptersForm" name="OrdenChapters">
             <select name="OrdenChapters" onChange="location = this.options[this.selectedIndex].value;">
@@ -18,7 +22,7 @@ ob_start();
     <div class="sectionListChapters">
         <br/><br/>
         <?php
-        if($chapters){
+        if(isset($chapters)){
             foreach($chapters as $chapter) //while ($data = $chapters->fetch())
             {
             ?>
@@ -53,7 +57,7 @@ ob_start();
         else
         {
         ?>
-            <div id="noChapters">Vous n'avez pas encore publié de chapitres !</div>
+            <div id="noChapters">Vous n'avez pas de chapitres publiés !</div>
         <?php
         }
         ?> 

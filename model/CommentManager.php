@@ -5,8 +5,14 @@ require_once(MODEL."/Comment.php");
 
 class CommentManager extends Manager
 {
-    // To gets comments by chapters
-    public function getComments($chapterId)
+    /**
+     * To gets comments by chapters
+     *
+     * @param  int $chapterId
+     *
+     * @return null|array
+     */
+    public function getComments(int $chapterId): ?array
     {
         $db = $this->dbConnect();
         $req = $db->prepare('
@@ -29,21 +35,24 @@ class CommentManager extends Manager
 
             $comments[] = $comment;
         }
-        return $comments;
+        if(!empty($comments)) {
+            return $comments;
+        } else {
+            return null;
+        }
     }
 
-    // To count how many comments are registered in database
-    public function countComments()
-    {
-        $db = $this->dbConnect();
-        $req = $db->query('SELECT COUNT(id) FROM comments');
-        $nbComments = $req->fetchColumn();
-
-        return $nbComments;
-    }
-
-    // To add a comment 
-    public function addComment($chapterId, $title, $author, $content)
+    /**
+     * To add a comment
+     *
+     * @param  int $chapterId
+     * @param  string $title
+     * @param  string $author
+     * @param  string $content
+     *
+     * @return string
+     */
+    public function addComment(int $chapterId, string $title, string $author, string $content): string
     {
         $db = $this->dbConnect();
         $comments = $db->prepare('INSERT INTO comments(chapter, title, author, content, creationDate) VALUES(?, ?, ?, ?, NOW())');
@@ -59,28 +68,48 @@ class CommentManager extends Manager
         }
     }
 
-    // To report a comment. Update "reported" to true in the database
-    public function reportComment($commentId)
+    /**
+     * To report a comment. Update "reported" to true in the database
+     *
+     * @param  int $commentId
+     *
+     * @return string
+     */
+    public function reportComment(int $commentId): string
     {
         $db = $this->dbConnect();
         $req = $db->prepare('UPDATE comments SET reported = TRUE WHERE id ='. $commentId);
         $reportedComment = $req->execute();
 
-        while($data = $req->fetch(PDO::FETCH_ASSOC)){
-
-            $reportedComment = new Comment();
-            $reportedComment->setId($data['id']);
-            $reportedComment->setTitle($data['title']);
-            $reportedComment->setContent($data['content']);
-            $reportedComment->setCreationDate($data['creationDateFr']);
-            $reportedComment->setReported($data['reported']);
-
+        if ($reportedComment === true) {
+            return 'Le commentaire a bien été signalé.';
         }
-        return $reportedComment;
+        else
+        {
+            throw new Exception('Impossible de signaler le commentaire !');
+        }
     }
 
-    // To count how many comments have been moderated by admins
-    public function countModeratedComments()
+    /**
+     * To count how many comments are registered in database
+     *
+     * @return int
+     */
+    public function countComments(): int
+    {
+        $db = $this->dbConnect();
+        $req = $db->query('SELECT COUNT(id) FROM comments');
+        $nbComments = $req->fetchColumn();
+
+        return $nbComments;
+    }
+
+    /**
+     * To count how many comments have been moderated by admins
+     *
+     * @return int
+     */
+    public function countModeratedComments(): int
     {
         $db = $this->dbConnect();
         $req = $db->query('SELECT COUNT(id) FROM comments WHERE editDate IS NOT NULL');
@@ -89,8 +118,12 @@ class CommentManager extends Manager
         return $nbEditedComments;
     }
 
-    // To count how many comments must be moderated ("reported" == TRUE in database)
-    public function countCommentsToModerate()
+    /**
+     * To count how many comments must be moderated ("reported" == TRUE in database)
+     *
+     * @return int
+     */
+    public function countCommentsToModerate(): int
     {
         $db = $this->dbConnect();
         $req = $db->query('SELECT COUNT(id) FROM comments WHERE reported = TRUE');
@@ -99,8 +132,12 @@ class CommentManager extends Manager
         return $nbComments;
     }
 
-    // To get all the comments to be moderated
-    public function getCommentsToModerate()
+    /**
+     * To get all the comments to be moderated
+     *
+     * @return null|array
+     */
+    public function getCommentsToModerate(): ?array
     {
         $db = $this->dbConnect();
 
@@ -112,7 +149,11 @@ class CommentManager extends Manager
         $result=$req->execute();
         $result=$req->rowCount();
 
-        if(!is_null($result) && $result > 0){
+        if ($result === 0) {
+            return null;
+        }
+        else
+        {
             while($data = $req->fetch(PDO::FETCH_ASSOC)){
 
                 $comment = new Comment();
@@ -127,15 +168,16 @@ class CommentManager extends Manager
     
             return $comments;
         }
-        else
-        {
-            return false;
-        }
-        
     }
     
-    // To get a specific comment by Id
-    public function getComment($commentId)
+    /**
+     * To get a specific comment by Id
+     *
+     * @param  int $commentId
+     *
+     * @return Comment
+     */
+    public function getComment(int $commentId): ?Comment
     {
         $db = $this->dbConnect();
         $req = $db->prepare('
@@ -155,11 +197,24 @@ class CommentManager extends Manager
             $comment->setCreationDate($data['creationDateFr']);
 
         }
-        return $comment;
+
+        if(!empty($comment)) {
+            return $comment;
+        } else {
+            return null;
+        }
     }
 
-    // To edit a comment
-    public function editComment($commentId, $newTitle, $newContent)
+    /**
+     * To edit a comment
+     *
+     * @param  int $commentId
+     * @param  string $newTitle
+     * @param  string $newContent
+     *
+     * @return void
+     */
+    public function editComment(int $commentId, string $newTitle, string $newContent)
     {
         $db = $this->dbConnect();
         $editComment = $db->prepare('
@@ -168,24 +223,49 @@ class CommentManager extends Manager
             WHERE id = :id'
         );
 
-        $editComment->execute(array(
+        $result = $editComment->execute(array(
             'newTitle' => $newTitle,  
             'newContent' => $newContent, 
             'id' => $commentId
         ));
 
-        return $editComment;
+        if($result === true) 
+        {
+            return 'Votre commentaire a bien été modifié !';
+        }
+        else
+        {
+            throw new Exception('Impossible de modifier le commentaire !');
+        }
     }
 
-    // To delete a comment
-    public function deleteComment($commentId)
+    /**
+     * To delete a comment
+     *
+     * @param  int $commentId
+     *
+     * @return void
+     */
+    public function deleteComment(int $commentId): string
     {
         $db = $this->dbConnect();
-        $db->exec('DELETE FROM comments WHERE id = '.$commentId);
+        $result = $db->exec('DELETE FROM comments WHERE id = '.$commentId);
+        if($result === 1) 
+        {
+            return 'Le commentaire a bien été effacé.';
+        }
+        else
+        {
+            throw new Exception('Impossible d\'effacer le commentaire !'); 
+        }
     }
 
-    // To get the last Id in database
-    public function lastIdRegistered()
+    /**
+     * To get the last Id in database to make controls in controller
+     *
+     * @return int
+     */
+    public function lastIdRegistered(): int
     {
         $db = $this->dbConnect();
         $req = $db->query('SELECT MAX(id) AS max_id FROM comments');

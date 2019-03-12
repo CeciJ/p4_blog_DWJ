@@ -2,17 +2,29 @@
 
 class ImageManager {
 
-    // Constructor, file as parameter
-
-    public function __construct($filename) 
+    /**
+     * __construct
+     *
+     * @param  string $filename
+     *
+     * @return void
+     */
+    public function __construct(string $filename = null)
     {
         if (is_file($filename)) 
         {
-            $this->filename  = $filename;
-            $this->info      = getimagesize($this->filename);
-            $infos           = pathinfo($_FILES['photo']['name']);
-            $extension       = $infos['extension'];
-            $this->extension = $extension;
+            if(file_exists($filename)) {
+                $this->filename  = $filename;
+                $this->info      = getimagesize($this->filename);
+                if($_FILES) {
+                    $infos           = pathinfo($_FILES['photo']['name']);
+                    $extension       = $infos['extension'];
+                    $this->extension = $extension;
+                }
+            }
+            else {
+                return null;
+            }
         } 
         else 
         {
@@ -20,9 +32,15 @@ class ImageManager {
         }
     }
 
-    // To resize the uploaded photo in new chapter
-
-    public function resize_to($max_width, $max_height) 
+    /**
+     * To resize the uploaded photo when adding a new chapter
+     *
+     * @param  int $max_width
+     * @param  int $max_height
+     *
+     * @return void
+     */
+    public function resize_to(int $max_width, int $max_height) 
     {
         //If image dimension is smaller, do not resize
         if ($this->info[0] <= $max_width && $this->info[1] <= $max_height) 
@@ -66,9 +84,14 @@ class ImageManager {
         return $this;
     }
 
-    // To save the photo and limit authorized formats
-
-    public function save_as($filename) 
+    /**
+     * To save the photo and limit authorized formats
+     *
+     * @param  string $filename
+     *
+     * @return ImageManager
+     */
+    public function save_as(string $filename) 
     {
         switch($this->info[2]) 
         {
@@ -82,30 +105,32 @@ class ImageManager {
         return $this;
     }
 
-    // To delete the saved photo when deleting the chapter
-
-    public function delete($filename) {
+    /**
+     *  To delete the saved photo when deleting the chapter
+     *
+     * @param  string $filename
+     *
+     * @return void
+     */
+    public function delete(string $filename): void
+    {
        if (file_exists ($filename)) {
             unlink($filename);
-            return 'Fichier supprimé';
-       } else {
-           return 'Fichier inexistant';
-       }
+       } 
     }
 
     // GETTERS
 
-    public function filename() {
-
+    public function filename() 
+    {
         return $this->filename;
     }
 
-    protected function resource() {
-
+    protected function resource() 
+    {
         if (empty($this->resource)) {
-
-            switch($this->info[2]) {
-
+            switch($this->info[2]) 
+            {
                 case IMAGETYPE_PNG:  $this->resource = imagecreatefrompng($this->filename); break;
                 case IMAGETYPE_JPEG: $this->resource = imagecreatefromjpeg($this->filename);  break;
                 case IMAGETYPE_GIF:  $this->resource = imagecreatefromgif($this->filename); break;
@@ -116,8 +141,8 @@ class ImageManager {
         return $this->resource;
     }
 
-    public function extension() {
-
+    public function extension() 
+    {
         return $this->extension;
     }
 }

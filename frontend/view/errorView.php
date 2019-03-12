@@ -4,7 +4,7 @@
 <div class="sectionError front">
 
     <h2>Il semblerait qu'il y ait une erreur...</h2><br/>
-    <p>Vous rencontrez l'erreur suivante : <?= $errorMessage ?></p>
+    <p class="alert alert-danger">Vous rencontrez l'erreur suivante : <?= $errorMessage ?></p>
 
     <?php 
         if (isset($msgErrorConnexion1) || isset($msgErrorConnexion2) || isset($msgErrorConnexion3)) { ?>

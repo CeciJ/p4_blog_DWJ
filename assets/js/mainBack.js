@@ -84,18 +84,46 @@ function Supp(link){
     if(confirm('Confirmer la suppression ?')){
         document.location.href = link;
     }
-}
+};
 
-//To disappear the message of confirmation when editing a new comment
+//To disappear the message of confirmation when editing a comment
 (function disappearMsg(){
     setTimeout(function(){
         $('#msgEditCommentOk').hide(); 
     }, 5000);
 }());
 
+//To disappear the message of confirmation when deleting a comment
+(function disappearMsg(){
+    setTimeout(function(){
+        $('#msgDelCommentOk').hide(); 
+    }, 5000);
+}());
+
 //To disappear the message of confirmation when editing admin infos
 (function disappearMsgConfirUser(){
     setTimeout(function(){
-        $('#msgConfirEditUserOk').hide(); 
+        $('#msgConfirmEditUserOk').hide(); 
+    }, 5000);
+}());
+
+//To disappear the message of confirmation when adding a new admin
+(function disappearMsgConfirmAddUser(){
+    setTimeout(function(){
+        $('#msgConfirmAddUserOK').hide(); 
+    }, 5000);
+}());
+
+//To disappear the message of confirmation when deleting an admin
+(function disappearMsgConfirmDelUser(){
+    setTimeout(function(){
+        $('#msgConfirmDelUserOK').hide(); 
+    }, 5000);
+}());
+
+//To disappear the message of confirmation when deleting a chapter
+(function disappearMsgConfirmDelChapter(){
+    setTimeout(function(){
+        $('#msgConfirmDelChapterOK').hide(); 
     }, 5000);
 }());

@@ -7,7 +7,7 @@ class UserManager extends Manager
 {
     // To add a new admin
 
-    public function addUser($pseudo, $mail, $pass_hache)
+    public function addUser(string $pseudo, string $mail, string $pass_hache): bool
     {
         $db = $this->dbConnect();
 
@@ -24,7 +24,7 @@ class UserManager extends Manager
 
     // To get a specific admin by pseudo
 
-    public function getUser($pseudo)
+    public function getUser(string $pseudo)
     {
         $db = $this->dbConnect();
         $req = $db->prepare('SELECT id, pseudo, mail, pass FROM users WHERE pseudo = ?');
@@ -44,7 +44,7 @@ class UserManager extends Manager
 
     // To get a specific user by Id
 
-    public function getUserById($id)
+    public function getUserById(int $id)
     {
         $db = $this->dbConnect();  
         $req = $db->prepare('SELECT id, pseudo, mail, pass FROM users WHERE id = ?');
@@ -83,26 +83,36 @@ class UserManager extends Manager
 
     // To edit admin info
 
-    public function editUser($userId, $newPseudo, $newMail)
+    public function editUser(int $userId, string $newPseudo, string $newMail)
     {
         $db = $this->dbConnect();
         $editUser = $db->prepare('UPDATE users SET pseudo = :newPseudo, mail = :newMail WHERE id = :id');
 
-        $editUser->execute(array(
+        $result = $editUser->execute(array(
             'newPseudo' => $newPseudo,  
             'newMail' => $newMail, 
             'id' => $userId
             ));
 
-        return $editUser;
+        if ($result === false) {
+            throw new Exception('Impossible de modifier l\'administrateur !');
+        }
     }
 
     // To delete an admin
 
-    public function deleteUser($userId)
+    public function deleteUser(int $userId)
     {
         $db = $this->dbConnect();
-        $db->exec('DELETE FROM users WHERE id = '.$userId);
+        $result = $db->exec('DELETE FROM users WHERE id = '.$userId);
+        if($result === 1) 
+        {
+            return 'L\'administrateur a bien été effacé.';
+        }
+        else
+        {
+            throw new Exception('Impossible d\'effacer l\'administrateur !'); 
+        }
     }
 
     // To get the last Id in database

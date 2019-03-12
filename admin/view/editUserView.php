@@ -9,18 +9,17 @@ ob_start();
         <h2>Modifier les informations de l'administrateur : <?= $editUser->pseudo(); ?></h2><br/>
 
         <form action="<?= HOST; ?>editUser-<?= $editUser->id(); ?>" method="post">
-            <div>
+            <div class="form-group">
                 <label>Nouveau pseudo : 
-                    <input type="text" id="newPseudo" name="newPseudo" value="<?= $editUser->pseudo(); ?>">
+                    <input class="form-control" type="text" id="newPseudo" name="newPseudo" value="<?= $editUser->pseudo(); ?>">
                 </label>
             </div>
-            <div>
+            <div class="form-group">
                 <label>Nouveau mail : 
-                    <input type="email" id="newMail" name="newMail" value="<?= $editUser->mail(); ?>">
+                    <input class="form-control" type="email" id="newMail" name="newMail" value="<?= $editUser->mail(); ?>">
                 </label>
             </div>
-            <br/>
-            <button type="submit">Modifier</button>
+            <button class="btn btn-primary" type="submit">Modifier</button>
         </form>
     </div>
 
